@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
     private float maxFov, minFov, maxOrthSize, minOrthSize;
 
     //Drag variables
+    public bool canDrag = true;
     private Vector3 ResetCamera; // original camera position
     private Vector3 Origin; // place where mouse is first pressed
     private Vector3 Diference; // change in position of mouse relative to origin
@@ -27,7 +28,8 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         UpdateZoom();
-        UpdateDrag();
+        if(canDrag)
+            UpdateDrag();
     }
 
     private void UpdateZoom()
