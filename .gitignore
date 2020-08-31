@@ -58,3 +58,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+#Unity lock file
+Water System Prototype/Temp/UnityLockfile
+
