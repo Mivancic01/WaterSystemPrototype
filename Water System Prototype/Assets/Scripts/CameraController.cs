@@ -27,6 +27,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        UpdateCameraZPos();
         UpdateZoom();
         if(canDrag)
             UpdateDrag();
@@ -69,6 +70,14 @@ public class CameraController : MonoBehaviour
             transform.position = ResetCamera;
         }
     }
+
+    void UpdateCameraZPos()
+    {
+        var pos = Camera.main.transform.position;
+        pos.z = -10;
+        Camera.main.transform.position = pos;
+    }
+
     // return the position of the mouse in world coordinates (helper method)
     Vector3 MousePos()
     {
