@@ -1,0 +1,21 @@
+# simbol '#' signifies a comment line which will be ignored
+
+# el keyword signifies a unique element by typeID and a 3D vector position
+# these elements are loaded into a list
+
+# yr keyword signifies a unique year and the indices of the elements which are used in that year
+
+#ELEMENTS
+el 0, 3, 5, 10
+el 1, 33, 21, 10
+el 2, 0, 10, 10
+el 3, 21, 26, 10
+el 4, 12, 1, 10
+el 5, 45, 17, 10
+
+#TIMELINE
+yr 2020, 0, 3, 4
+yr 2025, 1, 2, 4
+yr 2030, 1, 2, 3, 5
+yr 2035, 1, 2, 3, 4, 5
+
