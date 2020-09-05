@@ -36,7 +36,7 @@ public class ElementsManager : MonoBehaviour
 
         elementList = elList;
         modelList = modList;
-        InitializeScene();
+        // InitializeScene();
     }
 
     public void InitializeScene()

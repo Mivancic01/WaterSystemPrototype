@@ -21,8 +21,8 @@ namespace Elements
         public void Initialize()
         {
             mapIconObj = Instantiate(mapIconPrefab, position, Quaternion.identity);
-            propertiesWindowObj = Instantiate(propertiesWindowPrefab, GameObject.FindWithTag("Canvas").transform);
-            ChangeWindowVisibility(false);
+            // propertiesWindowObj = Instantiate(propertiesWindowPrefab, GameObject.FindWithTag("Canvas").transform);
+            // ChangeWindowVisibility(false);
         }
 
         public void ChangeVisibility(bool isVisible)
@@ -38,7 +38,7 @@ namespace Elements
         public void DestroyElement()
         {
             GameObject.Destroy(mapIconObj);
-            GameObject.Destroy(propertiesWindowObj);
+            // GameObject.Destroy(propertiesWindowObj);
         }
     }
 }

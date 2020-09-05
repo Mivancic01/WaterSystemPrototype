@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using UnityEngine;
 
@@ -88,18 +89,18 @@ public class FileReader : MonoBehaviour
 
             line = line.Remove(0, 3);
 
-            int x = GetNextNumber(line);
-            line = line.Remove(0, FindEndOfNumber(line) + 2);
-            // Debug.Log("X = " + x);
-            // Debug.Log("REST OF THE LINE = " + line);
+            float x = GetNextNumber(line);
+            line = line.Remove(0, FindNextNumberIndex(line));
+             Debug.Log("X = " + x);
+             Debug.Log("REST OF THE LINE = " + line);
 
-            int y = GetNextNumber(line);
-            line = line.Remove(0, FindEndOfNumber(line) + 2);
-            // Debug.Log("Y = " + y);
-            // Debug.Log("REST OF THE LINE = " + line);
+            float y = GetNextNumber(line);
+            line = line.Remove(0, FindNextNumberIndex(line));
+             Debug.Log("Y = " + y);
+             Debug.Log("REST OF THE LINE = " + line);
 
-            int z = GetNextNumber(line);
-            // Debug.Log("Z = " + z);
+            float z = GetNextNumber(line);
+             Debug.Log("Z = " + z);
 
             Vector3 pos = new Vector3(x, y, z);
             elementList.Add(new Elements.BaseElement(typeID, pos));
@@ -127,27 +128,54 @@ public class FileReader : MonoBehaviour
         }
 
 
-        Debug.Log(line);
+        //Debug.Log(line);
     }
 
-    int GetNextNumber(string line)
+    float GetNextNumber(string line)
     {
         int numEnd = FindEndOfNumber(line);
-        //Debug.Log(line.Substring(0, numEnd));
-        return Int32.Parse(line.Substring(0, numEnd));
+        //if(numEnd < line.Length)
+        //    Debug.Log("LAST CHARACTER IS: " + line.Substring(numEnd, 1));
+        
+
+        //Debug.Log("CONVERTED LINE IS: " + line.Substring(0, numEnd));
+        if (line.Substring(0, 1).Equals("-"))
+        {
+            if (line.Substring(numEnd, 1).Equals(","))
+                numEnd--;
+            return (float)Convert.ToDouble(line.Substring(1, numEnd)) * -1;
+        }
+
+        return (float)Convert.ToDouble(line.Substring(0, numEnd));
     }
 
-    int FindEndOfNumber(string line)
+    int FindEndOfNumber(string line, int startIndex = 0)
     {
         int i;
         //Debug.Log("ORIGINAL LINE = " + line);
-        for (i = 0; i < line.Length; i++)
+        for (i = startIndex; i < line.Length; i++)
         {
             //Debug.Log("NEXT CHAR = " + line.Substring(i, 1));
             if (line.Substring(i, 1).Equals(","))
                 return i;
         }
             
+
+        return i;
+    }
+
+    int FindNextNumberIndex(string line)
+    {
+        int endOfCurrentNumber = FindEndOfNumber(line);
+
+        int i;
+        //Debug.Log("ORIGINAL LINE = " + line);
+        for (i = endOfCurrentNumber + 1 ; i < line.Length; i++)
+        {
+            //Debug.Log("NEXT CHAR = " + line.Substring(i, 1));
+            if (!line.Substring(i, 1).Equals(",") && !line.Substring(i, 1).Equals(" "))
+                return i;
+        }
 
         return i;
     }
