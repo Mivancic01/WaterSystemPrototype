@@ -41,6 +41,13 @@ namespace Elements
             elementIndicesList.Clear();
         }
 
+        public void RemoveElement(int index)
+        {
+            foreach (var elemIndex in elementIndicesList)
+                if (elemIndex == index)
+                    elementIndicesList.Remove(elemIndex);
+        }
+
         public void Print()
         {
             Debug.Log("//////////////     PRINTING NEW MODEL FOR YEAR " + year);

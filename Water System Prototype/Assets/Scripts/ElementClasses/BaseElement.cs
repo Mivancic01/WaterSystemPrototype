@@ -5,40 +5,50 @@ using System.Linq;
 
 namespace Elements
 {
-    public class BaseElement : MonoBehaviour
+    public class BaseElement
     {
-        public GameObject propertiesWindowPrefab, mapIconPrefab;
-        private GameObject propertiesWindowObj, mapIconObj;
+        private GameObject propertiesWindow, elemIcon;
         public int typeID;
         public Vector3 position;
 
-        public BaseElement(int id, Vector3 pos)
+        public int listIndex;
+
+        public BaseElement(int index, int id, Vector3 pos)
         {
+            listIndex = index;
             typeID = id;
             position = pos;
         }
 
         public void Initialize()
         {
-            mapIconObj = Instantiate(mapIconPrefab, position, Quaternion.identity);
-            // propertiesWindowObj = Instantiate(propertiesWindowPrefab, GameObject.FindWithTag("Canvas").transform);
-            // ChangeWindowVisibility(false);
+            elemIcon = ElementsFactory.Instance.CreateElement(typeID, position);
+            elemIcon.GetComponent<DraggableObject>().elementsListIndex = listIndex;
+
+            propertiesWindow = ElementsFactory.Instance.CreatePropertiesWindow(typeID);
+            ChangeWindowVisibility(false);
         }
 
         public void ChangeVisibility(bool isVisible)
         {
-            mapIconObj.SetActive(isVisible);
+            elemIcon.SetActive(isVisible);
         }
 
         public void ChangeWindowVisibility(bool isVisible)
         {
-            propertiesWindowObj.SetActive(isVisible);
+            propertiesWindow.SetActive(isVisible);
+        }
+
+        public void UpdateListIndex(int newIndex)
+        {
+            listIndex = newIndex;
+            elemIcon.GetComponent<DraggableObject>().elementsListIndex = listIndex;
         }
 
         public void DestroyElement()
         {
-            GameObject.Destroy(mapIconObj);
-            // GameObject.Destroy(propertiesWindowObj);
+            GameObject.Destroy(elemIcon);
+            GameObject.Destroy(propertiesWindow);
         }
     }
 }

@@ -13,7 +13,7 @@ public class DraggableElements : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        Camera.main.GetComponent<CameraController>().canDrag = false;
+        DragManager.Instance.DraggableMap = false;
         if (useDebug) Debug.Log("DRAGGING!");
 
         GameObject elem = null;
@@ -27,7 +27,7 @@ public class DraggableElements : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Camera.main.GetComponent<CameraController>().canDrag = true;
+        DragManager.Instance.DraggableMap = true;
         isInstantiated = false;
         if (useDebug) Debug.Log("DROPPING!");
 

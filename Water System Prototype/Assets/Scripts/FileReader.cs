@@ -7,44 +7,6 @@ using UnityEngine;
 
 public class FileReader : MonoBehaviour
 {
-    /*public struct Element
-    {
-        public Element(int id, Vector3 pos)
-        {
-            typeID = id;
-            position = pos;
-        }
-
-        public int typeID;
-        public Vector3 position;
-    }*/
-
-    /*public struct Model
-    {
-        public Model(int yr)
-        {
-            year = yr;
-            elementIndicesList = new List<int>();
-        }
-        public void Add(int index)
-        {
-            if(elementIndicesList == null)
-                elementIndicesList = new List<int>();
-
-            elementIndicesList.Add(index);
-        }
-
-        public void Print()
-        {
-            Debug.Log("//////////////     PRINTING NEW MODEL FOR YEAR " + year);
-            foreach (var el in elementIndicesList)
-                Debug.Log("YEAR " + year + ", INDEX = " + el);
-        }
-
-        public int year;
-        public List<int> elementIndicesList;
-    }*/
-
     public List<Elements.BaseElement> elementList;
     public List<Elements.Model> modelList;
     public bool useDebug = false;
@@ -91,19 +53,19 @@ public class FileReader : MonoBehaviour
 
             float x = GetNextNumber(line);
             line = line.Remove(0, FindNextNumberIndex(line));
-             Debug.Log("X = " + x);
-             Debug.Log("REST OF THE LINE = " + line);
+            //  Debug.Log("X = " + x);
+            //  Debug.Log("REST OF THE LINE = " + line);
 
             float y = GetNextNumber(line);
             line = line.Remove(0, FindNextNumberIndex(line));
-             Debug.Log("Y = " + y);
-             Debug.Log("REST OF THE LINE = " + line);
+            //  Debug.Log("Y = " + y);
+            //  Debug.Log("REST OF THE LINE = " + line);
 
             float z = GetNextNumber(line);
-             Debug.Log("Z = " + z);
+            //  Debug.Log("Z = " + z);
 
             Vector3 pos = new Vector3(x, y, z);
-            elementList.Add(new Elements.BaseElement(typeID, pos));
+            elementList.Add(new Elements.BaseElement(elementList.Count, typeID, pos));
         }
         else if (line.StartsWith("yr"))
         {
@@ -123,7 +85,7 @@ public class FileReader : MonoBehaviour
                 line = line.Remove(0, removeSize);
             }
 
-            model.Print();
+            // model.Print();
             modelList.Add(model);
         }
 

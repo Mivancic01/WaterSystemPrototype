@@ -8,8 +8,6 @@ public class ElementsManager : MonoBehaviour
     public List<Elements.BaseElement> elementList;
     public List<Elements.Model> modelList;
 
-    public GameObject element1, element2, element3, element4, element5, element6;
-
     public static ElementsManager Instance { get; private set; }
 
     private int currentOpenModel;
@@ -36,16 +34,21 @@ public class ElementsManager : MonoBehaviour
 
         elementList = elList;
         modelList = modList;
-        // InitializeScene();
+        InitializeScene();
+
+        var startTime = Time.time;
     }
 
     public void InitializeScene()
     {
+        Debug.Log("CALLED ---> ElementsManager::InitializeScene()");
         foreach (var el in elementList)
             el.Initialize();
 
-        for (int i = 1; i < modelList.Count; i++)
+        for (int i = 0; i < modelList.Count; i++)
             modelList[i].ChangeListVisibility(false);
+
+        modelList[0].ChangeListVisibility(true);
 
         currentOpenModel = 0;
     }
@@ -58,6 +61,11 @@ public class ElementsManager : MonoBehaviour
         currentOpenModel = newModelIndex;
     }
 
+    public void OpenPropertiesWindow(int index)
+    {
+        elementList[index].ChangeWindowVisibility(true);
+    }
+
     public void DestroyScene()
     {
         foreach (var el in elementList)
@@ -68,5 +76,17 @@ public class ElementsManager : MonoBehaviour
 
         elementList.Clear();
         modelList.Clear();
+    }
+
+    public void DeleteElement(int index)
+    {
+        foreach (var el in modelList)
+            el.RemoveElement(index);
+
+        elementList[index].DestroyElement();
+        elementList.RemoveAt(index);
+
+        for (int i = index; i < elementList.Count; i++)
+            elementList[i].UpdateListIndex(i);
     }
 }

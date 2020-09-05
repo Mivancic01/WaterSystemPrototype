@@ -6,7 +6,7 @@ namespace Elements
 {
     public class Element5 : BaseElement
     {
-        public Element5(int id, Vector3 pos) : base(id, pos)
+        public Element5(int index, int id, Vector3 pos) : base(index, id, pos)
         {
 
         }
