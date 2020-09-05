@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -10,6 +11,20 @@ public class FileReader : MonoBehaviour
     public List<Elements.BaseElement> elementList;
     public List<Elements.Model> modelList;
     public bool useDebug = false;
+    public static FileReader Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            // destroy the duplicate
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     void Start()
     {
@@ -140,6 +155,42 @@ public class FileReader : MonoBehaviour
         }
 
         return i;
+    }
+
+    public void SaveGame()
+    {
+        Debug.Log("STARTING SAVE GAME!");
+        string path = "Assets/SaveFiles/SaveFile1.txt";
+        if (!File.Exists(path))
+        {
+            // Create a file to write to.
+            using (StreamWriter sw = File.CreateText(path))
+            {
+                sw.WriteLine("#ELEMENTS");
+                foreach (var elem in ElementsManager.Instance.elementList)
+                {
+                    string line = "el ";
+                    line += elem.typeID + ", " + elem.position.x + ", " + elem.position.y + ", " + elem.position.z;
+                    sw.WriteLine(line);
+
+                    Debug.Log("NEW ELEMENT LINE IS: " + line);
+                }
+
+                sw.WriteLine("#TIMELINE");
+                foreach (var elem in ElementsManager.Instance.modelList)
+                {
+                    string line = "yr ";
+                    line += elem.year;
+                    foreach (var index in elem.elementIndicesList)
+                        line += ", " + index;
+                    sw.WriteLine(line);
+
+                    Debug.Log("NEW TIMELINE LINE IS: " + line);
+                }
+            }
+        }
+        else
+            Debug.Log("FILE ALREADY EXISTS!");
     }
 
 }

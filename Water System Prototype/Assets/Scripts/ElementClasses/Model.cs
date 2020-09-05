@@ -24,7 +24,7 @@ namespace Elements
 
         public void Add(int index)
         {
-            Debug.Log("ADDING INDEX: " + index);
+            //Debug.Log("ADDING INDEX: " + index);
             if (elementIndicesList == null)
                 elementIndicesList = new List<int>();
 
