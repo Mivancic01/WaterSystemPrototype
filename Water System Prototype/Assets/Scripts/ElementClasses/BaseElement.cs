@@ -26,6 +26,7 @@ namespace Elements
             elemIcon.GetComponent<DraggableObject>().elementsListIndex = listIndex;
 
             propertiesWindow = ElementsFactory.Instance.CreatePropertiesWindow(typeID);
+            propertiesWindow.GetComponent<PropertiesWindow>().elementsListIndex = listIndex;
             ChangeWindowVisibility(false);
         }
 
@@ -43,6 +44,7 @@ namespace Elements
         {
             listIndex = newIndex;
             elemIcon.GetComponent<DraggableObject>().elementsListIndex = listIndex;
+            propertiesWindow.GetComponent<PropertiesWindow>().elementsListIndex = listIndex;
         }
 
         public void DestroyElement()

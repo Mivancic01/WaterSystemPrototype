@@ -80,6 +80,7 @@ public class ElementsManager : MonoBehaviour
 
     public void DeleteElement(int index)
     {
+       // modelList[0].RemoveElement(index);
         foreach (var el in modelList)
             el.RemoveElement(index);
 

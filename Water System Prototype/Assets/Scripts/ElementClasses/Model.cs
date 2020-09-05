@@ -24,6 +24,7 @@ namespace Elements
 
         public void Add(int index)
         {
+            Debug.Log("ADDING INDEX: " + index);
             if (elementIndicesList == null)
                 elementIndicesList = new List<int>();
 
@@ -43,9 +44,19 @@ namespace Elements
 
         public void RemoveElement(int index)
         {
-            foreach (var elemIndex in elementIndicesList)
-                if (elemIndex == index)
-                    elementIndicesList.Remove(elemIndex);
+            //Debug.Log("STARTING REMOVEELEMENT()");
+            //foreach (var elem in elementIndicesList)
+            //    Debug.Log("EXISITNG ELEMENT: " + elem);
+
+            //Debug.Log("REMOVING INDEX: " + index);
+
+            for (int i = 0; i < elementIndicesList.Count; i++)
+                if (elementIndicesList[i] == index)
+                    elementIndicesList.RemoveAt(i);
+
+            for (int i = 0; i < elementIndicesList.Count; i++)
+                if (elementIndicesList[i] > index)
+                    elementIndicesList[i] -= 1;
         }
 
         public void Print()
