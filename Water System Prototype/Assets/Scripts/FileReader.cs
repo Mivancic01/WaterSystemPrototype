@@ -159,13 +159,27 @@ public class FileReader : MonoBehaviour
 
     public void SaveGame()
     {
+        string pathStart = "Assets/SaveFiles/SaveFile";
+        string pathEnd = ".txt";
+        int saveFileCounter = 1;
+
+        string path = pathStart + saveFileCounter + pathEnd;
+
+        while (File.Exists(path))
+        {
+            saveFileCounter++;
+            path = pathStart + saveFileCounter + pathEnd;
+        }
+
         Debug.Log("STARTING SAVE GAME!");
-        string path = "Assets/SaveFiles/SaveFile1.txt";
+        Debug.Log(path);
+        //string path = "Assets/SaveFiles/SaveFile1.txt";
         if (!File.Exists(path))
         {
             // Create a file to write to.
             using (StreamWriter sw = File.CreateText(path))
             {
+                sw.WriteLine("");
                 sw.WriteLine("#ELEMENTS");
                 foreach (var elem in ElementsManager.Instance.elementList)
                 {
@@ -176,6 +190,7 @@ public class FileReader : MonoBehaviour
                     Debug.Log("NEW ELEMENT LINE IS: " + line);
                 }
 
+                sw.WriteLine("");
                 sw.WriteLine("#TIMELINE");
                 foreach (var elem in ElementsManager.Instance.modelList)
                 {
