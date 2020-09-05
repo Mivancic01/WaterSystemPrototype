@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class FileReader : MonoBehaviour
 {
-    public struct Element
+    /*public struct Element
     {
         public Element(int id, Vector3 pos)
         {
@@ -16,9 +16,9 @@ public class FileReader : MonoBehaviour
 
         public int typeID;
         public Vector3 position;
-    }
+    }*/
 
-    public struct Model
+    /*public struct Model
     {
         public Model(int yr)
         {
@@ -42,16 +42,16 @@ public class FileReader : MonoBehaviour
 
         public int year;
         public List<int> elementIndicesList;
-    }
+    }*/
 
-    public List<Element> elementList;
-    public List<Model> modelList;
+    public List<Elements.BaseElement> elementList;
+    public List<Elements.Model> modelList;
     public bool useDebug = false;
 
     void Start()
     {
-        elementList = new List<Element>();
-        modelList = new List<Model>();
+        elementList = new List<Elements.BaseElement>();
+        modelList = new List<Elements.Model>();
 
         int counter = 0;
         string line;
@@ -67,6 +67,8 @@ public class FileReader : MonoBehaviour
 
         file.Close();
         Debug.Log("There were " + counter + " lines.");
+
+        ElementsManager.Instance.LoadSaveFile(elementList, modelList);
         // Suspend the screen.  
         System.Console.ReadLine();
     }
@@ -100,7 +102,7 @@ public class FileReader : MonoBehaviour
             // Debug.Log("Z = " + z);
 
             Vector3 pos = new Vector3(x, y, z);
-            elementList.Add(new Element(typeID, pos));
+            elementList.Add(new Elements.BaseElement(typeID, pos));
         }
         else if (line.StartsWith("yr"))
         {
@@ -108,7 +110,7 @@ public class FileReader : MonoBehaviour
             var year = Int32.Parse(line.Substring(0, 4));
             line = line.Remove(0, 6);
 
-            Model model = new Model(year);
+            Elements.Model model = new Elements.Model(year);
 
             while (line.Length > 0)
             {
