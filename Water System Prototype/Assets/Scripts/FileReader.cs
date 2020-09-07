@@ -35,8 +35,10 @@ public class FileReader : MonoBehaviour
         string line;
 
         // Read the file and display it line by line.  
+        //System.IO.StreamReader file =
+       //     new System.IO.StreamReader("Assets/SaveFiles/SaveFileConcept.txt");
         System.IO.StreamReader file =
-            new System.IO.StreamReader("Assets/SaveFiles/SaveFileConcept.txt");
+            new System.IO.StreamReader("SaveFiles/SaveFileConcept.txt");
         while ((line = file.ReadLine()) != null)
         {
             ReadLine(line);
@@ -159,7 +161,8 @@ public class FileReader : MonoBehaviour
 
     public void SaveGame()
     {
-        string pathStart = "Assets/SaveFiles/SaveFile";
+        //string pathStart = "Assets/SaveFiles/SaveFile";
+        string pathStart = "SaveFiles/SaveFile";
         string pathEnd = ".txt";
         int saveFileCounter = 1;
 
