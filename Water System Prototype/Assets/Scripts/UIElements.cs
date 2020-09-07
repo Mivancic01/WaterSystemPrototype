@@ -12,8 +12,7 @@ public class UIElements : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (mouse_over)
         {
             if(useDebug) Debug.Log("Mouse Over obj " + gameObject.name);
-            Camera.main.GetComponent<CameraController>().canDrag = false;
-
+            DragManager.Instance.DraggableMap = false;
         }
     }
 
@@ -21,13 +20,13 @@ public class UIElements : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         mouse_over = true;
         if (useDebug) Debug.Log("Mouse enter obj " + gameObject.name);
-        Camera.main.GetComponent<CameraController>().canDrag = false;
+        DragManager.Instance.DraggableMap = false;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         mouse_over = false;
         if (useDebug) Debug.Log("Mouse exit obj " + gameObject.name);
-        Camera.main.GetComponent<CameraController>().canDrag = true;
+        DragManager.Instance.DraggableMap = true;
     }
 }
