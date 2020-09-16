@@ -109,7 +109,9 @@ public class ElementsManager : MonoBehaviour
 
     public void DeleteElement(int index)
     {
-       // modelList[0].RemoveElement(index);
+        Debug.Log("CALLED ---> ElementsManager::DeleteElement() with index = " + index + " and elementType = " + elementList[index].typeID);
+
+        // modelList[0].RemoveElement(index);
         foreach (var el in modelList)
             el.RemoveElement(index);
 
@@ -118,5 +120,14 @@ public class ElementsManager : MonoBehaviour
 
         for (int i = index; i < elementList.Count; i++)
             elementList[i].UpdateListIndex(i);
+    }
+
+    public void AddElement(GameObject el, int typeID)
+    {
+        Debug.Log("CALLED ---> ElementsManager::AddElement() with index = " + elementList.Count + " and elementType = " + typeID);
+
+        elementList.Add(new Elements.BaseElement(elementList.Count, typeID, el.transform.position));
+        elementList[elementList.Count - 1].Initialize(el);
+        modelList[currentOpenModel].Add(elementList.Count - 1);
     }
 }

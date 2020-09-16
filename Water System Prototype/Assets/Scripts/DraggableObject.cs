@@ -27,7 +27,7 @@ public class DraggableObject : MonoBehaviour
     {
         if(!useInitialDrag)
         {
-            if (useDebug) Debug.Log("MOUSE ENTERED GAME OBJECT!");
+            //if (useDebug) Debug.Log("MOUSE ENTERED GAME OBJECT!");
             DragManager.Instance.DraggableMap = false;
         }
     }
@@ -72,6 +72,8 @@ public class DraggableObject : MonoBehaviour
         if (Input.GetMouseButton(0))
             transform.position = pos;
         else
+        {
             useInitialDrag = false;
+        }
     }
 }

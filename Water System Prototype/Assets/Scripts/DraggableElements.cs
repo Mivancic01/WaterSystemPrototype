@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Elements;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,6 +11,7 @@ public class DraggableElements : MonoBehaviour, IDragHandler, IEndDragHandler
 
     Vector3 origPos;
     public GameObject elementPrefab;
+    public int elementTypeID;
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -21,6 +23,7 @@ public class DraggableElements : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             elem = Instantiate(elementPrefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
             elem.GetComponent<DraggableObject>().useInitialDrag = true;
+            ElementsManager.Instance.AddElement(elem, elementTypeID);
         }
         isInstantiated = true;
     }

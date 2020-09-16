@@ -30,6 +30,16 @@ namespace Elements
             ChangeWindowVisibility(false);
         }
 
+        public void Initialize(GameObject icon)
+        {
+            elemIcon = icon;
+            elemIcon.GetComponent<DraggableObject>().elementsListIndex = listIndex;
+
+            propertiesWindow = ElementsFactory.Instance.CreatePropertiesWindow(typeID);
+            propertiesWindow.GetComponent<PropertiesWindow>().elementsListIndex = listIndex;
+            ChangeWindowVisibility(false);
+        }
+
         public void ChangeVisibility(bool isVisible)
         {
             elemIcon.SetActive(isVisible);
@@ -42,7 +52,11 @@ namespace Elements
 
         public void UpdateListIndex(int newIndex)
         {
+            Debug.Log("CALLED ---> BaseElement::UpdateListIndex() with old index = " + listIndex + " and new index = " + newIndex);
             listIndex = newIndex;
+
+            if (elemIcon.GetComponent<DraggableObject>() == null)
+                Debug.LogError("DRAGGABLE OBJECT SCRIPT IS NULL!");
             elemIcon.GetComponent<DraggableObject>().elementsListIndex = listIndex;
             propertiesWindow.GetComponent<PropertiesWindow>().elementsListIndex = listIndex;
         }
