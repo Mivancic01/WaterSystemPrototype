@@ -24,7 +24,7 @@ namespace Elements
 
         public void Add(int index)
         {
-            //Debug.Log("ADDING INDEX: " + index);
+            //Debug.Log("ADDING INDEX: " + index + "For year: " + year);
             if (elementIndicesList == null)
                 elementIndicesList = new List<int>();
 
@@ -33,6 +33,7 @@ namespace Elements
 
         public void ChangeListVisibility(bool isVisible)
         {
+            Debug.Log("CALLED ---> Model::ChangeListVisibility() with isVisisble = " + isVisible + " and year: " + year);
             foreach (var index in elementIndicesList)
                 elementsManager.elementList[index].ChangeVisibility(isVisible);
         }
