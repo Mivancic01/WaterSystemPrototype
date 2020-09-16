@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
     //Zoom variables
     public float scaleFactor = 5.0f;
     private float maxFov, minFov, maxOrthSize, minOrthSize;
+    private bool isMouseUp = true;
 
     //Drag variables
     private Vector3 ResetCamera; // original camera position
@@ -28,7 +29,13 @@ public class CameraController : MonoBehaviour
     {
         UpdateCameraZPos();
         UpdateZoom();
-        if(DragManager.Instance.DraggableMap)
+
+        if (!DragManager.Instance.DraggableMap)
+            isMouseUp = false;
+        else if (!Input.GetMouseButton(0))
+            isMouseUp = true;
+
+        if (DragManager.Instance.DraggableMap && isMouseUp)
             UpdateDrag();
     }
 
