@@ -4,6 +4,7 @@
 # these elements are loaded into a list
 
 # yr keyword signifies a unique year and the indices of the elements which are used in that year
+#el 0, ID, -3.14,  2.14, 10, Properties
 
 #ELEMENTS
 el 0, -3.14,  2.14, 10
