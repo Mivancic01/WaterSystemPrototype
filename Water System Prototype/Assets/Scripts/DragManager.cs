@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class DragManager : MonoBehaviour
 {
-    private bool draggableMap, draggableElements;
+    private bool draggableMap, draggableElements, isInNodeCreateState;
     public bool DraggableMap {
         get { return draggableMap; } 
         set{ draggableMap = value;}
     }
+
     public bool DraggableElements {
         get { return draggableElements; }
         set { draggableElements = value; }
+    }
+
+    public bool IsInNodeCreateState
+    {
+        get { return isInNodeCreateState; }
+        set { isInNodeCreateState = value;
+            draggableElements = !value;
+            draggableMap = !value;
+        }
     }
     public static DragManager Instance { get; private set; }
 
@@ -29,5 +39,6 @@ public class DragManager : MonoBehaviour
 
         draggableMap = true;
         draggableElements = true;
+        isInNodeCreateState = false;
     }
 }

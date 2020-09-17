@@ -1,15 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class NodeGenerator : MonoBehaviour
 {
-    public GameObject nodePrefab;
+    public GameObject pipePrefab, pumpPrefab, valvePrefab;
+    public static int nodeType = 0;
 
     private bool hasCreatedStart = false, hasCreatedEnd = false, canStart = false, isMouseDown = true;
     private int timesDownPressed = 0;
-    private Vector3 startPosition;
+    private Vector3 startPosition, startRotation;
+    private float oldZAngle = 0f;
     private GameObject node;
 
     public void EnterNodeCreationMode()
@@ -48,7 +51,7 @@ public class NodeGenerator : MonoBehaviour
 
                 hasCreatedStart = true;
 
-                node = Instantiate(nodePrefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+                InstantianteNode();
 
                 startPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 startPosition.x -= node.GetComponent<SpriteRenderer>().bounds.size.x / 2;
@@ -56,19 +59,32 @@ public class NodeGenerator : MonoBehaviour
                 var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 pos.z = 10;
                 node.transform.position = pos;
+                startRotation = node.transform.rotation.eulerAngles;
             }
 
-            //Waiting for player to select a startPosition. Node isnt created yet
-            if(node == null)
-                yield return null;
-
-            //float width = node.GetComponent<SpriteRenderer>().bounds.size.x;
-            //node.GetComponent<SpriteRenderer>().bounds.size.x = (Camera.main.ScreenToWorldPoint(Input.mousePosition).x - startPosition.x);
-
             if(node != null)
-                UpdatePositionAndScale();
+                UpdateTransform();
 
             yield return null;
+        }
+    }
+
+    private void InstantianteNode()
+    {
+        switch(nodeType)
+        {
+            case 0:
+                node = node = Instantiate(pipePrefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+                return;
+            case 1:
+                node = node = Instantiate(pumpPrefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+                return;
+            case 2:
+                node = node = Instantiate(valvePrefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+                return;
+            default:
+                Debug.LogError("TRYING TO INSTANTIATE INVALID TYPE OF NODE!");
+                return;
         }
     }
 
@@ -94,24 +110,47 @@ public class NodeGenerator : MonoBehaviour
             "timesDownPressed = " + timesDownPressed);
     }
 
-    private void UpdatePositionAndScale()
+    private void UpdateTransform()
     {
         float oldWidth = node.GetComponent<SpriteRenderer>().bounds.size.x;
-        var newWidht = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - startPosition.x;
+        var newWidth = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - startPosition.x;
 
         Debug.Log("OldWidth = " + oldWidth);
-        Debug.Log("newWidht = " + newWidht);
-        Debug.Log("X scale = " + newWidht / oldWidth);
+        Debug.Log("newWidht = " + newWidth);
+        Debug.Log("X scale = " + newWidth / oldWidth);
 
-        if (newWidht == 0)
-            newWidht = oldWidth;
+        if (newWidth == 0)
+            newWidth = oldWidth;
 
+
+        UpdateScale(oldWidth, newWidth);
+        UpdatePosition(oldWidth, newWidth);
+        UpdateRotation(oldWidth, newWidth);
+
+
+    }
+
+    private void UpdateScale(float oldWidth, float newWidth)
+    {
         Vector3 newScale = node.transform.localScale;
-        newScale.x *= newWidht / oldWidth;
+        newScale.x *= newWidth / oldWidth;
         node.transform.localScale = newScale;
+    }
 
+    private void UpdateRotation(float oldWidth, float newWidth)
+    {
+        var height = Camera.main.ScreenToWorldPoint(Input.mousePosition).y - startPosition.y;
+        var zAngle = Mathf.Tan(height / newWidth) * Mathf.Rad2Deg;
+
+        node.transform.Rotate(0.0f, 0.0f, -oldZAngle, Space.Self);
+        node.transform.Rotate(0.0f, 0.0f, zAngle, Space.Self);
+        oldZAngle = zAngle;
+    }
+
+    private void UpdatePosition(float oldWidth, float newWidth)
+    {
         Vector3 newPos = node.transform.position;
-        newPos.x += (newWidht - oldWidth) / 2;
+        //newPos.x += (newWidth - oldWidth) / 2;
         newPos.z = 10;
         node.transform.position = newPos;
     }
