@@ -7,9 +7,12 @@ ScriptsOnlyBuild:
     - DraggableObject
     - ElementsFactory
     - ElementsManager
+    - ExitGame
     - FileReader
-    - GraphButton
     - LegendsButton
+    - ProcessGenerator
+    - ProcessPanel
+    - ProgressBar
     - PropertiesWindow
     - UIElements
     UnityEditor.TestRunner.dll:
@@ -53,41 +56,47 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9748}
     - Class: 114
-      Script: {instanceID: 9828}
+      Script: {instanceID: 9764}
     - Class: 114
-      Script: {instanceID: 9830}
+      Script: {instanceID: 9766}
     - Class: 114
-      Script: {instanceID: 9868}
+      Script: {instanceID: 9832}
     - Class: 114
-      Script: {instanceID: 10090}
+      Script: {instanceID: 9834}
     - Class: 114
-      Script: {instanceID: 10240}
+      Script: {instanceID: 9872}
     - Class: 114
-      Script: {instanceID: 10580}
+      Script: {instanceID: 9988}
     - Class: 114
-      Script: {instanceID: 10636}
+      Script: {instanceID: 10096}
     - Class: 114
-      Script: {instanceID: 10662}
+      Script: {instanceID: 10246}
     - Class: 114
-      Script: {instanceID: 10668}
+      Script: {instanceID: 10410}
     - Class: 114
-      Script: {instanceID: 10790}
+      Script: {instanceID: 10588}
     - Class: 114
-      Script: {instanceID: 11026}
+      Script: {instanceID: 10644}
     - Class: 114
-      Script: {instanceID: 11058}
+      Script: {instanceID: 10670}
     - Class: 114
-      Script: {instanceID: 11158}
+      Script: {instanceID: 10676}
     - Class: 114
-      Script: {instanceID: 11372}
+      Script: {instanceID: 10798}
     - Class: 114
-      Script: {instanceID: 23198}
+      Script: {instanceID: 11034}
     - Class: 114
-      Script: {instanceID: 28982}
+      Script: {instanceID: 11066}
     - Class: 114
-      Script: {instanceID: 47654}
+      Script: {instanceID: 11160}
     - Class: 114
-      Script: {instanceID: 72492}
+      Script: {instanceID: 11168}
+    - Class: 114
+      Script: {instanceID: 11382}
+    - Class: 114
+      Script: {instanceID: 13696}
+    - Class: 114
+      Script: {instanceID: 70020}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -141,6 +150,18 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ElementsFactory
+  - hash:
+      serializedVersion: 2
+      Hash: 965c6d8f719772ce10e30ff773852da7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LegendsButton
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DragManager
   - hash:
       serializedVersion: 2
       Hash: e7a73f5f78ba6445195ec23b74a1ce2d
@@ -219,6 +240,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalAsset
+  - hash:
+      serializedVersion: 2
+      Hash: e485b158464ebdba4462a007b5d51ac6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ProcessPanel
   - hash:
       serializedVersion: 2
       Hash: 0dbc3be398b4869a5c8d0d8481ee402c
@@ -315,6 +342,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_Asset
+  - hash:
+      serializedVersion: 2
+      Hash: 9eb8157c5eba3d49c81a84806fa139d5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ProgressBar
   - hash:
       serializedVersion: 2
       Hash: d4020bafcd3ccbb5601a6e6c8ac78be0
@@ -449,10 +482,16 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: f8666e9faedeb118b5335c4f6f8e91b1
+      Hash: 49cf93d0c68451be04652d9fb8f24804
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DraggableElements
+  - hash:
+      serializedVersion: 2
+      Hash: 972077cb0b443c530895bcc1b38d908a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PropertiesWindow
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -563,28 +602,16 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
+      Hash: 058296072be4829168a7f6e24f97781f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ProcessGenerator
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: DragManager
-  - hash:
-      serializedVersion: 2
-      Hash: 972077cb0b443c530895bcc1b38d908a
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PropertiesWindow
-  - hash:
-      serializedVersion: 2
-      Hash: 965c6d8f719772ce10e30ff773852da7
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: LegendsButton
-  - hash:
-      serializedVersion: 2
-      Hash: 995816e150dce0a1fa676bdedca9c782
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: GraphButton
+    className: ExitGame
   platform: 5
   scenePathNames:
   - Assets/Scenes/Prototype.unity

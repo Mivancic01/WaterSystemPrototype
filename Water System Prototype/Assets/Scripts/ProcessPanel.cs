@@ -19,7 +19,7 @@ public class ProcessPanel : MonoBehaviour
         progressBarObj = bar;
         progressBarObj.AddProcess();
 
-        processTime = Random.Range(5, 15);
+        processTime = Random.Range(5, 25);
         startTime = Time.time;
 
         timeFromLastAddedBar = 0;
