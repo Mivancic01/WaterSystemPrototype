@@ -11,8 +11,8 @@ public class NodeGenerator : MonoBehaviour
 
     private bool hasCreatedStart = false, hasCreatedEnd = false, canStart = false, isMouseDown = true;
     private int timesDownPressed = 0;
-    private Vector3 startPosition, startRotation;
-    private float oldZAngle = 0f;
+    private Vector3 startPosition, startRotation, originalScale;
+    private float oldZAngle = 0f, oldWidth, originalWidth;
     private GameObject node;
     bool isSpaceDown = false;
 
@@ -55,6 +55,9 @@ public class NodeGenerator : MonoBehaviour
         startPosition = startPos;
         InstantianteNode(startPos);
         startRotation = node.transform.rotation.eulerAngles;
+        oldWidth = node.GetComponent<SpriteRenderer>().bounds.size.x / 2;
+        originalWidth = node.GetComponent<SpriteRenderer>().bounds.size.x / 2;
+        originalScale = node.transform.localScale;
 
         StartCoroutine("CreateNodeFromObjectPos");
     }
@@ -187,38 +190,39 @@ public class NodeGenerator : MonoBehaviour
 
     private void UpdateTransform()
     {
-        float oldWidth = node.GetComponent<SpriteRenderer>().bounds.size.x / 2;
+        //oldWidth = node.GetComponent<SpriteRenderer>().bounds.size.x / 2;
         var newWidth = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - startPosition.x;
-
-        //Debug.Log("OldWidth = " + oldWidth);
-        //Debug.Log("newWidht = " + newWidth);
-        //Debug.Log("X scale = " + newWidth / oldWidth);
 
         if (newWidth == 0)
             newWidth = oldWidth;
 
-       // Debug.Log("Mouse Pos.x = " + Camera.main.ScreenToWorldPoint(Input.mousePosition).x);
-       // Debug.Log("Mouse Pos.y = " + Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+        //UpdateScale(oldWidth, newWidth);
+        //Debug.Log("After UpdateScale--------------> localScale.x = " + node.transform.localScale.x + "\nAt time " + Time.time);
 
-        UpdateScale(oldWidth, newWidth);
         //UpdatePosition(oldWidth, newWidth);
-        UpdateRotation(oldWidth, newWidth);
-
-
+        UpdateRotation();
+        Debug.Log("After UpdateRotation--------------> localScale.x = " + node.transform.localScale.x + "\nAt time " + Time.time);
     }
 
-    private void UpdateScale(float oldWidth, float newWidth)
+    private void UpdateScale(float xWidth, float hipotenuze)
     {
         Vector3 newScale = node.transform.localScale;
-        newScale.x *= newWidth / oldWidth;
+        newScale.x *= hipotenuze / xWidth;
+        node.transform.localScale = newScale;
+        oldWidth = hipotenuze;
+    }
+
+    private void UpdateScale(float hipotenusa)
+    {
+        Vector3 newScale = originalScale;
+        newScale.x *= hipotenusa / originalWidth;
         node.transform.localScale = newScale;
     }
 
-    private void UpdateRotation(float oldWidth, float newWidth)
+    private void UpdateRotation()
     {
         var height = Camera.main.ScreenToWorldPoint(Input.mousePosition).y - startPosition.y;
         var width = (Camera.main.ScreenToWorldPoint(Input.mousePosition).x - startPosition.x);
-        //var zAngle = (height / width) * Mathf.Rad2Deg;
         var zAngle = Mathf.Atan2(height, width) * Mathf.Rad2Deg;
 
         if (Input.GetKeyDown("space") && !isSpaceDown)
@@ -231,19 +235,19 @@ public class NodeGenerator : MonoBehaviour
                 "height / width = " + height / width + "\n" +
                 "Mathf.Tan(height / width) = " + Mathf.Tan(height / width) + "\n" +
                 "zAngle = " + zAngle + "\n" + 
-                "GetAxis->Y = " + Input.GetAxis("Mouse Y")
+                "GetAxis->Y = " + Input.GetAxis("Mouse Y") + "\n" +
+                "Mathf.Cos(zAngle) = " + Mathf.Cos(180 * Mathf.Deg2Rad)
                 );
-
-            //node.transform.Rotate(0.0f, 0.0f, -2.0f, Space.Self);
         }
 
         if (Input.GetKeyUp("space"))
             isSpaceDown = false;
 
-        //var factor = Mathf.Abs( height / width);
-        //var speed = 10f;
-        //node.transform.Rotate(0, 0, Input.GetAxis("Mouse X") * factor * speed);
-        //node.transform.Rotate(new Vector3(0, 0, (height / width) * Mathf.Rad2Deg));
+        //var hip = width / Mathf.Cos(zAngle * Mathf.Deg2Rad);
+        var tempWidth = node.GetComponent<SpriteRenderer>().bounds.size.x / 2;
+        var hip = Mathf.Sqrt(width * width + height * height);
+        //UpdateScale(tempWidth, hip);
+        UpdateScale(hip);
 
 
         node.transform.Rotate(0.0f, 0.0f, -oldZAngle, Space.Self);
