@@ -7,12 +7,11 @@ using UnityEngine;
 public class NodeGenerator : MonoBehaviour
 {
     public GameObject pipePrefab, pumpPrefab, valvePrefab;
-    public static int nodeType = 0;
 
-    private bool hasCreatedStart = false, hasCreatedEnd = false, canStart = false, isMouseDown = true;
-    private int timesDownPressed = 0;
-    private Vector3 startPosition, startRotation, originalScale;
-    private float oldZAngle = 0f, oldWidth, originalWidth;
+    private int nodeType = 0;
+    private bool hasCreatedStart = false, hasCreatedEnd = false;
+    private Vector3 startPosition, originalScale;
+    private float oldZAngle = 0f, originalWidth;
     private GameObject node;
     bool isSpaceDown = false;
 
@@ -33,15 +32,17 @@ public class NodeGenerator : MonoBehaviour
 
     public void EnterNodeCreationMode()
     {
+        Debug.Log("CALLED ---> NodesGenerator::EnterNodeCreationMode()");
         DragManager.Instance.IsInNodeCreateState = true;
-        /*
-        DragManager.Instance.DraggableElements = false;
-        DragManager.Instance.DraggableMap = false;
-        StartCoroutine("CreateNode");
-        */
+    }
+    public void EnterNodeCreationMode(int type)
+    {
+        Debug.Log("CALLED ---> NodesGenerator::EnterNodeCreationMode(int type)");
+        nodeType = type;
+        DragManager.Instance.IsInNodeCreateState = true;
     }
 
-    public void EnterNodeCreationMode(Vector3 startPos)
+    public void GenerateNode(Vector3 startPos)
     {
         if (!hasCreatedStart)
             hasCreatedStart = true;
@@ -50,63 +51,15 @@ public class NodeGenerator : MonoBehaviour
             hasCreatedStart = false;
             StopCoroutine("CreateNodeFromObjectPos");
             DragManager.Instance.IsInNodeCreateState = false;
+            Reset();
             return;
         }    
         startPosition = startPos;
         InstantianteNode(startPos);
-        startRotation = node.transform.rotation.eulerAngles;
-        oldWidth = node.GetComponent<SpriteRenderer>().bounds.size.x / 2;
         originalWidth = node.GetComponent<SpriteRenderer>().bounds.size.x / 2;
         originalScale = node.transform.localScale;
-
+        
         StartCoroutine("CreateNodeFromObjectPos");
-    }
-
-    IEnumerator CreateNode()
-    {
-        while(!hasCreatedEnd)
-        {
-            UpdateStates();
-
-            //wait for player to bring mouse button up after clicking the button
-            if (!canStart)
-                yield return null;
-
-            //Selected a endPosition. Node creation is done
-            if (timesDownPressed == 2)
-            {
-                DragManager.Instance.DraggableElements = true;
-                DragManager.Instance.DraggableMap = true;
-                Debug.Log("EXITING COROUTINE");
-                canStart = false;
-                hasCreatedStart = false;
-                isMouseDown = true;
-                yield break;
-            }
-
-            //Selected a startPosition. Create node 
-            if (timesDownPressed == 1 && !hasCreatedStart)
-            {
-                Debug.Log("SELECTED A START POSITION!");
-
-                hasCreatedStart = true;
-
-                InstantianteNode();
-
-                startPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                startPosition.x -= node.GetComponent<SpriteRenderer>().bounds.size.x / 2;
-
-                var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                pos.z = 10;
-                node.transform.position = pos;
-                startRotation = node.transform.rotation.eulerAngles;
-            }
-
-            if(node != null)
-                UpdateTransform();
-
-            yield return null;
-        }
     }
 
     IEnumerator CreateNodeFromObjectPos()
@@ -126,25 +79,8 @@ public class NodeGenerator : MonoBehaviour
 
             yield return null;
         }
-    }
 
-    private void InstantianteNode()
-    {
-        switch(nodeType)
-        {
-            case 0:
-                node = node = Instantiate(pipePrefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
-                return;
-            case 1:
-                node = node = Instantiate(pumpPrefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
-                return;
-            case 2:
-                node = node = Instantiate(valvePrefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
-                return;
-            default:
-                Debug.LogError("TRYING TO INSTANTIATE INVALID TYPE OF NODE!");
-                return;
-        }
+        Reset();
     }
 
     private void InstantianteNode(Vector3 pos)
@@ -166,60 +102,7 @@ public class NodeGenerator : MonoBehaviour
         }
     }
 
-    private void UpdateStates()
-    {
-        if (Input.GetMouseButtonDown(0) && !isMouseDown)
-        {
-            Debug.Log("PRESSED MOUSE BUTTON!");
-            isMouseDown = true;
-            timesDownPressed++;
-        }
-
-        else if (Input.GetMouseButtonUp(0) && isMouseDown)
-        {
-            Debug.Log("RELEASED MOUSE BUTTON!");
-            isMouseDown = false;
-            canStart = true; 
-        }
-
-        Debug.Log("canStart = " + canStart + "\n" +
-            "isMouseDown = " + isMouseDown + "\n" +
-            "hasCreatedStart = " + hasCreatedStart + "\n" +
-            "timesDownPressed = " + timesDownPressed);
-    }
-
     private void UpdateTransform()
-    {
-        //oldWidth = node.GetComponent<SpriteRenderer>().bounds.size.x / 2;
-        var newWidth = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - startPosition.x;
-
-        if (newWidth == 0)
-            newWidth = oldWidth;
-
-        //UpdateScale(oldWidth, newWidth);
-        //Debug.Log("After UpdateScale--------------> localScale.x = " + node.transform.localScale.x + "\nAt time " + Time.time);
-
-        //UpdatePosition(oldWidth, newWidth);
-        UpdateRotation();
-        Debug.Log("After UpdateRotation--------------> localScale.x = " + node.transform.localScale.x + "\nAt time " + Time.time);
-    }
-
-    private void UpdateScale(float xWidth, float hipotenuze)
-    {
-        Vector3 newScale = node.transform.localScale;
-        newScale.x *= hipotenuze / xWidth;
-        node.transform.localScale = newScale;
-        oldWidth = hipotenuze;
-    }
-
-    private void UpdateScale(float hipotenusa)
-    {
-        Vector3 newScale = originalScale;
-        newScale.x *= hipotenusa / originalWidth;
-        node.transform.localScale = newScale;
-    }
-
-    private void UpdateRotation()
     {
         var height = Camera.main.ScreenToWorldPoint(Input.mousePosition).y - startPosition.y;
         var width = (Camera.main.ScreenToWorldPoint(Input.mousePosition).x - startPosition.x);
@@ -243,34 +126,27 @@ public class NodeGenerator : MonoBehaviour
         if (Input.GetKeyUp("space"))
             isSpaceDown = false;
 
-        //var hip = width / Mathf.Cos(zAngle * Mathf.Deg2Rad);
-        var tempWidth = node.GetComponent<SpriteRenderer>().bounds.size.x / 2;
-        var hip = Mathf.Sqrt(width * width + height * height);
-        //UpdateScale(tempWidth, hip);
-        UpdateScale(hip);
-
+        UpdateScale(Mathf.Sqrt(width * width + height * height));
 
         node.transform.Rotate(0.0f, 0.0f, -oldZAngle, Space.Self);
         node.transform.Rotate(0.0f, 0.0f, zAngle, Space.Self);
         oldZAngle = zAngle;
-        
     }
 
-    private float GetSpeed(float width)
+    private void UpdateScale(float hipotenusa)
     {
-        if (width < 1f)
-            return 0.5f;
-        else if (width < 8f)
-            return 1f;
-
-        return 1.0f;
+        Vector3 newScale = originalScale;
+        newScale.x *= hipotenusa / originalWidth;
+        node.transform.localScale = newScale;
     }
 
-    private void UpdatePosition(float oldWidth, float newWidth)
+    private void Reset()
     {
-        Vector3 newPos = node.transform.position;
-        //newPos.x += (newWidth - oldWidth) / 2;
-        newPos.z = 10;
-        node.transform.position = newPos;
+
+        hasCreatedStart = false;
+        hasCreatedEnd = false;
+        oldZAngle = 0f;
+        isSpaceDown = false;
+        node = null;
     }
 }

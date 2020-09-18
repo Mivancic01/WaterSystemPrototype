@@ -60,7 +60,7 @@ public class DraggableObject : MonoBehaviour
         }
         else if(DragManager.Instance.IsInNodeCreateState)
         {
-            NodeGenerator.Instance.EnterNodeCreationMode(this.transform.position);
+            NodeGenerator.Instance.GenerateNode(this.transform.position);
         }
     }
     
