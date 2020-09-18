@@ -2190,7 +2190,7 @@ GameObject:
   - component: {fileID: 487575176}
   - component: {fileID: 487575179}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Create Node
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2213,7 +2213,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.28046024, y: 0.9066567}
   m_AnchorMax: {x: 0.3715398, y: 0.97267175}
-  m_AnchoredPosition: {x: 1.3199921, y: -0.5099945}
+  m_AnchoredPosition: {x: 1.3199921, y: -0.50997925}
   m_SizeDelta: {x: 0.6899986, y: 1.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &487575176
@@ -7275,7 +7275,7 @@ GameObject:
   - component: {fileID: 2101463901}
   - component: {fileID: 2101463900}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Save
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

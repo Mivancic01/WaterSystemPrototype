@@ -12,6 +12,9 @@ public class DraggableObject : MonoBehaviour
 
     void OnMouseDrag()
     {
+        if (DragManager.Instance.IsInNodeCreateState)
+            return;
+
         if(DragManager.Instance.DraggableElements)
         {
             DragManager.Instance.DraggableMap = false;
@@ -25,7 +28,10 @@ public class DraggableObject : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if(!useInitialDrag)
+        if (DragManager.Instance.IsInNodeCreateState)
+            return;
+
+        if (!useInitialDrag)
         {
             //if (useDebug) Debug.Log("MOUSE ENTERED GAME OBJECT!");
             DragManager.Instance.DraggableMap = false;
@@ -41,15 +47,20 @@ public class DraggableObject : MonoBehaviour
 
     void OnMouseUp()
     {
-        if (!DragManager.Instance.DraggableElements)
+        if ((Time.time - mouseDownTime) > 0.5f)
             return;
 
-        if((Time.time - mouseDownTime) < 0.5f)
+        Debug.Log("CLICKED ON GAME OBJECT!");
+
+        if (DragManager.Instance.DraggableElements)
         {
-            Debug.Log("CLICKED ON GAME OBJECT!");
             ElementsManager.Instance.OpenPropertiesWindow(elementsListIndex);
             DragManager.Instance.DraggableElements = false;
             DragManager.Instance.DraggableMap = false;
+        }
+        else if(DragManager.Instance.IsInNodeCreateState)
+        {
+            NodeGenerator.Instance.EnterNodeCreationMode(this.transform.position);
         }
     }
     
