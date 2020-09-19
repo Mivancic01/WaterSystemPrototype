@@ -7,7 +7,7 @@ namespace Elements
 {
     public class BaseElement
     {
-        private GameObject propertiesWindow, elemIcon;
+        protected GameObject propertiesWindow, elemIcon;
         public int typeID;
         public Vector3 position;
 
@@ -28,6 +28,11 @@ namespace Elements
             propertiesWindow = ElementsFactory.Instance.CreatePropertiesWindow(typeID);
             propertiesWindow.GetComponent<PropertiesWindow>().elementsListIndex = listIndex;
             ChangeWindowVisibility(false);
+        }
+
+        public virtual void UpdatePropertiesValues()
+        {
+            Debug.LogWarning("CALLED BaseElement::UpdatePropertiesValues()");
         }
 
         public void Initialize(GameObject icon)

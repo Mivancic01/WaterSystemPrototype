@@ -490,29 +490,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50c1db07c245f045879dabd469c588d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  element1: {fileID: 5413446921593173116, guid: 29d92adb9280b3542aa36bbac56794d8,
+  junction: {fileID: 5413446921593173116, guid: 29d92adb9280b3542aa36bbac56794d8,
     type: 3}
-  element2: {fileID: 4474413255045543268, guid: 9b46df7c761976e40adf1a26b12f0505,
+  pipe: {fileID: 4474413255045543268, guid: 9b46df7c761976e40adf1a26b12f0505, type: 3}
+  pump: {fileID: 3545545484767158906, guid: 7ecae2214a8da72468a0d133cbc88c61, type: 3}
+  reservoir: {fileID: 8984261976701413730, guid: ef3391b191fafa440ad80f44acd0975a,
     type: 3}
-  element3: {fileID: 3545545484767158906, guid: 7ecae2214a8da72468a0d133cbc88c61,
+  tank: {fileID: 1051747531710566367, guid: 9c53df44ba66b2941a7184836a6ceaab, type: 3}
+  valve: {fileID: 1083926689327726273, guid: ec44961137b655f4ba5813560b5446c2, type: 3}
+  junctionWindow: {fileID: 6937694765489323923, guid: 207c3a3e1596e2b4e88f5ccb6498c861,
     type: 3}
-  element4: {fileID: 8984261976701413730, guid: ef3391b191fafa440ad80f44acd0975a,
+  pipePropWindow: {fileID: 8360885779593134040, guid: 059b05c09c3911c46948be2b47cc30c6,
     type: 3}
-  element5: {fileID: 1051747531710566367, guid: 9c53df44ba66b2941a7184836a6ceaab,
+  pumpPropWindow: {fileID: 2671284963103855289, guid: c671c39bd69e48344afb6b7eea394944,
     type: 3}
-  element6: {fileID: 1083926689327726273, guid: ec44961137b655f4ba5813560b5446c2,
+  reservoirPropWindow: {fileID: 4815551733185151120, guid: 01f0b0b49a4997c41b6f42f6dee2bf04,
     type: 3}
-  element1PropWindow: {fileID: 1086608814804728352, guid: 47b9531c9d7f85249807e22dc24e25db,
+  tankPropWindow: {fileID: 9095377521603873001, guid: 721622bf2ff40304499ed9596288ad4a,
     type: 3}
-  element2PropWindow: {fileID: 1086608814804728352, guid: 47b9531c9d7f85249807e22dc24e25db,
-    type: 3}
-  element3PropWindow: {fileID: 1086608814804728352, guid: 47b9531c9d7f85249807e22dc24e25db,
-    type: 3}
-  element4PropWindow: {fileID: 1086608814804728352, guid: 47b9531c9d7f85249807e22dc24e25db,
-    type: 3}
-  element5PropWindow: {fileID: 1086608814804728352, guid: 47b9531c9d7f85249807e22dc24e25db,
-    type: 3}
-  element6PropWindow: {fileID: 1086608814804728352, guid: 47b9531c9d7f85249807e22dc24e25db,
+  valvePropWindow: {fileID: 2239573194140800494, guid: c9532023a37e1e744b87b1d9344f6c88,
     type: 3}
 --- !u!4 &159043785
 Transform:

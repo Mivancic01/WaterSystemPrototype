@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ElementsFactory : MonoBehaviour
 {
-    public GameObject element1, element2, element3, element4, element5, element6;
+    public GameObject junction, pipe, pump, reservoir, tank, valve;
 
-    public GameObject element1PropWindow, element2PropWindow, element3PropWindow, element4PropWindow, element5PropWindow, element6PropWindow;
+    public GameObject junctionWindow, pipePropWindow, pumpPropWindow, reservoirPropWindow, tankPropWindow, valvePropWindow;
     public static ElementsFactory Instance { get; private set; }
 
     private void Awake()
@@ -28,17 +28,17 @@ public class ElementsFactory : MonoBehaviour
         switch(type)
         {
             case 0:
-                return Instantiate(element1, position, Quaternion.identity);
+                return Instantiate(junction, position, Quaternion.identity);
             case 1:
-                return Instantiate(element2, position, Quaternion.identity);
+                return Instantiate(pipe, position, Quaternion.identity);
             case 2:
-                return Instantiate(element3, position, Quaternion.identity);
+                return Instantiate(pump, position, Quaternion.identity);
             case 3:
-                return Instantiate(element4, position, Quaternion.identity);
+                return Instantiate(reservoir, position, Quaternion.identity);
             case 4:
-                return Instantiate(element5, position, Quaternion.identity);
+                return Instantiate(tank, position, Quaternion.identity);
             case 5:
-                return Instantiate(element6, position, Quaternion.identity);
+                return Instantiate(valve, position, Quaternion.identity);
             default:
                 Debug.LogError("TRYING TO CREATE A NON EXISTENT ELEMENT!");
                 return null;
@@ -50,17 +50,17 @@ public class ElementsFactory : MonoBehaviour
         switch (type)
         {
             case 0:
-                return Instantiate(element1PropWindow, GameObject.FindWithTag("Canvas").transform);
+                return Instantiate(junctionWindow, GameObject.FindWithTag("Canvas").transform);
             case 1:
-                return Instantiate(element1PropWindow, GameObject.FindWithTag("Canvas").transform);
+                return Instantiate(pipePropWindow, GameObject.FindWithTag("Canvas").transform);
             case 2:
-                return Instantiate(element1PropWindow, GameObject.FindWithTag("Canvas").transform);
+                return Instantiate(pumpPropWindow, GameObject.FindWithTag("Canvas").transform);
             case 3:
-                return Instantiate(element1PropWindow, GameObject.FindWithTag("Canvas").transform);
+                return Instantiate(reservoirPropWindow, GameObject.FindWithTag("Canvas").transform);
             case 4:
-                return Instantiate(element1PropWindow, GameObject.FindWithTag("Canvas").transform);
+                return Instantiate(tankPropWindow, GameObject.FindWithTag("Canvas").transform);
             case 5:
-                return Instantiate(element1PropWindow, GameObject.FindWithTag("Canvas").transform);
+                return Instantiate(valvePropWindow, GameObject.FindWithTag("Canvas").transform);
             default:
                 Debug.LogError("TRYING TO CREATE A NON EXISTENT ELEMENT!");
                 return null;
