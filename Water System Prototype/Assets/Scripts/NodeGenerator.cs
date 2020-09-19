@@ -44,6 +44,9 @@ public class NodeGenerator : MonoBehaviour
 
     public void GenerateNode(Vector3 startPos)
     {
+        Debug.Log("StartPosition = " + startPos + "\n"
+            + "At time = " + Time.time);
+
         if (!hasCreatedStart)
             hasCreatedStart = true;
         else
@@ -51,16 +54,39 @@ public class NodeGenerator : MonoBehaviour
             hasCreatedStart = false;
             StopCoroutine("CreateNodeFromObjectPos");
             DragManager.Instance.IsInNodeCreateState = false;
+            //SetEndPosition(startPos);
             CreateSymbol();
             Reset();
             return;
         }    
+
         startPosition = startPos;
         node = Instantiate(nodePrefab, startPos, Quaternion.identity);
         originalWidth = node.GetComponent<SpriteRenderer>().bounds.size.x / 2;
         originalScale = node.transform.localScale;
         
         StartCoroutine("CreateNodeFromObjectPos");
+    }
+
+    private void CreateNodeStart(Vector3 startPos)
+    {
+        hasCreatedStart = true; 
+        startPosition = startPos;
+        node = Instantiate(nodePrefab, startPos, Quaternion.identity);
+        originalWidth = node.GetComponent<SpriteRenderer>().bounds.size.x / 2;
+        originalScale = node.transform.localScale;
+
+        StartCoroutine("CreateNodeFromObjectPos");
+    }
+
+    private void CreateNodeEnd(Vector3 endPos)
+    {
+        hasCreatedStart = false;
+        StopCoroutine("CreateNodeFromObjectPos");
+        DragManager.Instance.IsInNodeCreateState = false;
+        SetEndPosition(endPos);
+        CreateSymbol();
+        Reset();
     }
 
     IEnumerator CreateNodeFromObjectPos()
@@ -120,6 +146,19 @@ public class NodeGenerator : MonoBehaviour
         Vector3 newScale = originalScale;
         newScale.x *= hipotenusa / originalWidth;
         node.transform.localScale = newScale;
+    }
+
+    private void SetEndPosition(Vector3 endPos)
+    {
+        var height = endPos.y - startPosition.y;
+        var width = endPos.x - startPosition.x;
+        var zAngle = Mathf.Atan2(height, width) * Mathf.Rad2Deg;
+
+        UpdateScale(Mathf.Sqrt(width * width + height * height));
+
+        node.transform.Rotate(0.0f, 0.0f, -oldZAngle, Space.Self);
+        node.transform.Rotate(0.0f, 0.0f, zAngle, Space.Self);
+        oldZAngle = zAngle;
     }
 
     private void CreateSymbol()

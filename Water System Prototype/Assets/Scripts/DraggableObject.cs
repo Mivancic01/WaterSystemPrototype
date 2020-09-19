@@ -60,6 +60,8 @@ public class DraggableObject : MonoBehaviour
         }
         else if(DragManager.Instance.IsInNodeCreateState)
         {
+            Debug.Log("CALLING GenerateNode() FROM OBJECT WITH NAME: " + this.name + "\n"
+                + "At time " + Time.time);
             NodeGenerator.Instance.GenerateNode(this.transform.position);
         }
     }
