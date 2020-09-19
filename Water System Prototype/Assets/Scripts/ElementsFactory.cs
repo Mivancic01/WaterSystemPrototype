@@ -43,6 +43,28 @@ public class ElementsFactory : MonoBehaviour
         }
     }
 
+    public BaseElement CreateElement(int id, int typeId, Vector3 pos)
+    {
+        switch (typeId)
+        {
+            case 0:
+                return new Junction(id, typeId, pos);
+            case 1:
+                return new Pipe(id, typeId, pos);
+            case 2:
+                return new Pump(id, typeId, pos);
+            case 3:
+                return new Reservoir(id, typeId, pos);
+            case 4:
+                return new Tank(id, typeId, pos);
+            case 5:
+                return new Valve(id, typeId, pos);
+            default:
+                Debug.LogError("TRYING TO CREATE A NON EXISTENT ELEMENT CLASS!");
+                return null;
+        }
+    }
+
     private BaseElement CreateJunction(int id, int typeId, Vector3 pos, string line)
     {
         float baseDemand = FileReader.GetNextNumber(line);

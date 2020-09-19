@@ -16,6 +16,13 @@ namespace Elements
             flow = pFlow;
             flowVelocity = pFlowVelocity;
         }
+        public Pipe(int id, int typeId, Vector3 pos) : base(id, typeId, pos)
+        {
+            length = 0.0f;
+            diameter = 0.0f;
+            flow = 0.0f;
+            flowVelocity = 0.0f;
+        }
 
         public override void UpdatePropertiesValues()
         {

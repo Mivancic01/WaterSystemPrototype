@@ -9,6 +9,8 @@ public class ElementsManager : MonoBehaviour
     public List<Elements.BaseElement> elementList;
     public List<Elements.Model> modelList;
 
+    private List<int> elementIDs;
+
     public static ElementsManager Instance { get; private set; }
 
     private int currentOpenModel;
@@ -17,6 +19,7 @@ public class ElementsManager : MonoBehaviour
     {
         elementList = new List<Elements.BaseElement>();
         modelList = new List<Elements.Model>();
+        elementIDs = new List<int>();
 
         if (Instance != null && Instance != this)
         {
@@ -47,6 +50,7 @@ public class ElementsManager : MonoBehaviour
         {
             el.Initialize();
             el.UpdatePropertiesValues();
+            elementIDs.Add(el.ID);
         }
 
         for (int i = 0; i < modelList.Count; i++)
@@ -93,9 +97,11 @@ public class ElementsManager : MonoBehaviour
         return 3;
     }
 
-    public void OpenPropertiesWindow(int index)
+    public void OpenPropertiesWindow(int elementID)
     {
-        elementList[index].ChangeWindowVisibility(true);
+        foreach(var elem in elementList)
+            if(elem.ID == elementID)
+                elem.ChangeWindowVisibility(true);
     }
 
     public void DestroyScene()
@@ -108,29 +114,44 @@ public class ElementsManager : MonoBehaviour
 
         elementList.Clear();
         modelList.Clear();
+        elementIDs.Clear();
     }
 
-    public void DeleteElement(int index)
+    public void DeleteElement(int elementID)
     {
-        Debug.Log("CALLED ---> ElementsManager::DeleteElement() with index = " + index + " and elementType = " + elementList[index].typeID);
+        Elements.BaseElement elem = null;
+        foreach(var el in elementList)
+            if (el.ID == elementID)
+            {
+                elem = el;
+                break;
+            }
+        
+        if(elem == null)
+        {
+            Debug.LogError("Element for deletion doesent exist in the list!");
+            return;
+        }
 
-        // modelList[0].RemoveElement(index);
+        Debug.Log("CALLED ---> ElementsManager::DeleteElement() with index = " + elementID + " and elementType = " + elem.typeID);
+
         foreach (var el in modelList)
-            el.RemoveElement(index);
+            el.RemoveElement(elementID);
 
-        elementList[index].DestroyElement();
-        elementList.RemoveAt(index);
+        elem.DestroyElement();
+        elementList.Remove(elem);
 
-        for (int i = index; i < elementList.Count; i++)
-            elementList[i].UpdateListIndex(i);
+        //for (int i = index; i < elementList.Count; i++)
+        //    elementList[i].UpdateListIndex(i);
     }
 
     public void AddElement(GameObject el, int typeID)
     {
         Debug.Log("CALLED ---> ElementsManager::AddElement() with index = " + elementList.Count + " and elementType = " + typeID);
 
-        elementList.Add(new Elements.BaseElement(elementList.Count, typeID, el.transform.position));
+        elementList.Add(ElementsFactory.Instance.CreateElement(elementList.Count, typeID, el.transform.position));
         elementList[elementList.Count - 1].Initialize(el);
+        elementList[elementList.Count - 1].UpdatePropertiesValues();
         modelList[currentOpenModel].Add(elementList.Count - 1);
     }
 }

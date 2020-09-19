@@ -154,7 +154,7 @@ public class FileReader : MonoBehaviour
                 {
                     string line = "yr ";
                     line += elem.year;
-                    foreach (var index in elem.elementIndicesList)
+                    foreach (var index in elem.elementIDsList)
                         line += ", " + index;
                     sw.WriteLine(line);
 

@@ -16,6 +16,13 @@ namespace Elements
             flowVelocity = pFlowVelocity;
         }
 
+        public Valve(int id, int typeId, Vector3 pos) : base(id, typeId, pos)
+        {
+            diameter = 0.0f;
+            flow = 0.0f;
+            flowVelocity = 0.0f;
+        }
+
         public override void UpdatePropertiesValues()
         {
             foreach (var txt in propertiesWindow.GetComponentsInChildren<Text>())

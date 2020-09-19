@@ -16,6 +16,13 @@ namespace Elements
             elevation = pElevation;
             pressure = pPressure;
         }
+        public Junction(int id, int typeId, Vector3 pos) : base(id, typeId, pos)
+        {
+
+            baseDemand = 0.0f;
+            elevation = 0.0f;
+            pressure = 0.0f;
+        }
 
         public override void UpdatePropertiesValues()
         {

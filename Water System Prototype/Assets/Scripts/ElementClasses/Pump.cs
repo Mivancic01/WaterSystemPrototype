@@ -14,6 +14,11 @@ namespace Elements
             flow = pFlow;
             flowVelocity = pFlowVelocity;
         }
+        public Pump(int id, int typeId, Vector3 pos) : base(id, typeId, pos)
+        {
+            flow = 0.0f;
+            flowVelocity = 0.0f;
+        }
 
         public override void UpdatePropertiesValues()
         {

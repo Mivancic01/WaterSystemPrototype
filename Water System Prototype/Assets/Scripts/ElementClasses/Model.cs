@@ -7,7 +7,7 @@ namespace Elements
     public class Model
     {
         public int year;
-        public List<int> elementIndicesList;
+        public List<int> elementIDsList;
         ElementsManager elementsManager;
 
         private Model()
@@ -18,53 +18,45 @@ namespace Elements
         public Model(int yr)
         {
             year = yr;
-            elementIndicesList = new List<int>();
+            elementIDsList = new List<int>();
             elementsManager = ElementsManager.Instance;
         }
 
-        public void Add(int index)
+        public void Add(int elementID)
         {
             //Debug.Log("ADDING INDEX: " + index + "For year: " + year);
-            if (elementIndicesList == null)
-                elementIndicesList = new List<int>();
+            if (elementIDsList == null)
+                elementIDsList = new List<int>();
 
-            elementIndicesList.Add(index);
+            elementIDsList.Add(elementID);
         }
 
         public void ChangeListVisibility(bool isVisible)
         {
             //Debug.Log("CALLED ---> Model::ChangeListVisibility() with isVisisble = " + isVisible + " and year: " + year);
-            foreach (var index in elementIndicesList)
-                elementsManager.elementList[index].ChangeVisibility(isVisible);
+            foreach (var ID in elementIDsList)
+                foreach(var elem in elementsManager.elementList)
+                    if(elem.ID == ID)
+                        elem.ChangeVisibility(isVisible);
         }
 
         public void DestroyModel()
         {
-            elementIndicesList.Clear();
+            elementIDsList.Clear();
         }
 
-        public void RemoveElement(int index)
+        public void RemoveElement(int elementID)
         {
-            //Debug.Log("STARTING REMOVEELEMENT()");
-            //foreach (var elem in elementIndicesList)
-            //    Debug.Log("EXISITNG ELEMENT: " + elem);
-
-            //Debug.Log("REMOVING INDEX: " + index);
-
-            for (int i = 0; i < elementIndicesList.Count; i++)
-                if (elementIndicesList[i] == index)
-                    elementIndicesList.RemoveAt(i);
-
-            for (int i = 0; i < elementIndicesList.Count; i++)
-                if (elementIndicesList[i] > index)
-                    elementIndicesList[i] -= 1;
+            for (int i = 0; i < elementIDsList.Count; i++)
+                if (elementIDsList[i] == elementID)
+                    elementIDsList.RemoveAt(i);
         }
 
         public void Print()
         {
             Debug.Log("//////////////     PRINTING NEW MODEL FOR YEAR " + year);
-            foreach (var el in elementIndicesList)
-                Debug.Log("YEAR " + year + ", INDEX = " + el);
+            foreach (var ID in elementIDsList)
+                Debug.Log("YEAR " + year + ", ID = " + ID);
         }
 
     }

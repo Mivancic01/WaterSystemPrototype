@@ -14,6 +14,11 @@ namespace Elements
             volume = pVolume;
             elevation = pElevation;
         }
+        public Tank(int id, int typeId, Vector3 pos) : base(id, typeId, pos)
+        {
+            volume = 0.0f;
+            elevation = 0.0f;
+        }
 
         public override void UpdatePropertiesValues()
         {

@@ -13,6 +13,10 @@ namespace Elements
         {
             totalHead = pTotalHead;
         }
+        public Reservoir(int id, int typeId, Vector3 pos) : base(id, typeId, pos)
+        {
+            totalHead = 0.0f;
+        }
 
         public override void UpdatePropertiesValues()
         {
