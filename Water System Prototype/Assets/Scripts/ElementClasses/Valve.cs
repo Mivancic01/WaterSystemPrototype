@@ -9,7 +9,7 @@ namespace Elements
     {
         private float diameter, flow, flowVelocity;
 
-        public Valve(int index, int id, Vector3 pos, float pDiameter, float pFlow, float pFlowVelocity) : base(index, id, pos)
+        public Valve(int id, int typeId, Vector3 pos, float pDiameter, float pFlow, float pFlowVelocity) : base(id, typeId, pos)
         {
             diameter = pDiameter;
             flow = pFlow;

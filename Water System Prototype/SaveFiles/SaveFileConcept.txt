@@ -3,21 +3,31 @@
 # el keyword signifies a unique element by typeID and a 3D vector position
 # these elements are loaded into a list
 
+# el structure: ID (int), typeID (int), Vector3 (3 floats), Properties (varied number of floats)
+# typeIDs: 
+#         0 -> junction
+#         1 -> pipe
+#         2 -> pump
+#         3 -> reservoir
+#         4 -> tank
+#         5 -> valve
+
 # yr keyword signifies a unique year and the indices of the elements which are used in that year
+# yr structure: ID (int), year (int), elementIDs (list of ints)
 
 #ELEMENTS
-el 0, -3.14,  2.14, 10
-el 1,  1.94,  1.76, 10
-el 2, -5.14, -0.35, 10
-el 3, -0.52, -2.20, 10
-el 4,  3.82, -0.88, 10
-el 5,  6.55,  1.15, 10
+el 0, 0, -3.14,  2.14, 10, 10, 30, 25
+el 1, 3,  1.94,  1.76, 10, 15
+el 2, 4, -5.14, -0.35, 10, 20, 40
+el 3, 3, -0.52, -2.20, 10, 15
+el 4, 4,  3.82, -0.88, 10, 50, 30
+el 5, 0,  6.55,  1.15, 10, 35, 40, 5
 
 #TIMELINE
-yr 2020, 0, 3, 4
-yr 2025, 1, 2, 4
-yr 2030, 1, 2, 3, 5
-yr 2035, 1, 2, 3, 4, 5
+yr 0, 2020, 0, 3, 4
+yr 1, 2025, 1, 2, 4
+yr 2, 2030, 1, 2, 3, 5
+yr 3, 2035, 1, 2, 3, 4, 5
 
 #OLD ELEMENTS
 #el 0, 3, 5, 10

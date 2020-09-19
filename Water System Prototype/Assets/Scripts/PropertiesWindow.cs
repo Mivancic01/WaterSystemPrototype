@@ -5,7 +5,7 @@ using UnityEngine;
 public class PropertiesWindow : MonoBehaviour
 {
     //public GameObject windowObj;
-    public int elementsListIndex;
+    public int elementID;
 
     public void CloseWindow()
     {
@@ -18,6 +18,6 @@ public class PropertiesWindow : MonoBehaviour
     {
         DragManager.Instance.DraggableElements = true;
         DragManager.Instance.DraggableMap = true;
-        ElementsManager.Instance.DeleteElement(elementsListIndex);
+        ElementsManager.Instance.DeleteElement(elementID);
     }
 }

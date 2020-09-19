@@ -9,7 +9,7 @@ namespace Elements
     {
         private float length, diameter, flow, flowVelocity;
 
-        public Pipe(int index, int id, Vector3 pos, float pLength, float pDiameter, float pFlow, float pFlowVelocity) : base(index, id, pos)
+        public Pipe(int id, int typeId, Vector3 pos, float pLength, float pDiameter, float pFlow, float pFlowVelocity) : base(id, typeId, pos)
         {
             length = pLength;
             diameter = pDiameter;

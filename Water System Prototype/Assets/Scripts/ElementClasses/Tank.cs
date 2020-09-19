@@ -9,7 +9,7 @@ namespace Elements
     {
         private float volume, elevation;
 
-        public Tank(int index, int id, Vector3 pos, float pVolume, float pElevation) : base(index, id, pos)
+        public Tank(int id, int typeId, Vector3 pos, float pVolume, float pElevation) : base(id, typeId, pos)
         {
             volume = pVolume;
             elevation = pElevation;

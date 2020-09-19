@@ -31,29 +31,21 @@ public class FileReader : MonoBehaviour
         elementList = new List<Elements.BaseElement>();
         modelList = new List<Elements.Model>();
 
-        int counter = 0;
         string line;
 
-        // Read the file and display it line by line.  
-        //System.IO.StreamReader file =
-       //     new System.IO.StreamReader("Assets/SaveFiles/SaveFileConcept.txt");
         System.IO.StreamReader file =
             new System.IO.StreamReader("SaveFiles/SaveFileConcept.txt");
+
         while ((line = file.ReadLine()) != null)
-        {
-            ReadLine(line);
-            counter++;
-        }
+            ReadSaveFile(line);
 
         file.Close();
-        Debug.Log("There were " + counter + " lines.");
 
         ElementsManager.Instance.LoadSaveFile(elementList, modelList);
-        // Suspend the screen.  
-        System.Console.ReadLine();
+        return;
     }
 
-    void ReadLine(string line)
+    void ReadSaveFile(string line)
     {
         if (line.StartsWith("#"))
             return;
@@ -63,10 +55,15 @@ public class FileReader : MonoBehaviour
             //remove "el "
             line = line.Remove(0, 3);
 
+            int ID = (int)GetNextNumber(line);
+            line = line.Remove(0, FindNextNumberIndex(line));
+            //  Debug.Log("ID = " + ID);
+            //  Debug.Log("REST OF THE LINE = " + line);
+
             //Get typeID
             int typeID = Int32.Parse(line.Substring(0, 1));
-
             line = line.Remove(0, 3);
+            Debug.Log("typeID = " + typeID);
 
             float x = GetNextNumber(line);
             line = line.Remove(0, FindNextNumberIndex(line));
@@ -79,14 +76,21 @@ public class FileReader : MonoBehaviour
             //  Debug.Log("REST OF THE LINE = " + line);
 
             float z = GetNextNumber(line);
+            line = line.Remove(0, FindNextNumberIndex(line));
             //  Debug.Log("Z = " + z);
 
             Vector3 pos = new Vector3(x, y, z);
-            elementList.Add(new Elements.BaseElement(elementList.Count, typeID, pos));
+
+            elementList.Add(ElementsFactory.Instance.CreateElement(ID, typeID, pos, line));
+            //elementList.Add(new Elements.BaseElement(elementList.Count, typeID, pos));
         }
         else if (line.StartsWith("yr"))
         {
             line = line.Remove(0, 3);
+
+            int ID = (int)GetNextNumber(line);
+            line = line.Remove(0, FindNextNumberIndex(line));
+
             var year = Int32.Parse(line.Substring(0, 4));
             line = line.Remove(0, 6);
 
@@ -108,55 +112,6 @@ public class FileReader : MonoBehaviour
 
 
         //Debug.Log(line);
-    }
-
-    float GetNextNumber(string line)
-    {
-        int numEnd = FindEndOfNumber(line);
-        //if(numEnd < line.Length)
-        //    Debug.Log("LAST CHARACTER IS: " + line.Substring(numEnd, 1));
-        
-
-        //Debug.Log("CONVERTED LINE IS: " + line.Substring(0, numEnd));
-        if (line.Substring(0, 1).Equals("-"))
-        {
-            if (line.Substring(numEnd, 1).Equals(","))
-                numEnd--;
-            return (float)Convert.ToDouble(line.Substring(1, numEnd)) * -1;
-        }
-
-        return (float)Convert.ToDouble(line.Substring(0, numEnd));
-    }
-
-    int FindEndOfNumber(string line, int startIndex = 0)
-    {
-        int i;
-        //Debug.Log("ORIGINAL LINE = " + line);
-        for (i = startIndex; i < line.Length; i++)
-        {
-            //Debug.Log("NEXT CHAR = " + line.Substring(i, 1));
-            if (line.Substring(i, 1).Equals(","))
-                return i;
-        }
-            
-
-        return i;
-    }
-
-    int FindNextNumberIndex(string line)
-    {
-        int endOfCurrentNumber = FindEndOfNumber(line);
-
-        int i;
-        //Debug.Log("ORIGINAL LINE = " + line);
-        for (i = endOfCurrentNumber + 1 ; i < line.Length; i++)
-        {
-            //Debug.Log("NEXT CHAR = " + line.Substring(i, 1));
-            if (!line.Substring(i, 1).Equals(",") && !line.Substring(i, 1).Equals(" "))
-                return i;
-        }
-
-        return i;
     }
 
     public void SaveGame()
@@ -211,4 +166,54 @@ public class FileReader : MonoBehaviour
             Debug.Log("FILE ALREADY EXISTS!");
     }
 
+    public static float GetNextNumber(string line)
+    {
+        int numEnd = FindEndOfNumber(line);
+        //if(numEnd < line.Length)
+        //    Debug.Log("LAST CHARACTER IS: " + line.Substring(numEnd, 1));
+        
+
+        //Debug.Log("CONVERTED LINE IS: " + line.Substring(0, numEnd));
+        if (line.Substring(0, 1).Equals("-"))
+        {
+            if (line.Substring(numEnd, 1).Equals(","))
+                numEnd--;
+
+            return (float)Convert.ToDouble(line.Substring(1, numEnd)) * -1;
+        }
+
+        //Debug.Log("RETURN LINE IS: " + line.Substring(0, numEnd));
+        return (float)Convert.ToDouble(line.Substring(0, numEnd));
+    }
+
+    public static int FindEndOfNumber(string line, int startIndex = 0)
+    {
+        int i;
+        //Debug.Log("ORIGINAL LINE = " + line);
+        for (i = startIndex; i < line.Length; i++)
+        {
+            //Debug.Log("NEXT CHAR = " + line.Substring(i, 1));
+            if (line.Substring(i, 1).Equals(","))
+                return i;
+        }
+            
+
+        return i;
+    }
+
+    public static int FindNextNumberIndex(string line)
+    {
+        int endOfCurrentNumber = FindEndOfNumber(line);
+
+        int i;
+        //Debug.Log("ORIGINAL LINE = " + line);
+        for (i = endOfCurrentNumber + 1 ; i < line.Length; i++)
+        {
+            //Debug.Log("NEXT CHAR = " + line.Substring(i, 1));
+            if (!line.Substring(i, 1).Equals(",") && !line.Substring(i, 1).Equals(" "))
+                return i;
+        }
+
+        return i;
+    }
 }

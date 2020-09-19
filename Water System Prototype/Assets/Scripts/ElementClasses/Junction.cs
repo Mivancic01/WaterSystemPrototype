@@ -9,7 +9,7 @@ namespace Elements
     {
         private float baseDemand, elevation, pressure;
 
-        public Junction(int index, int id, Vector3 pos, float pBaseDemand, float pElevation, float pPressure) : base(index, id, pos)
+        public Junction(int id, int typeId, Vector3 pos, float pBaseDemand, float pElevation, float pPressure) : base(id, typeId, pos)
         {
 
             baseDemand = pBaseDemand;

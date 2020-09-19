@@ -1,12 +1,10 @@
-﻿using System.Collections;
+﻿using Elements;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ElementsFactory : MonoBehaviour
 {
-    public GameObject junction, pipe, pump, reservoir, tank, valve;
-
-    public GameObject junctionWindow, pipePropWindow, pumpPropWindow, reservoirPropWindow, tankPropWindow, valvePropWindow;
     public static ElementsFactory Instance { get; private set; }
 
     private void Awake()
@@ -23,47 +21,94 @@ public class ElementsFactory : MonoBehaviour
         }
     }
 
-    public GameObject CreateElement(int type, Vector3 position)
+    public BaseElement CreateElement(int id, int typeId, Vector3 pos, string restOfLine)
     {
-        switch(type)
+        switch (typeId)
         {
             case 0:
-                return Instantiate(junction, position, Quaternion.identity);
+                return CreateJunction(id, typeId, pos, restOfLine);
             case 1:
-                return Instantiate(pipe, position, Quaternion.identity);
+                return CreatePipe(id, typeId, pos, restOfLine);
             case 2:
-                return Instantiate(pump, position, Quaternion.identity);
+                return CreatePump(id, typeId, pos, restOfLine);
             case 3:
-                return Instantiate(reservoir, position, Quaternion.identity);
+                return CreateReservoir(id, typeId, pos, restOfLine);
             case 4:
-                return Instantiate(tank, position, Quaternion.identity);
+                return CreateTank(id, typeId, pos, restOfLine);
             case 5:
-                return Instantiate(valve, position, Quaternion.identity);
+                return CreateValve(id, typeId, pos, restOfLine);
             default:
-                Debug.LogError("TRYING TO CREATE A NON EXISTENT ELEMENT!");
+                Debug.LogError("TRYING TO CREATE A NON EXISTENT ELEMENT CLASS!");
                 return null;
         }
     }
 
-    public GameObject CreatePropertiesWindow(int type)
+    private BaseElement CreateJunction(int id, int typeId, Vector3 pos, string line)
     {
-        switch (type)
-        {
-            case 0:
-                return Instantiate(junctionWindow, GameObject.FindWithTag("Canvas").transform);
-            case 1:
-                return Instantiate(pipePropWindow, GameObject.FindWithTag("Canvas").transform);
-            case 2:
-                return Instantiate(pumpPropWindow, GameObject.FindWithTag("Canvas").transform);
-            case 3:
-                return Instantiate(reservoirPropWindow, GameObject.FindWithTag("Canvas").transform);
-            case 4:
-                return Instantiate(tankPropWindow, GameObject.FindWithTag("Canvas").transform);
-            case 5:
-                return Instantiate(valvePropWindow, GameObject.FindWithTag("Canvas").transform);
-            default:
-                Debug.LogError("TRYING TO CREATE A NON EXISTENT ELEMENT!");
-                return null;
-        }
+        float baseDemand = FileReader.GetNextNumber(line);
+        line = line.Remove(0, FileReader.FindNextNumberIndex(line));
+
+        float elevation = FileReader.GetNextNumber(line);
+        line = line.Remove(0, FileReader.FindNextNumberIndex(line));
+
+        float pressure = FileReader.GetNextNumber(line);
+
+        return new Junction(id, typeId, pos, baseDemand, elevation, pressure);
+    }
+
+    private BaseElement CreatePipe(int id, int typeId, Vector3 pos, string line)
+    {
+        float length = FileReader.GetNextNumber(line);
+        line = line.Remove(0, FileReader.FindNextNumberIndex(line));
+
+        float diameter = FileReader.GetNextNumber(line);
+        line = line.Remove(0, FileReader.FindNextNumberIndex(line));
+
+        float flow = FileReader.GetNextNumber(line);
+        line = line.Remove(0, FileReader.FindNextNumberIndex(line));
+
+        float flowVelocity = FileReader.GetNextNumber(line);
+
+        return new Pipe(id, typeId, pos, length, diameter, flow, flowVelocity);
+    }
+
+    private BaseElement CreatePump(int id, int typeId, Vector3 pos, string line)
+    {
+        float flow = FileReader.GetNextNumber(line);
+        line = line.Remove(0, FileReader.FindNextNumberIndex(line));
+
+        float flowVelocity = FileReader.GetNextNumber(line);
+
+        return new Pump(id, typeId, pos, flow, flowVelocity);
+    }
+
+    private BaseElement CreateReservoir(int id, int typeId, Vector3 pos, string line)
+    {
+        float totalHead = FileReader.GetNextNumber(line);
+
+        return new Reservoir(id, typeId, pos, totalHead);
+    }
+
+    private BaseElement CreateTank(int id, int typeId, Vector3 pos, string line)
+    {
+        float volume = FileReader.GetNextNumber(line);
+        line = line.Remove(0, FileReader.FindNextNumberIndex(line));
+
+        float elevation = FileReader.GetNextNumber(line);
+
+        return new Tank(id, typeId, pos, volume, elevation);
+    }
+
+    private BaseElement CreateValve(int id, int typeId, Vector3 pos, string line)
+    {
+        float diameter = FileReader.GetNextNumber(line);
+        line = line.Remove(0, FileReader.FindNextNumberIndex(line));
+
+        float flow = FileReader.GetNextNumber(line);
+        line = line.Remove(0, FileReader.FindNextNumberIndex(line));
+
+        float flowVelocity = FileReader.GetNextNumber(line);
+
+        return new Valve(id, typeId, pos, diameter, flow, flowVelocity);
     }
 }

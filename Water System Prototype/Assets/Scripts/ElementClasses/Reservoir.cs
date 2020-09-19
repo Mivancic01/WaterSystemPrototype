@@ -9,7 +9,7 @@ namespace Elements
     {
         private float totalHead;
 
-        public Reservoir(int index, int id, Vector3 pos, float pTotalHead) : base(index, id, pos)
+        public Reservoir(int id, int typeId, Vector3 pos, float pTotalHead) : base(id, typeId, pos)
         {
             totalHead = pTotalHead;
         }

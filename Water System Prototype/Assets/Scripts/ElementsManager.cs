@@ -44,7 +44,10 @@ public class ElementsManager : MonoBehaviour
     {
         Debug.Log("CALLED ---> ElementsManager::InitializeScene()");
         foreach (var el in elementList)
+        {
             el.Initialize();
+            el.UpdatePropertiesValues();
+        }
 
         for (int i = 0; i < modelList.Count; i++)
             modelList[i].ChangeListVisibility(false);

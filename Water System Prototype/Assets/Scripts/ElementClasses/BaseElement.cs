@@ -8,25 +8,23 @@ namespace Elements
     public class BaseElement
     {
         protected GameObject propertiesWindow, elemIcon;
-        public int typeID;
+        public int typeID, ID;
         public Vector3 position;
 
-        public int listIndex;
-
-        public BaseElement(int index, int id, Vector3 pos)
+        public BaseElement(int id, int typeId, Vector3 pos)
         {
-            listIndex = index;
-            typeID = id;
+            ID = id;
+            typeID = typeId;
             position = pos;
         }
 
         public void Initialize()
         {
-            elemIcon = ElementsFactory.Instance.CreateElement(typeID, position);
-            elemIcon.GetComponent<DraggableObject>().elementsListIndex = listIndex;
+            elemIcon = ElementsGameObjectFactory.Instance.CreateElement(typeID, position);
+            elemIcon.GetComponent<DraggableObject>().elementID = ID;
 
-            propertiesWindow = ElementsFactory.Instance.CreatePropertiesWindow(typeID);
-            propertiesWindow.GetComponent<PropertiesWindow>().elementsListIndex = listIndex;
+            propertiesWindow = ElementsGameObjectFactory.Instance.CreatePropertiesWindow(typeID);
+            propertiesWindow.GetComponent<PropertiesWindow>().elementID = ID;
             ChangeWindowVisibility(false);
         }
 
@@ -38,10 +36,10 @@ namespace Elements
         public void Initialize(GameObject icon)
         {
             elemIcon = icon;
-            elemIcon.GetComponent<DraggableObject>().elementsListIndex = listIndex;
+            elemIcon.GetComponent<DraggableObject>().elementID = ID;
 
-            propertiesWindow = ElementsFactory.Instance.CreatePropertiesWindow(typeID);
-            propertiesWindow.GetComponent<PropertiesWindow>().elementsListIndex = listIndex;
+            propertiesWindow = ElementsGameObjectFactory.Instance.CreatePropertiesWindow(typeID);
+            propertiesWindow.GetComponent<PropertiesWindow>().elementID = ID;
             ChangeWindowVisibility(false);
         }
 
@@ -57,13 +55,13 @@ namespace Elements
 
         public void UpdateListIndex(int newIndex)
         {
-            Debug.Log("CALLED ---> BaseElement::UpdateListIndex() with old index = " + listIndex + " and new index = " + newIndex);
-            listIndex = newIndex;
+            Debug.Log("CALLED ---> BaseElement::UpdateListIndex() with old index = " + ID + " and new index = " + newIndex);
+            ID = newIndex;
 
             if (elemIcon.GetComponent<DraggableObject>() == null)
                 Debug.LogError("DRAGGABLE OBJECT SCRIPT IS NULL!");
-            elemIcon.GetComponent<DraggableObject>().elementsListIndex = listIndex;
-            propertiesWindow.GetComponent<PropertiesWindow>().elementsListIndex = listIndex;
+            elemIcon.GetComponent<DraggableObject>().elementID = ID;
+            propertiesWindow.GetComponent<PropertiesWindow>().elementID = ID;
         }
 
         public void DestroyElement()

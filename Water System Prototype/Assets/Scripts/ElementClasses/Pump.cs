@@ -9,7 +9,7 @@ namespace Elements
     {
         private float flow, flowVelocity;
 
-        public Pump(int index, int id, Vector3 pos, float pFlow, float pFlowVelocity) : base(index, id, pos)
+        public Pump(int id, int typeId, Vector3 pos, float pFlow, float pFlowVelocity) : base(id, typeId, pos)
         {
             flow = pFlow;
             flowVelocity = pFlowVelocity;

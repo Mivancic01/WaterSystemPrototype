@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class DraggableObject : MonoBehaviour
 {
     public bool useInitialDrag = false, useDebug = false;
-    public int elementsListIndex;
+    public int elementID;
 
     private float mouseDownTime;
 
@@ -54,7 +54,7 @@ public class DraggableObject : MonoBehaviour
 
         if (DragManager.Instance.DraggableElements)
         {
-            ElementsManager.Instance.OpenPropertiesWindow(elementsListIndex);
+            ElementsManager.Instance.OpenPropertiesWindow(elementID);
             DragManager.Instance.DraggableElements = false;
             DragManager.Instance.DraggableMap = false;
         }
