@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class NodeGenerator : MonoBehaviour
 {
-    public GameObject pipePrefab, pumpPrefab, valvePrefab;
+    public GameObject nodePrefab, pumpSymbol, valveSymbol;
 
     private int nodeType = 0;
     private bool hasCreatedStart = false, hasCreatedEnd = false;
@@ -51,11 +51,12 @@ public class NodeGenerator : MonoBehaviour
             hasCreatedStart = false;
             StopCoroutine("CreateNodeFromObjectPos");
             DragManager.Instance.IsInNodeCreateState = false;
+            CreateSymbol();
             Reset();
             return;
         }    
         startPosition = startPos;
-        InstantianteNode(startPos);
+        node = Instantiate(nodePrefab, startPos, Quaternion.identity);
         originalWidth = node.GetComponent<SpriteRenderer>().bounds.size.x / 2;
         originalScale = node.transform.localScale;
         
@@ -81,25 +82,6 @@ public class NodeGenerator : MonoBehaviour
         }
 
         Reset();
-    }
-
-    private void InstantianteNode(Vector3 pos)
-    {
-        switch (nodeType)
-        {
-            case 0:
-                node = Instantiate(pipePrefab, pos, Quaternion.identity);
-                return;
-            case 1:
-                node = Instantiate(pumpPrefab, pos, Quaternion.identity);
-                return;
-            case 2:
-                node = Instantiate(valvePrefab, pos, Quaternion.identity);
-                return;
-            default:
-                Debug.LogError("TRYING TO INSTANTIATE INVALID TYPE OF NODE!");
-                return;
-        }
     }
 
     private void UpdateTransform()
@@ -138,6 +120,31 @@ public class NodeGenerator : MonoBehaviour
         Vector3 newScale = originalScale;
         newScale.x *= hipotenusa / originalWidth;
         node.transform.localScale = newScale;
+    }
+
+    private void CreateSymbol()
+    {
+        var xPos = (Camera.main.ScreenToWorldPoint(Input.mousePosition).x - startPosition.x) / 2;
+        var yPos = (Camera.main.ScreenToWorldPoint(Input.mousePosition).y - startPosition.y) / 2;
+        Vector3 pos = new Vector3(xPos + startPosition.x, yPos + startPosition.y, 10);
+        GameObject nodeSymbol;
+
+        switch (nodeType)
+        {
+            case 0:
+                return;
+            case 1:
+                nodeSymbol = Instantiate(pumpSymbol, node.transform, false);
+                nodeSymbol.transform.position = pos;
+                break;
+            case 2:
+                nodeSymbol = Instantiate(valveSymbol, node.transform, false);
+                nodeSymbol.transform.position = pos;
+                break;
+            default:
+                Debug.LogError("INVALID NODE TYPE!");
+                break;
+        }
     }
 
     private void Reset()
