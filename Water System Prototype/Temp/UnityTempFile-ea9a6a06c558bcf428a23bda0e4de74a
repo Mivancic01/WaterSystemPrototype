@@ -297,7 +297,9 @@ Assets\Scripts\ElementClasses\Reservoir.cs
 Assets\Scripts\ElementClasses\Tank.cs
 Assets\Scripts\ElementClasses\Valve.cs
 Assets\Scripts\ElementsFactory.cs
+Assets\Scripts\ElementsGameObjectFactory.cs
 Assets\Scripts\ElementsManager.cs
+Assets\Scripts\ElementsOutline.cs
 Assets\Scripts\ExitGame.cs
 Assets\Scripts\FileReader.cs
 Assets\Scripts\LegendsButton.cs

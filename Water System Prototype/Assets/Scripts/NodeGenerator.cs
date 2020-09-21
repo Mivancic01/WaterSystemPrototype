@@ -54,7 +54,7 @@ public class NodeGenerator : MonoBehaviour
             hasCreatedStart = false;
             StopCoroutine("CreateNodeFromObjectPos");
             DragManager.Instance.IsInNodeCreateState = false;
-            //SetEndPosition(startPos);
+            SetEndPosition(startPos);
             CreateSymbol();
             Reset();
             return;
@@ -159,6 +159,10 @@ public class NodeGenerator : MonoBehaviour
         node.transform.Rotate(0.0f, 0.0f, -oldZAngle, Space.Self);
         node.transform.Rotate(0.0f, 0.0f, zAngle, Space.Self);
         oldZAngle = zAngle;
+
+        var tempPos = node.transform.position;
+        tempPos.z = 9f;
+        node.transform.position = tempPos;
     }
 
     private void CreateSymbol()

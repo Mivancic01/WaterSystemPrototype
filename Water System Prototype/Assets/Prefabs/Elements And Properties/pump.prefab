@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7572491942609973707}
   - component: {fileID: 5523512091883572765}
-  - component: {fileID: 674343837909748365}
   - component: {fileID: 7026065869446940665}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: pump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +67,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1807528043
+  m_SortingLayerID: 530066901
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8ca0a436ae3c9e94683345b4953885b5, type: 3}
@@ -82,21 +81,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &674343837909748365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3545545484767158906}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e48830a35191f20428501ab8c2dccac9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useInitialDrag: 0
-  useDebug: 1
-  elementsListIndex: 0
 --- !u!61 &7026065869446940665
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -110,7 +94,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 2, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -121,5 +105,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 14, y: 6}
+  m_Size: {x: 5, y: 6}
   m_EdgeRadius: 0

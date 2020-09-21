@@ -47,6 +47,9 @@ public class DraggableObject : MonoBehaviour
 
     void OnMouseUp()
     {
+        Debug.Log("ENTERED OnMouseUp() on object " + gameObject.name + "\n"
+                + "At time " + Time.time);
+
         if ((Time.time - mouseDownTime) > 0.5f)
             return;
 
@@ -64,6 +67,9 @@ public class DraggableObject : MonoBehaviour
                 + "At time " + Time.time);
             NodeGenerator.Instance.GenerateNode(this.transform.position);
         }
+        else
+            Debug.Log("CIsInNodeCreateState is false!" + "\n"
+                + "At time " + Time.time);
     }
     
     void OnMouseDown()
@@ -73,6 +79,17 @@ public class DraggableObject : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100))
+            {
+                Debug.DrawLine(ray.origin, hit.point);
+                Debug.Log("Hit object: " + hit.collider.gameObject.name);
+            }
+        }
+
         if (useInitialDrag)
             UpdateDragPosition();
     }

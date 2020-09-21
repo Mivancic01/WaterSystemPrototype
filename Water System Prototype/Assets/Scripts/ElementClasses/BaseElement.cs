@@ -20,6 +20,11 @@ namespace Elements
 
         public void Initialize()
         {
+            if(typeID == 1 || typeID == 2 || typeID == 5)
+            {
+                Debug.LogWarning("CREATING A NODE, But the code doesent exist yet!");
+                return;
+            }    
             elemIcon = ElementsGameObjectFactory.Instance.CreateElement(typeID, position);
             elemIcon.GetComponent<DraggableObject>().elementID = ID;
 
