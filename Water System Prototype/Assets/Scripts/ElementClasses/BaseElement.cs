@@ -18,17 +18,17 @@ namespace Elements
             position = pos;
         }
 
-        public void Initialize()
+        public virtual void Initialize()
         {
             if(typeID == 1 || typeID == 2 || typeID == 5)
             {
                 Debug.LogWarning("CREATING A NODE, But the code doesent exist yet!");
                 return;
             }    
-            elemIcon = ElementsGameObjectFactory.Instance.CreateElement(typeID, position);
-            elemIcon.GetComponent<DraggableObject>().elementID = ID;
+            elemIcon = ComponentGameObjectsFactory.Instance.CreateElement(typeID, position);
+            elemIcon.GetComponent<ComponentObject>().elementID = ID;
 
-            propertiesWindow = ElementsGameObjectFactory.Instance.CreatePropertiesWindow(typeID);
+            propertiesWindow = ComponentGameObjectsFactory.Instance.CreatePropertiesWindow(typeID);
             propertiesWindow.GetComponent<PropertiesWindow>().elementID = ID;
             ChangeWindowVisibility(false);
         }
@@ -38,12 +38,17 @@ namespace Elements
             Debug.LogWarning("CALLED BaseElement::UpdatePropertiesValues()");
         }
 
+        public virtual void UpdatePropertiesValues(List<float> values)
+        {
+            Debug.LogWarning("CALLED BaseElement::UpdatePropertiesValues(List<float> values)");
+        }
+
         public void Initialize(GameObject icon)
         {
             elemIcon = icon;
-            elemIcon.GetComponent<DraggableObject>().elementID = ID;
+            elemIcon.GetComponent<ComponentObject>().elementID = ID;
 
-            propertiesWindow = ElementsGameObjectFactory.Instance.CreatePropertiesWindow(typeID);
+            propertiesWindow = ComponentGameObjectsFactory.Instance.CreatePropertiesWindow(typeID);
             propertiesWindow.GetComponent<PropertiesWindow>().elementID = ID;
             ChangeWindowVisibility(false);
         }
@@ -58,21 +63,15 @@ namespace Elements
             propertiesWindow.SetActive(isVisible);
         }
 
-        public void UpdateListIndex(int newIndex)
-        {
-            Debug.Log("CALLED ---> BaseElement::UpdateListIndex() with old index = " + ID + " and new index = " + newIndex);
-            ID = newIndex;
-
-            if (elemIcon.GetComponent<DraggableObject>() == null)
-                Debug.LogError("DRAGGABLE OBJECT SCRIPT IS NULL!");
-            elemIcon.GetComponent<DraggableObject>().elementID = ID;
-            propertiesWindow.GetComponent<PropertiesWindow>().elementID = ID;
-        }
-
         public void DestroyElement()
         {
             GameObject.Destroy(elemIcon);
             GameObject.Destroy(propertiesWindow);
+        }
+
+        public Vector3 GetPosition()
+        {
+            return elemIcon.transform.position;
         }
     }
 }

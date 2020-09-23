@@ -26,6 +26,10 @@ namespace Elements
 
         public override void UpdatePropertiesValues()
         {
+            propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(0, baseDemand);
+            propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(1, elevation);
+            propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(2, pressure);
+            /*
             foreach (var txt in propertiesWindow.GetComponentsInChildren<Text>())
             {
                 if (txt.gameObject.name.Equals("BD_Value"))
@@ -37,8 +41,16 @@ namespace Elements
                 else if (txt.gameObject.name.Equals("PR_Value"))
                     txt.text = pressure.ToString();
             }
+            */
 
-            Debug.LogWarning("CALLED Junction::UpdatePropertiesValues()");
+            Debug.Log("CALLED Junction::UpdatePropertiesValues()");
+        }
+
+        public override void UpdatePropertiesValues(List<float> values)
+        {
+            propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(0, values[0]);
+            propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(1, values[1]);
+            propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(2, values[2]);
         }
     }
 }

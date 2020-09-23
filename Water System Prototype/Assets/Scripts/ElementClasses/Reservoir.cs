@@ -20,11 +20,19 @@ namespace Elements
 
         public override void UpdatePropertiesValues()
         {
+            propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(0, totalHead);
+            /*
             foreach (var txt in propertiesWindow.GetComponentsInChildren<Text>())
                 if (txt.gameObject.name.Equals("TH_Value"))
                     txt.text = totalHead.ToString();
+            */
 
-            Debug.LogWarning("CALLED Reservoir::UpdatePropertiesValues()");
+            Debug.Log("CALLED Reservoir::UpdatePropertiesValues()");
+        }
+
+        public override void UpdatePropertiesValues(List<float> values)
+        {
+            propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(0, values[0]);
         }
     }
 }

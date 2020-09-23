@@ -22,6 +22,9 @@ namespace Elements
 
         public override void UpdatePropertiesValues()
         {
+            propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(0, volume);
+            propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(1, elevation);
+            /*
             foreach (var txt in propertiesWindow.GetComponentsInChildren<Text>())
             {
                 if (txt.gameObject.name.Equals("VL_Value"))
@@ -30,8 +33,15 @@ namespace Elements
                 else if (txt.gameObject.name.Equals("EL_Value"))
                     txt.text = elevation.ToString();
             }
+            */
 
-            Debug.LogWarning("CALLED Tank::UpdatePropertiesValues()");
+            Debug.Log("CALLED Tank::UpdatePropertiesValues()");
+        }
+
+        public override void UpdatePropertiesValues(List<float> values)
+        {
+            propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(0, values[0]);
+            propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(1, values[1]);
         }
     }
 }

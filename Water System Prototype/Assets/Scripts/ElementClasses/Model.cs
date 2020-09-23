@@ -8,7 +8,7 @@ namespace Elements
     {
         public int year;
         public List<int> elementIDsList;
-        ElementsManager elementsManager;
+        ComponentsManager componentsManager;
 
         private Model()
         {
@@ -19,7 +19,7 @@ namespace Elements
         {
             year = yr;
             elementIDsList = new List<int>();
-            elementsManager = ElementsManager.Instance;
+            componentsManager = ComponentsManager.Instance;
         }
 
         public void Add(int elementID)
@@ -35,7 +35,7 @@ namespace Elements
         {
             //Debug.Log("CALLED ---> Model::ChangeListVisibility() with isVisisble = " + isVisible + " and year: " + year);
             foreach (var ID in elementIDsList)
-                foreach(var elem in elementsManager.elementList)
+                foreach(var elem in componentsManager.componentsList)
                     if(elem.ID == ID)
                         elem.ChangeVisibility(isVisible);
         }

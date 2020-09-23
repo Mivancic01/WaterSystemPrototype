@@ -91,7 +91,8 @@ GameObject:
   - component: {fileID: 7366451647226504917}
   - component: {fileID: 4867112503324907779}
   - component: {fileID: 7975198043750338791}
-  - component: {fileID: 836505420770126702}
+  - component: {fileID: 149840717156560094}
+  - component: {fileID: 1595452740328874355}
   m_Layer: 0
   m_Name: pipe
   m_TagString: Untagged
@@ -189,7 +190,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &836505420770126702
+--- !u!114 &149840717156560094
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,7 +199,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 4474413255045543268}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa3db8bb13cb27c4bb099ea58da2d563, type: 3}
+  m_Script: {fileID: 11500000, guid: 01b44a58b3b4e9844aaa7daf9d0ff5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineObject: {fileID: 2561539314198753117}
+  highlightObject: {fileID: 2561539314198753117}
+  hasParentComponent: 0
+  hasChildComponent: 1
+--- !u!114 &1595452740328874355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4474413255045543268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 964f3586ba0ed6f4aabef2cfb09dc209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useDebug: 0
+  isNodeComponent: 0
+  elementID: 0
+  maxDeltaTime: 0.3
