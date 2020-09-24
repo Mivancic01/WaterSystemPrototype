@@ -42,7 +42,10 @@ public class ComponentHighlight : MonoBehaviour
     {
         if(useDebug) Debug.Log("----------> ENTERED ComponentHighlight::SetHighlightVisibility() with game object " + gameObject.name + " At time " + Time.time);
 
+
         highlightObject.SetActive(isVisible);
+        if (!isReady)
+            return;
         /**/
         if (hasChildComponent && setCompanionVisibility)
             childComponent.SetHighlightVisibility(isVisible, false);
@@ -68,6 +71,7 @@ public class ComponentHighlight : MonoBehaviour
                 return;
             }
 
+            isReady = true;
            // if(useDebug) Debug.Log(gameObject.name + " Has a child with name: " + childComponent.gameObject.name);
         }
 
@@ -85,7 +89,8 @@ public class ComponentHighlight : MonoBehaviour
                 return;
             }
 
-           // if(useDebug) Debug.Log(gameObject.name + " Has a parent with name: " + parentComponent.gameObject.name);
+            isReady = true;
+            // if(useDebug) Debug.Log(gameObject.name + " Has a parent with name: " + parentComponent.gameObject.name);
             parentComponent.Reset();
         }
     }
