@@ -7,6 +7,7 @@ public class ComponentHighlight : MonoBehaviour
 {
     public GameObject highlightObject;
     public bool hasParentComponent = false, hasChildComponent = false;
+    public bool useDebug = false;
 
     private ComponentHighlight childComponent, parentComponent;
     private bool isReady = true;
@@ -15,32 +16,21 @@ public class ComponentHighlight : MonoBehaviour
     {
         highlightObject.SetActive(false);
         Reset();
-
-        /*
-        if (hasChildComponent)
-        {
-            Debug.Log(gameObject.name + " -----------------> HAS " + gameObject.GetComponentsInChildren<ComponentHighlight>().ToList().Count + " Children!");
-            childComponent = gameObject.GetComponentInChildren<ComponentHighlight>();
-        }
-
-        if (hasParentComponent)
-        {
-            Debug.Log(gameObject.name + " -----------------> HAS " + gameObject.GetComponentsInParent<ComponentHighlight>().ToList().Count + " Parents!");
-            parentComponent = gameObject.GetComponentInParent<ComponentHighlight>();
-        }
-        */
     }
 
     void OnMouseEnter()
     {
-        Debug.Log("----------> ENTERED ComponentHighlight::OnMouseEnter()");
+        if(useDebug) Debug.Log("----------> ENTERED ComponentHighlight::OnMouseEnter()");
         highlightObject.SetActive(true);
 
-        if (GameStateManager.Instance.createPath)
-            return;
+        //if (GameStateManager.Instance.createPath)
+        //    return;
 
-        if (GameStateManager.Instance.dragComponents)
+        if (GameStateManager.Instance.dragComponents && !GameStateManager.Instance.createPath)
             SetHighlightVisibility(true, true);
+
+        if (GameStateManager.Instance.createPath)
+            SetHighlightVisibility(false, true);
     }
 
     void OnMouseExit()
@@ -50,7 +40,7 @@ public class ComponentHighlight : MonoBehaviour
 
     public void SetHighlightVisibility(bool isVisible, bool setCompanionVisibility)
     {
-        //Debug.Log("----------> ENTERED ComponentHighlight::SetHighlightVisibility()");
+        if(useDebug) Debug.Log("----------> ENTERED ComponentHighlight::SetHighlightVisibility() with game object " + gameObject.name + " At time " + Time.time);
 
         highlightObject.SetActive(isVisible);
         /**/
@@ -66,7 +56,7 @@ public class ComponentHighlight : MonoBehaviour
     {
         if (hasChildComponent)
         {
-            //Debug.Log(gameObject.name + " -----------------> HAS " + gameObject.GetComponentsInChildren<ComponentHighlight>().ToList().Count + " Children!");
+            //if(useDebug) Debug.Log(gameObject.name + " -----------------> HAS " + gameObject.GetComponentsInChildren<ComponentHighlight>().ToList().Count + " Children!");
             foreach (var component in gameObject.GetComponentsInChildren<ComponentHighlight>())
                 if (component.gameObject != gameObject)
                     childComponent = component;
@@ -74,16 +64,16 @@ public class ComponentHighlight : MonoBehaviour
             if (childComponent == null)
             {
                 isReady = false;
-                //Debug.LogError("COMPONENT HAS NO CHILD WHEN IT SHOULD HAVE 1!");
+                //if(useDebug) Debug.LogError("COMPONENT HAS NO CHILD WHEN IT SHOULD HAVE 1!");
                 return;
             }
 
-           // Debug.Log(gameObject.name + " Has a child with name: " + childComponent.gameObject.name);
+           // if(useDebug) Debug.Log(gameObject.name + " Has a child with name: " + childComponent.gameObject.name);
         }
 
         if (hasParentComponent)
         {
-            //Debug.Log(gameObject.name + " -----------------> HAS " + gameObject.GetComponentsInParent<ComponentHighlight>().ToList().Count + " Parents!");
+            //if(useDebug) Debug.Log(gameObject.name + " -----------------> HAS " + gameObject.GetComponentsInParent<ComponentHighlight>().ToList().Count + " Parents!");
             foreach (var component in gameObject.GetComponentsInParent<ComponentHighlight>())
                 if (component.gameObject != gameObject)
                     parentComponent = component;
@@ -91,11 +81,11 @@ public class ComponentHighlight : MonoBehaviour
             if (parentComponent == null)
             {
                 isReady = false;
-               // Debug.LogError("COMPONENT HAS NO PARENT WHEN IT SHOULD HAVE 1!");
+               // if(useDebug) Debug.LogError("COMPONENT HAS NO PARENT WHEN IT SHOULD HAVE 1!");
                 return;
             }
 
-           // Debug.Log(gameObject.name + " Has a parent with name: " + parentComponent.gameObject.name);
+           // if(useDebug) Debug.Log(gameObject.name + " Has a parent with name: " + parentComponent.gameObject.name);
             parentComponent.Reset();
         }
     }

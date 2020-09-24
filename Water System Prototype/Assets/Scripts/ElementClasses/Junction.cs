@@ -29,19 +29,6 @@ namespace Elements
             propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(0, baseDemand);
             propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(1, elevation);
             propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(2, pressure);
-            /*
-            foreach (var txt in propertiesWindow.GetComponentsInChildren<Text>())
-            {
-                if (txt.gameObject.name.Equals("BD_Value"))
-                    txt.text = baseDemand.ToString();
-
-                else if (txt.gameObject.name.Equals("EL_Value"))
-                    txt.text = elevation.ToString();
-
-                else if (txt.gameObject.name.Equals("PR_Value"))
-                    txt.text = pressure.ToString();
-            }
-            */
 
             Debug.Log("CALLED Junction::UpdatePropertiesValues()");
         }

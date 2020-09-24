@@ -47,17 +47,6 @@ namespace Elements
             propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(0, flow);
             propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(1, flowVelocity);
 
-            /*
-            foreach (var txt in propertiesWindow.GetComponentsInChildren<Text>())
-            {
-                if (txt.gameObject.name.Equals("FL_Value"))
-                    txt.text = flow.ToString();
-
-                else if (txt.gameObject.name.Equals("FLV_Value"))
-                    txt.text = flowVelocity.ToString();
-            }
-            */
-
             Debug.Log("CALLED Pump::UpdatePropertiesValues()");
         }
 
@@ -65,6 +54,16 @@ namespace Elements
         {
             propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(0, values[0]);
             propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(1, values[1]);
+        }
+
+        public int GetStartNodeID()
+        {
+            return startNodeID;
+        }
+
+        public int GetEndNodeID()
+        {
+            return endNodeID;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Elements;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -61,7 +62,7 @@ public class LoadGameManager : MonoBehaviour
             int typeID = Int32.Parse(line.Substring(0, 1));
             line = line.Remove(0, 3);
 
-            ComponentsManager.Instance.AddComponent(ComponentsFactory.CreateComponentFromFile(ID, typeID, line));
+            ComponentsManager.Instance.AddNodeComponent(ComponentsFactory.CreateComponentFromFile(ID, typeID, line));
         }
 
         else if(line.StartsWith("ln"))
@@ -77,7 +78,30 @@ public class LoadGameManager : MonoBehaviour
             int typeID = Int32.Parse(line.Substring(0, 1));
             line = line.Remove(0, 3);
 
-            ComponentsManager.Instance.AddComponent(ComponentsFactory.CreateComponentFromFile(ID, typeID, line));
+            int startNodeID = -1;
+            int endNodeID = -1;
+            var component = ComponentsFactory.CreateComponentFromFile(ID, typeID, line);
+            if (typeID == 1)
+            {
+                var temp = (Pipe)component;
+                startNodeID = temp.GetStartNodeID();
+                endNodeID = temp.GetEndNodeID();
+            }
+            else if (typeID == 2)
+            {
+                var temp = (Pump)component;
+                startNodeID = temp.GetStartNodeID();
+                endNodeID = temp.GetEndNodeID();
+            }
+            else if (typeID == 5)
+            {
+                var temp = (Valve)component;
+                startNodeID = temp.GetStartNodeID();
+                endNodeID = temp.GetEndNodeID();
+            }
+
+
+            ComponentsManager.Instance.AddLineComponent(component, startNodeID, endNodeID);
         }
 
         else if (line.StartsWith("yr"))

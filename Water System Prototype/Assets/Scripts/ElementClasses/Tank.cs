@@ -24,16 +24,6 @@ namespace Elements
         {
             propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(0, volume);
             propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(1, elevation);
-            /*
-            foreach (var txt in propertiesWindow.GetComponentsInChildren<Text>())
-            {
-                if (txt.gameObject.name.Equals("VL_Value"))
-                    txt.text = volume.ToString();
-
-                else if (txt.gameObject.name.Equals("EL_Value"))
-                    txt.text = elevation.ToString();
-            }
-            */
 
             Debug.Log("CALLED Tank::UpdatePropertiesValues()");
         }

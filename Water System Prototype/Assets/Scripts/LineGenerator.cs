@@ -6,7 +6,7 @@ public class LineGenerator : MonoBehaviour
 {
     public GameObject nodePrefab, pipeSymbol, pumpSymbol, valveSymbol;
 
-    private int nodeType = 0;
+    private int nodeType = 0, startNodeID, endNodeID;
     private bool hasCreatedStart = false;
     private Vector3 startPosition, endPosition, originalScale;
     private float oldZAngle = 0f, originalWidth;
@@ -41,7 +41,7 @@ public class LineGenerator : MonoBehaviour
         GameStateManager.Instance.SetPathCreationState();
     }
 
-    public void SetNode(Vector3 nodePos)
+    public void SetNode(Vector3 nodePos, int nodeID)
     {
         if (!GameStateManager.Instance.createPath)
             return;
@@ -51,11 +51,19 @@ public class LineGenerator : MonoBehaviour
 
         if (hasCreatedStart)
         {
-            CreateNodeEndAndDestroy(nodePos);
+            int typeID = nodeType + 1;
+            if (typeID == 3)
+                typeID = 5;
+
+            CreateNodeEnd(nodePos);
+            endNodeID = nodeID;
+            ComponentsManager.Instance.AddLineComponent(line, typeID, startNodeID, endNodeID);
+            Reset();
             return;
         }
 
         CreateNodeStart(nodePos);
+        startNodeID = nodeID;
     }
 
     public GameObject CreateAndReturnLineComponent(Vector3 startNode, Vector3 endNode, int typeID)

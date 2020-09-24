@@ -21,11 +21,6 @@ namespace Elements
         public override void UpdatePropertiesValues()
         {
             propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(0, totalHead);
-            /*
-            foreach (var txt in propertiesWindow.GetComponentsInChildren<Text>())
-                if (txt.gameObject.name.Equals("TH_Value"))
-                    txt.text = totalHead.ToString();
-            */
 
             Debug.Log("CALLED Reservoir::UpdatePropertiesValues()");
         }

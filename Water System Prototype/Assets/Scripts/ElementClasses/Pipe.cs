@@ -53,26 +53,6 @@ namespace Elements
             propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(2, flow);
             propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(3, flowVelocity);
 
-            /*
-            foreach (var txt in propertiesWindow.GetComponentsInChildren<Text>())
-            {
-                if (txt.gameObject.name.Equals("LN_Value"))
-                {
-                    Debug.Log("Updating LN_Value with " + length);
-                    txt.text = length.ToString();
-                }
-
-                else if (txt.gameObject.name.Equals("DM_Value"))
-                    txt.text = diameter.ToString();
-
-                else if (txt.gameObject.name.Equals("FL_Value"))
-                    txt.text = flow.ToString();
-
-                else if (txt.gameObject.name.Equals("FLV_Value"))
-                    txt.text = flowVelocity.ToString();
-            }
-            */
-
             Debug.Log("CALLED Pipe::UpdatePropertiesValues()");
         }
 
@@ -82,6 +62,16 @@ namespace Elements
             propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(1, values[1]);
             propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(2, values[2]);
             propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(3, values[3]);
+        }
+
+        public int GetStartNodeID()
+        {
+            return startNodeID;
+        }
+
+        public int GetEndNodeID()
+        {
+            return endNodeID;
         }
     }
 }

@@ -7,7 +7,10 @@ using UnityEngine.UI;
 public class ComponentsManager : MonoBehaviour
 {
     public List<Elements.BaseElement> componentsList;
+    public List<int> allIDs;
     public Dictionary<int, int> nodeComponentsListIDs, lineComponentsListIDs;
+    public Dictionary<int, (int First, int Double)> allConnections;
+    public Dictionary<int, List<int>> nodeConnections;
 
     public List<Elements.Model> modelList;
 
@@ -21,6 +24,9 @@ public class ComponentsManager : MonoBehaviour
         modelList = new List<Elements.Model>();
         nodeComponentsListIDs = new Dictionary<int, int>();
         lineComponentsListIDs = new Dictionary<int, int>();
+        allConnections = new Dictionary<int, (int First, int Double)>();
+        nodeConnections = new Dictionary<int, List<int>>();
+        allIDs = new List<int>();
 
         if (Instance != null && Instance != this)
         {
@@ -33,27 +39,65 @@ public class ComponentsManager : MonoBehaviour
         }
     }
 
-    public void AddComponent(BaseElement component)
+    public void AddNodeComponent(BaseElement nodeComponent)
     {
-        componentsList.Add(component);
-
-        if (component.typeID == 0 || component.typeID == 3 || component.typeID == 4)
-            nodeComponentsListIDs.Add(component.ID, componentsList.Count - 1);
-
-        else if(component.typeID == 1 || component.typeID == 2 || component.typeID == 5)
-            lineComponentsListIDs.Add(component.ID, componentsList.Count - 1);
+        componentsList.Add(nodeComponent);
+        nodeComponentsListIDs.Add(nodeComponent.ID, componentsList.Count - 1);
+        allIDs.Add(nodeComponent.ID);
     }
 
-    public void AddComponent(GameObject el, int typeID)
+    public void AddLineComponent(BaseElement lineComponent, int startNodeID, int endNodeID)
     {
-        Debug.Log("CALLED ---> ComponentsManager::AddElement() with index = " + componentsList.Count + " and elementType = " + typeID);
+        componentsList.Add(lineComponent);
+        lineComponentsListIDs.Add(lineComponent.ID, componentsList.Count - 1);
+        allConnections.Add(lineComponent.ID, (startNodeID, endNodeID));
+        allIDs.Add(lineComponent.ID);
+    }
 
-        if (typeID == 0 || typeID == 3 || typeID == 4)
-            componentsList.Add(ComponentsFactory.CreateNodeComponent(componentsList.Count, typeID, el.transform.position));
+    private void AddNodeConnection(int lineComponentID, int nodeID)
+    {
+        if (nodeConnections.ContainsKey(nodeID))
+        {
+            var list = nodeConnections[nodeID];
+            if (!list.Contains(lineComponentID))
+                list.Add(lineComponentID);
+            nodeConnections[nodeID] = list;
+        }
 
-        componentsList[componentsList.Count - 1].Initialize(el);
-        componentsList[componentsList.Count - 1].UpdatePropertiesValues();
+        else
+        {
+            List<int> list = new List<int>();
+            list.Add(lineComponentID);
+            nodeConnections.Add(nodeID, list);
+        }
+    }
+
+    public void AddNodeComponent(GameObject el, int typeID)
+    {
+        int ID = GetNextFreeID();
+
+        var componentScript = ComponentsFactory.CreateNodeComponent(ID, typeID, el.transform.position);
+        componentScript.Initialize(el);
+        componentScript.UpdatePropertiesValues();
+
+        componentsList.Add(componentScript);
+        nodeComponentsListIDs.Add(ID, (componentsList.Count - 1));
+        modelList[currentOpenModel].Add(ID);
+        allIDs.Add(ID);
+    }
+
+    public void AddLineComponent(GameObject el, int typeID, int startNodeID, int endNodeID)
+    {
+        int ID = GetNextFreeID();
+
+        var componentScript = ComponentsFactory.CreateLineComponent(componentsList.Count, typeID, startNodeID, endNodeID);
+        componentScript.Initialize(el);
+        componentScript.UpdatePropertiesValues();
+
+        componentsList.Add(componentScript);
+        lineComponentsListIDs.Add(ID, (componentsList.Count - 1));
         modelList[currentOpenModel].Add(componentsList.Count - 1);
+        allIDs.Add(ID);
     }
 
     public void AddModel(Model model)
@@ -133,6 +177,9 @@ public class ComponentsManager : MonoBehaviour
         modelList.Clear();
         nodeComponentsListIDs.Clear();
         lineComponentsListIDs.Clear();
+        allConnections.Clear();
+        nodeConnections.Clear();
+        allIDs.Clear();
     }
 
     public void DeleteElement(int elementID)
@@ -158,9 +205,6 @@ public class ComponentsManager : MonoBehaviour
 
         elem.DestroyElement();
         componentsList.Remove(elem);
-
-        //for (int i = index; i < componentsList.Count; i++)
-        //    componentsList[i].UpdateListIndex(i);
     }
 
     public Vector3 GetComponentPosition(int componentID)
@@ -178,5 +222,14 @@ public class ComponentsManager : MonoBehaviour
         foreach (var el in componentsList)
             if (el.ID == componentID)
                 el.UpdatePropertiesValues(values);
+    }
+
+    private int GetNextFreeID()
+    {
+        for(int i = 0; true; i++)
+        {
+            if (!allIDs.Contains(i))
+                return i;
+        }
     }
 }

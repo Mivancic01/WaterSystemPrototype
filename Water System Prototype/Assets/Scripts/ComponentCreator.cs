@@ -26,7 +26,7 @@ public class ComponentCreator : MonoBehaviour, IDragHandler, IEndDragHandler
 
             GameObject component = Instantiate(componentPrefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
             component.GetComponent<ComponentObject>().StartInitialDrag();
-            ComponentsManager.Instance.AddComponent(component, componentTypeID);
+            ComponentsManager.Instance.AddNodeComponent(component, componentTypeID);
             isInstantiated = true;
         }
     }

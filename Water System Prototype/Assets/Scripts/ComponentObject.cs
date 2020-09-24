@@ -40,7 +40,7 @@ public class ComponentObject : MonoBehaviour
             Debug.Log("CALLING GenerateNode() FROM OBJECT WITH NAME: " + this.name + "\n" + "At time " + Time.time);
 
             if(isNodeComponent)
-                LineGenerator.Instance.SetNode(this.transform.position);
+                LineGenerator.Instance.SetNode(this.transform.position, elementID);
 
             return;
         }
