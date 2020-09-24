@@ -256,3 +256,12 @@ C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water
 C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\obj\Debug\Assembly-CSharp.dll
 C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Temp\bin\Debug\Unity.Timeline.Editor.pdb
+C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Temp\bin\Debug\Unity.VSCode.Editor.pdb
+C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Temp\bin\Debug\Unity.TextMeshPro.Editor.pdb
+C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Temp\bin\Debug\UnityEngine.UI.pdb
+C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Temp\bin\Debug\Unity.Timeline.pdb
+C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Temp\bin\Debug\Unity.CollabProxy.Editor.pdb
+C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Temp\bin\Debug\Unity.Rider.Editor.pdb
+C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Temp\bin\Debug\Unity.TextMeshPro.pdb
+C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Temp\bin\Debug\UnityEditor.UI.pdb

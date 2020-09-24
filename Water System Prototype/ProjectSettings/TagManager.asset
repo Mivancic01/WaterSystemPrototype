@@ -46,6 +46,15 @@ TagManager:
   - name: background
     uniqueID: 1848027743
     locked: 0
+  - name: ElementsOutlines
+    uniqueID: 3684628717
+    locked: 0
+  - name: nodes
+    uniqueID: 530066901
+    locked: 0
+  - name: nodeSymbol
+    uniqueID: 1055925393
+    locked: 0
   - name: Elements
     uniqueID: 1807528043
     locked: 0
