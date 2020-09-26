@@ -2,45 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using mainManager = MainSimulationManager;
+
 public partial class MainSimulationManager
 {
     public class ComponentsHelper : MonoBehaviour
     {
-        MainSimulationManager mainManager;
-        public static ComponentsHelper Instance { get; private set; }
-        private void Awake()
-        {
-            mainManager = MainSimulationManager.Instance;
-            if (Instance != null && Instance != this)
-            {
-                // destroy the duplicate
-                Destroy(gameObject);
-            }
-            else
-            {
-                Instance = this;
-            }
-        }
-
-        public int GetNextFreeID()
+        public static int GetNextFreeID()
         {
             for (int i = 0; true; i++)
             {
-                if (!MainSimulationManager.Instance.allIDs.Contains(i))
+                if (!mainManager.Instance.allIDs.Contains(i))
                     return i;
             }
         }
 
-        public void UpdatePropertiesValues(int componentID, List<float> values)
+        public static void UpdatePropertiesValues(int componentID, List<float> values)
         {
-            foreach (var el in mainManager.componentsList)
+            foreach (var el in mainManager.Instance.componentsList)
                 if (el.ID == componentID)
                     el.UpdatePropertiesValues(values);
         }
 
-        public Vector3 GetComponentPosition(int componentID)
+        public static Vector3 GetComponentPosition(int componentID)
         {
-            foreach (var el in mainManager.componentsList)
+            foreach (var el in mainManager.Instance.componentsList)
                 if (el.ID == componentID)
                     return el.GetPosition();
 
@@ -48,9 +34,9 @@ public partial class MainSimulationManager
             return new Vector3(0, 0, 0);
         }
 
-        public void OpenPropertiesWindow(int elementID)
+        public static void OpenPropertiesWindow(int elementID)
         {
-            foreach (var elem in mainManager.componentsList)
+            foreach (var elem in mainManager.Instance.componentsList)
                 if (elem.ID == elementID)
                     elem.ChangeWindowVisibility(true);
         }

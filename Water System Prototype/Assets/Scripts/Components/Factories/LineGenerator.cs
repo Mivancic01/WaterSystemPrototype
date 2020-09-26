@@ -57,7 +57,7 @@ public class LineGenerator : MonoBehaviour
 
             CreateNodeEnd(nodePos);
             endNodeID = nodeID;
-            MainSimulationManager.ComponentsManager.Instance.AddLineComponent(line, typeID, startNodeID, endNodeID);
+            MainSimulationManager.ComponentsManager.AddLineComponent(line, typeID, startNodeID, endNodeID);
             Reset();
             return;
         }

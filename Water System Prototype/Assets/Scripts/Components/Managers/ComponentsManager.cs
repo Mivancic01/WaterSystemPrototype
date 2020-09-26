@@ -2,29 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using mainManager = MainSimulationManager;
+using helper = MainSimulationManager.ComponentsHelper;
+
 public partial class MainSimulationManager
 {
     public class ComponentsManager : MonoBehaviour
     {
-        MainSimulationManager mainManager;
-        public ComponentsHelper helper;
-
-        public static ComponentsManager Instance { get; private set; }
-        private void Awake()
-        {
-            mainManager = MainSimulationManager.Instance;
-            if (Instance != null && Instance != this)
-            {
-                // destroy the duplicate
-                Destroy(gameObject);
-            }
-            else
-            {
-                Instance = this;
-            }
-        }
-
-        public void AddNodeComponent(GameObject component, int typeID = -1, int ID = -1)
+        public static void AddNodeComponent(GameObject component, int typeID = -1, int ID = -1, bool addToCurrentModel = false)
         {
             var componentScript = component.GetComponent<BaseElement>();
 
@@ -38,13 +23,17 @@ public partial class MainSimulationManager
 
             componentScript.UpdatePropertiesValues();
 
-            mainManager.componentsList.Add(componentScript);
-            mainManager.componentsIdIndexMap.Add(ID, (mainManager.componentsList.Count - 1));
-            mainManager.modelList[mainManager.currentOpenModel].Add(ID);
-            mainManager.allIDs.Add(ID);
+            var mainInstace = mainManager.Instance;
+
+            mainInstace.componentsList.Add(componentScript);
+            mainInstace.componentsIdIndexMap.Add(ID, (mainInstace.componentsList.Count - 1));
+            mainInstace.allIDs.Add(ID);
+
+            if(addToCurrentModel)
+                mainInstace.modelList[mainInstace.currentOpenModel].Add(ID);
         }
 
-        public void AddLineComponent(GameObject component, int typeID, int startNodeID, int endNodeID, int ID = -1)
+        public static void AddLineComponent(GameObject component, int typeID, int startNodeID, int endNodeID, int ID = -1, bool addToCurrentModel = false)
         {
             var componentScript = component.GetComponent<BaseElement>();
             if (ID == -1)
@@ -60,39 +49,46 @@ public partial class MainSimulationManager
 
             AddNodeConnection(ID, startNodeID);
             AddNodeConnection(ID, endNodeID);
-            mainManager.allConnections.Add(ID, (startNodeID, endNodeID));
+
+            var mainInstace = mainManager.Instance;
+            mainInstace.allConnections.Add(ID, (startNodeID, endNodeID));
 
             componentScript.Initialize();
             componentScript.UpdatePropertiesValues();
 
-            mainManager.componentsList.Add(componentScript);
-            mainManager.componentsIdIndexMap.Add(ID, (mainManager.componentsList.Count - 1));
-            mainManager.modelList[mainManager.currentOpenModel].Add(mainManager.componentsList.Count - 1);
-            mainManager.allIDs.Add(ID);
+            mainInstace.componentsList.Add(componentScript);
+            mainInstace.componentsIdIndexMap.Add(ID, (mainInstace.componentsList.Count - 1));
+            mainInstace.allIDs.Add(ID);
+
+            if (addToCurrentModel)
+                mainInstace.modelList[mainInstace.currentOpenModel].Add(ID);
         }
 
-        private void AddNodeConnection(int lineComponentID, int nodeID)
+        private static void AddNodeConnection(int lineComponentID, int nodeID)
         {
-            if (mainManager.nodeConnections.ContainsKey(nodeID))
+            var mainInstace = mainManager.Instance;
+
+            if (mainInstace.nodeConnections.ContainsKey(nodeID))
             {
-                var list = mainManager.nodeConnections[nodeID];
+                var list = mainInstace.nodeConnections[nodeID];
                 if (!list.Contains(lineComponentID))
                     list.Add(lineComponentID);
-                mainManager.nodeConnections[nodeID] = list;
+                mainInstace.nodeConnections[nodeID] = list;
             }
 
             else
             {
                 List<int> list = new List<int>();
                 list.Add(lineComponentID);
-                mainManager.nodeConnections.Add(nodeID, list);
+                mainInstace.nodeConnections.Add(nodeID, list);
             }
         }
 
-        public void DeleteElement(int elementID)
+        public static void DeleteElement(int elementID)
         {
+            var mainInstace = mainManager.Instance;
             BaseElement elem = null;
-            foreach (var el in mainManager.componentsList)
+            foreach (var el in mainInstace.componentsList)
                 if (el.ID == elementID)
                 {
                     elem = el;
@@ -102,11 +98,11 @@ public partial class MainSimulationManager
             if (elem == null)
                 return;
 
-            foreach (var model in mainManager.modelList)
+            foreach (var model in mainInstace.modelList)
                 model.RemoveElement(elementID);
 
             elem.DestroyElement();
-            mainManager.componentsList.Remove(elem);
+            mainInstace.componentsList.Remove(elem);
         }
     }
 }

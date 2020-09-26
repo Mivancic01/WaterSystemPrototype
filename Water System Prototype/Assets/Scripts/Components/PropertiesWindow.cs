@@ -20,7 +20,7 @@ public class PropertiesWindow : MonoBehaviour
     {
         GameStateManager.Instance.SetInactiveState();
         GameStateManager.Instance.SetDragComponentsState();
-        MainSimulationManager.ComponentsManager.Instance.DeleteElement(elementID);
+        MainSimulationManager.ComponentsManager.DeleteElement(elementID);
     }
 
     public void UpdateInputField(int inputID, float value)

@@ -4,19 +4,16 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+using componentsManager = MainSimulationManager.ComponentsManager;
+using modelsManager = MainSimulationManager.ModelsManager;
+
 public class LoadGameManager : MonoBehaviour
 {
     public bool useDebug = false;
     public static LoadGameManager Instance { get; private set; }
 
-    MainSimulationManager.ComponentsManager componentsManager;
-    MainSimulationManager.ModelsManager modelsManager;
-
     private void Awake()
     {
-        componentsManager = MainSimulationManager.ComponentsManager.Instance;
-        modelsManager = MainSimulationManager.ModelsManager.Instance;
-
         if (Instance != null && Instance != this)
         {
             // destroy the duplicate

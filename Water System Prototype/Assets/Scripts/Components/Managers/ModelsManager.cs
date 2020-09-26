@@ -3,49 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using mainManager = MainSimulationManager;
+
 public partial class MainSimulationManager
 {
     public class ModelsManager : MonoBehaviour
     {
-        MainSimulationManager mainManager;
-        public static ModelsManager Instance { get; private set; }
-        private void Awake()
+        public static void AddModel(Model model)
         {
-            mainManager = MainSimulationManager.Instance;
-            if (Instance != null && Instance != this)
-            {
-                // destroy the duplicate
-                Destroy(gameObject);
-            }
-            else
-            {
-                Instance = this;
-            }
+            mainManager.Instance.modelList.Add(model);
         }
 
-        public void AddModel(Model model)
+        public static void SwitchModels(int newModelIndex)
         {
-            mainManager.modelList.Add(model);
-        }
+            var mainInstace = mainManager.Instance;
 
-        public void SwitchModels(int newModelIndex)
-        {
-            var oldModelIDsList = mainManager.modelList[mainManager.currentOpenModel].GetComponentsList();
-            var newModelIDsList = mainManager.modelList[newModelIndex].GetComponentsList();
+            var oldModelIDsList = mainInstace.modelList[mainInstace.currentOpenModel].GetComponentsList();
+            var newModelIDsList = mainInstace.modelList[newModelIndex].GetComponentsList();
 
             SwitchComponentsVisibility(oldModelIDsList, false);
             SwitchComponentsVisibility(newModelIDsList, true);
 
-            mainManager.currentOpenModel = newModelIndex;
+            mainInstace.currentOpenModel = newModelIndex;
         }
 
-        public void SwitchComponentsVisibility(List<int> IDsList, bool isVisible)
+        public static void SwitchComponentsVisibility(List<int> IDsList, bool isVisible)
         {
             foreach (var id in IDsList)
-                mainManager.componentsList[mainManager.componentsIdIndexMap[id]].ChangeVisibility(isVisible);
+                mainManager.Instance.componentsList[mainManager.Instance.componentsIdIndexMap[id]].ChangeVisibility(isVisible);
         }
 
-        private int GetModelIndexFromScrollbar()
+        private static int GetModelIndexFromScrollbar()
         {
             float value = GameObject.FindWithTag("Timeline").GetComponent<Scrollbar>().value;
 

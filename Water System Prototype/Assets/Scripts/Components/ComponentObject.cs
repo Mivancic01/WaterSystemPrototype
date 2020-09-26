@@ -11,12 +11,6 @@ public class ComponentObject : MonoBehaviour
     private float mouseDownTime;
     private Vector3 originalPos;
 
-    MainSimulationManager.ComponentsManager componentsManager;
-    void Start()
-    {
-        componentsManager = MainSimulationManager.ComponentsManager.Instance;
-    }
-
     void OnMouseDrag()
     {
         if (!isNodeComponent)

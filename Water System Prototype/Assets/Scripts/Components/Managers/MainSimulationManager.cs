@@ -5,16 +5,12 @@ using UnityEngine.UI;
 
 public partial class MainSimulationManager : MonoBehaviour
 {
-    public List<BaseElement> componentsList;
-    public List<int> allIDs;
-    public Dictionary<int, int> componentsIdIndexMap;
-    public Dictionary<int, (int First, int Double)> allConnections;
-    public Dictionary<int, List<int>> nodeConnections;
-    public List<Model> modelList;
-
-    public ComponentsHelper helper;
-    public ModelsManager modelsManager;
-    public ComponentsManager componentsManager;
+    private List<BaseElement> componentsList;
+    private List<int> allIDs;
+    private Dictionary<int, int> componentsIdIndexMap;
+    private Dictionary<int, (int First, int Double)> allConnections;
+    private Dictionary<int, List<int>> nodeConnections;
+    private List<Model> modelList;
 
     public static MainSimulationManager Instance { get; private set; }
 
@@ -28,6 +24,7 @@ public partial class MainSimulationManager : MonoBehaviour
         allConnections = new Dictionary<int, (int First, int Double)>();
         nodeConnections = new Dictionary<int, List<int>>();
         allIDs = new List<int>();
+        currentOpenModel = 0;
 
         if (Instance != null && Instance != this)
         {
@@ -43,9 +40,9 @@ public partial class MainSimulationManager : MonoBehaviour
     public void InitializeScene()
     {
         for (int i = 0; i < modelList.Count; i++)
-            modelsManager.SwitchComponentsVisibility(modelList[i].GetComponentsList(), false);
+            ModelsManager.SwitchComponentsVisibility(modelList[i].GetComponentsList(), false);
 
-        modelsManager.SwitchComponentsVisibility(modelList[9].GetComponentsList(), true);
+        ModelsManager.SwitchComponentsVisibility(modelList[9].GetComponentsList(), true);
 
         currentOpenModel = 0;
     }

@@ -125,8 +125,8 @@ public class ComponentsFactory : MonoBehaviour
 
         float flowVelocity = FileReaderHelper.GetNextNumber(line);
 
-        var startNodePos = MainSimulationManager.ComponentsHelper.Instance.GetComponentPosition(startNodeID);
-        var endNodePos = MainSimulationManager.ComponentsHelper.Instance.GetComponentPosition(endNodeID);
+        var startNodePos = MainSimulationManager.ComponentsHelper.GetComponentPosition(startNodeID);
+        var endNodePos = MainSimulationManager.ComponentsHelper.GetComponentPosition(endNodeID);
 
         var obj = LineGenerator.Instance.CreateAndReturnLineComponent(startNodePos, endNodePos, typeId);
         var pipeScript = new Pipe(id, typeId, startNodeID, endNodeID, length, diameter, flow, flowVelocity);
@@ -148,8 +148,8 @@ public class ComponentsFactory : MonoBehaviour
 
         float flowVelocity = FileReaderHelper.GetNextNumber(line);
 
-        var startNodePos = MainSimulationManager.ComponentsHelper.Instance.GetComponentPosition(startNodeID);
-        var endNodePos = MainSimulationManager.ComponentsHelper.Instance.GetComponentPosition(endNodeID);
+        var startNodePos = MainSimulationManager.ComponentsHelper.GetComponentPosition(startNodeID);
+        var endNodePos = MainSimulationManager.ComponentsHelper.GetComponentPosition(endNodeID);
 
         var obj = LineGenerator.Instance.CreateAndReturnLineComponent(startNodePos, endNodePos, typeId);
         var pumpScript = new Pump(id, typeId, startNodeID, endNodeID, flow, flowVelocity);
@@ -203,8 +203,8 @@ public class ComponentsFactory : MonoBehaviour
 
         float flowVelocity = FileReaderHelper.GetNextNumber(line);
 
-        var startNodePos = MainSimulationManager.ComponentsHelper.Instance.GetComponentPosition(startNodeID);
-        var endNodePos = MainSimulationManager.ComponentsHelper.Instance.GetComponentPosition(endNodeID);
+        var startNodePos = MainSimulationManager.ComponentsHelper.GetComponentPosition(startNodeID);
+        var endNodePos = MainSimulationManager.ComponentsHelper.GetComponentPosition(endNodeID);
 
         var obj = LineGenerator.Instance.CreateAndReturnLineComponent(startNodePos, endNodePos, typeId);
         var valveScript = new Valve(id, typeId, startNodeID, endNodeID, diameter, flow, flowVelocity);

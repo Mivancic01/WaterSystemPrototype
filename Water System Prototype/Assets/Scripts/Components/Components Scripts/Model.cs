@@ -17,7 +17,6 @@ public class Model
     {
         year = yr;
         elementIDsList = new List<int>();
-        componentsManager = MainSimulationManager.ComponentsManager.Instance;
     }
 
     public void Add(int elementID)

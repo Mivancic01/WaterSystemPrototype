@@ -45,6 +45,7 @@ public class SaveGameManager : MonoBehaviour
         Debug.Log(path);
         if (!File.Exists(path))
         {
+            /*
             // Create a file to write to.
             using (StreamWriter sw = File.CreateText(path))
             {
@@ -72,6 +73,7 @@ public class SaveGameManager : MonoBehaviour
                     Debug.Log("NEW TIMELINE LINE IS: " + line);
                 }
             }
+            */
         }
         else
             Debug.Log("FILE ALREADY EXISTS!");
