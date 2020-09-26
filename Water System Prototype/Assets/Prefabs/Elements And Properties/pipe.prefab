@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 7975198043750338791}
   - component: {fileID: 149840717156560094}
   - component: {fileID: 1595452740328874355}
+  - component: {fileID: -2003825293611903011}
   m_Layer: 0
   m_Name: pipe
   m_TagString: Untagged
@@ -205,6 +206,7 @@ MonoBehaviour:
   highlightObject: {fileID: 2561539314198753117}
   hasParentComponent: 0
   hasChildComponent: 1
+  useDebug: 0
 --- !u!114 &1595452740328874355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,3 +223,18 @@ MonoBehaviour:
   isNodeComponent: 0
   elementID: 0
   maxDeltaTime: 0.3
+--- !u!114 &-2003825293611903011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4474413255045543268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c94f9e22c9e3bdf4e9bcf35d84407df0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeID: 0
+  ID: 0
+  position: {x: 0, y: 0, z: 0}

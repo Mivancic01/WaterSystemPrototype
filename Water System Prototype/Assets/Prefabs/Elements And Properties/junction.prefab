@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: -7235672507530423809}
   - component: {fileID: -8654414000745701940}
   - component: {fileID: 6414735392983688935}
+  - component: {fileID: -4296586170471876092}
   m_Layer: 0
   m_Name: junction
   m_TagString: Untagged
@@ -203,6 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useDebug: 0
+  isNodeComponent: 1
   elementID: 0
   maxDeltaTime: 0.3
 --- !u!114 &6414735392983688935
@@ -218,3 +220,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightObject: {fileID: 4378482473344327681}
+  hasParentComponent: 0
+  hasChildComponent: 0
+  useDebug: 0
+--- !u!114 &-4296586170471876092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5413446921593173116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c0fab30fb1ddc488949ae260f9b19e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeID: 0
+  ID: 0
+  position: {x: 0, y: 0, z: 0}

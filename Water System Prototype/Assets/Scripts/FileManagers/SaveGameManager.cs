@@ -50,10 +50,10 @@ public class SaveGameManager : MonoBehaviour
             {
                 sw.WriteLine("");
                 sw.WriteLine("#ELEMENTS");
-                foreach (var elem in ComponentsManager.Instance.componentsList)
+                foreach (var elem in MainSimulationManager.Instance.componentsList)
                 {
                     string line = "el ";
-                    line += elem.typeID + ", " + elem.position.x + ", " + elem.position.y + ", " + elem.position.z;
+                    line += elem.typeID + ", " + elem.gameObject.transform.position.x + ", " + elem.gameObject.transform.position.y + ", " + elem.gameObject.transform.position.z;
                     sw.WriteLine(line);
 
                     Debug.Log("NEW ELEMENT LINE IS: " + line);
@@ -61,7 +61,7 @@ public class SaveGameManager : MonoBehaviour
 
                 sw.WriteLine("");
                 sw.WriteLine("#TIMELINE");
-                foreach (var elem in ComponentsManager.Instance.modelList)
+                foreach (var elem in MainSimulationManager.Instance.modelList)
                 {
                     string line = "yr ";
                     line += elem.year;

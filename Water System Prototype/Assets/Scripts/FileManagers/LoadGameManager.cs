@@ -1,5 +1,4 @@
-﻿using Elements;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -7,13 +6,17 @@ using UnityEngine;
 
 public class LoadGameManager : MonoBehaviour
 {
-    public List<Elements.BaseElement> nodeComponentsList;
-    public List<Elements.Model> modelList;
     public bool useDebug = false;
     public static LoadGameManager Instance { get; private set; }
 
+    MainSimulationManager.ComponentsManager componentsManager;
+    MainSimulationManager.ModelsManager modelsManager;
+
     private void Awake()
     {
+        componentsManager = MainSimulationManager.ComponentsManager.Instance;
+        modelsManager = MainSimulationManager.ModelsManager.Instance;
+
         if (Instance != null && Instance != this)
         {
             // destroy the duplicate
@@ -27,9 +30,6 @@ public class LoadGameManager : MonoBehaviour
 
     void Start()
     {
-        nodeComponentsList = new List<Elements.BaseElement>();
-        modelList = new List<Elements.Model>();
-
         string line;
 
         System.IO.StreamReader file =
@@ -40,7 +40,7 @@ public class LoadGameManager : MonoBehaviour
 
         file.Close();
 
-        ComponentsManager.Instance.InitializeScene();
+        MainSimulationManager.Instance.InitializeScene();
         return;
     }
 
@@ -62,7 +62,7 @@ public class LoadGameManager : MonoBehaviour
             int typeID = Int32.Parse(line.Substring(0, 1));
             line = line.Remove(0, 3);
 
-            ComponentsManager.Instance.AddNodeComponent(ComponentsFactory.CreateComponentFromFile(ID, typeID, line));
+            componentsManager.AddNodeComponent(ComponentsFactory.Instance.CreateComponentFromFile(ID, typeID, line), ID);
         }
 
         else if(line.StartsWith("ln"))
@@ -80,28 +80,9 @@ public class LoadGameManager : MonoBehaviour
 
             int startNodeID = -1;
             int endNodeID = -1;
-            var component = ComponentsFactory.CreateComponentFromFile(ID, typeID, line);
-            if (typeID == 1)
-            {
-                var temp = (Pipe)component;
-                startNodeID = temp.GetStartNodeID();
-                endNodeID = temp.GetEndNodeID();
-            }
-            else if (typeID == 2)
-            {
-                var temp = (Pump)component;
-                startNodeID = temp.GetStartNodeID();
-                endNodeID = temp.GetEndNodeID();
-            }
-            else if (typeID == 5)
-            {
-                var temp = (Valve)component;
-                startNodeID = temp.GetStartNodeID();
-                endNodeID = temp.GetEndNodeID();
-            }
 
-
-            ComponentsManager.Instance.AddLineComponent(component, startNodeID, endNodeID);
+            var lineObj = ComponentsFactory.Instance.CreateComponentFromFile(ID, typeID, line);
+            componentsManager.AddLineComponent(lineObj, typeID, startNodeID, endNodeID);
         }
 
         else if (line.StartsWith("yr"))
@@ -114,7 +95,7 @@ public class LoadGameManager : MonoBehaviour
             var year = Int32.Parse(line.Substring(0, 4));
             line = line.Remove(0, 6);
 
-            Elements.Model model = new Elements.Model(year);
+            Model model = new Model(year);
 
             while (line.Length > 0)
             {
@@ -126,7 +107,7 @@ public class LoadGameManager : MonoBehaviour
                 line = line.Remove(0, removeSize);
             }
 
-            ComponentsManager.Instance.AddModel(model);
+            modelsManager.AddModel(model);
         }
     }
 }

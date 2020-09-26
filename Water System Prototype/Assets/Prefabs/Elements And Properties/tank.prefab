@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6786178848169421404}
   - component: {fileID: 1874060693433707600}
   - component: {fileID: 2098730143025617448}
+  - component: {fileID: 7650506857227703836}
   m_Layer: 0
   m_Name: tank
   m_TagString: Untagged
@@ -123,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useDebug: 0
+  isNodeComponent: 1
   elementID: 0
   maxDeltaTime: 0.3
 --- !u!114 &2098730143025617448
@@ -138,6 +140,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightObject: {fileID: 5495610271585984887}
+  hasParentComponent: 0
+  hasChildComponent: 0
+  useDebug: 0
+--- !u!114 &7650506857227703836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051747531710566367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce218106a6f21843bf0db817193ac63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeID: 0
+  ID: 0
+  position: {x: 0, y: 0, z: 0}
 --- !u!1 &5495610271585984887
 GameObject:
   m_ObjectHideFlags: 0
