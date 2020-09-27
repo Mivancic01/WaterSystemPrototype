@@ -45,9 +45,6 @@ public partial class MainSimulationManager
                 componentScript.Initialize();
             componentScript.UpdatePropertiesValues();
 
-            //if (ID == -1)
-            //    ID = helper.GetNextFreeID();
-
             AddNodeConnection(ID, startNodeID);
             AddNodeConnection(ID, endNodeID);
 

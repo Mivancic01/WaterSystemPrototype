@@ -11,6 +11,9 @@ public class ComponentCreator : MonoBehaviour, IDragHandler, IEndDragHandler
     public GameObject componentPrefab;
     public int componentTypeID;
 
+    private const int nullID = -1;
+    private const bool addToCurrentModel = true;
+
     public void OnDrag(PointerEventData eventData)
     {
         if (GameStateManager.Instance.createPath || GameStateManager.Instance.dragMap)
@@ -26,7 +29,7 @@ public class ComponentCreator : MonoBehaviour, IDragHandler, IEndDragHandler
 
             GameObject component = Instantiate(componentPrefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
             component.GetComponent<ComponentObject>().StartInitialDrag();
-            MainSimulationManager.ComponentsManager.AddNodeComponent(component, componentTypeID);
+            MainSimulationManager.ComponentsManager.AddNodeComponent(component, componentTypeID, nullID, addToCurrentModel);
             isInstantiated = true;
         }
     }

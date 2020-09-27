@@ -11,7 +11,9 @@ public class LineGenerator : MonoBehaviour
     private bool hasCreatedStart = false;
     private Vector3 startPosition, endPosition, originalScale;
     private float oldZAngle = 0f, originalWidth;
-    bool isSpaceDown = false;
+
+    private const int nullID = -1;
+    private const bool addToCurrentModel = true;
 
     public static LineGenerator Instance { get; private set; }
 
@@ -51,13 +53,9 @@ public class LineGenerator : MonoBehaviour
 
         if (hasCreatedStart)
         {
-            int typeID = nodeType + 1;
-            if (typeID == 3)
-                typeID = 5;
-
             CreateNodeEnd(nodePos);
             endNodeID = nodeID;
-            MainSimulationManager.ComponentsManager.AddLineComponent(line, typeID, startNodeID, endNodeID);
+            MainSimulationManager.ComponentsManager.AddLineComponent(line, nodeType, startNodeID, endNodeID, nullID, addToCurrentModel);
             Reset();
             return;
         }
@@ -69,12 +67,7 @@ public class LineGenerator : MonoBehaviour
     public GameObject CreateAndReturnLineComponent(Vector3 startNode, Vector3 endNode, int typeID)
     {
         if (!GameStateManager.Instance.createPath)
-        {
-            Debug.LogError("IS NOT IN CREATEPATH STATE!");
             return null;
-        }
-
-        //Debug.Log("StartPosition = " + startNode + ", EndPosition = " + endNode + "\n" + "At time = " + Time.time);
 
         nodeType = typeID;
         CreateNodeStart(startNode);
@@ -212,7 +205,6 @@ public class LineGenerator : MonoBehaviour
     {
         hasCreatedStart = false;
         oldZAngle = 0f;
-        isSpaceDown = false;
         line = null;
     }
 }
