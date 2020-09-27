@@ -42,7 +42,7 @@ public partial class MainSimulationManager : MonoBehaviour
         for (int i = 0; i < modelList.Count; i++)
             ModelsManager.SwitchComponentsVisibility(modelList[i].GetComponentsList(), false);
 
-        ModelsManager.SwitchComponentsVisibility(modelList[9].GetComponentsList(), true);
+        ModelsManager.SwitchComponentsVisibility(modelList[0].GetComponentsList(), true);
 
         currentOpenModel = 0;
     }

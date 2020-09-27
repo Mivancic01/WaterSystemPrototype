@@ -43,6 +43,7 @@ public partial class MainSimulationManager
             }
             else
                 componentScript.Initialize();
+            componentScript.UpdatePropertiesValues();
 
             //if (ID == -1)
             //    ID = helper.GetNextFreeID();
@@ -52,9 +53,6 @@ public partial class MainSimulationManager
 
             var mainInstace = mainManager.Instance;
             mainInstace.allConnections.Add(ID, (startNodeID, endNodeID));
-
-            componentScript.Initialize();
-            componentScript.UpdatePropertiesValues();
 
             mainInstace.componentsList.Add(componentScript);
             mainInstace.componentsIdIndexMap.Add(ID, (mainInstace.componentsList.Count - 1));

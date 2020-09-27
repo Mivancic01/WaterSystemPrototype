@@ -82,7 +82,7 @@ public class ComponentsFactory : MonoBehaviour
             case 5:
                 return Instantiate(valvePropWindow, GameObject.FindWithTag("Canvas").transform);
             default:
-                Debug.LogError("TRYING TO CREATE A NON EXISTENT ELEMENT!");
+                Debug.LogError("TRYING TO CREATE A NON EXISTENT ELEMENT! with type = " + type);
                 return null;
         }
     }
@@ -125,12 +125,18 @@ public class ComponentsFactory : MonoBehaviour
 
         float flowVelocity = FileReaderHelper.GetNextNumber(line);
 
+        GameStateManager.Instance.SetInactiveState();
+        GameStateManager.Instance.SetPathCreationState();
+
         var startNodePos = MainSimulationManager.ComponentsHelper.GetComponentPosition(startNodeID);
         var endNodePos = MainSimulationManager.ComponentsHelper.GetComponentPosition(endNodeID);
 
         var obj = LineGenerator.Instance.CreateAndReturnLineComponent(startNodePos, endNodePos, typeId);
         var pipeScript = new Pipe(id, typeId, startNodeID, endNodeID, length, diameter, flow, flowVelocity);
         obj.GetComponent<Pipe>().Init(pipeScript);
+
+        GameStateManager.Instance.SetInactiveState();
+        GameStateManager.Instance.SetDragComponentsState();
 
         return obj;
     }
@@ -151,9 +157,15 @@ public class ComponentsFactory : MonoBehaviour
         var startNodePos = MainSimulationManager.ComponentsHelper.GetComponentPosition(startNodeID);
         var endNodePos = MainSimulationManager.ComponentsHelper.GetComponentPosition(endNodeID);
 
+        GameStateManager.Instance.SetInactiveState();
+        GameStateManager.Instance.SetPathCreationState();
+
         var obj = LineGenerator.Instance.CreateAndReturnLineComponent(startNodePos, endNodePos, typeId);
         var pumpScript = new Pump(id, typeId, startNodeID, endNodeID, flow, flowVelocity);
         obj.GetComponent<Pump>().Init(pumpScript);
+
+        GameStateManager.Instance.SetInactiveState();
+        GameStateManager.Instance.SetDragComponentsState();
 
         return obj;
     }
@@ -206,9 +218,15 @@ public class ComponentsFactory : MonoBehaviour
         var startNodePos = MainSimulationManager.ComponentsHelper.GetComponentPosition(startNodeID);
         var endNodePos = MainSimulationManager.ComponentsHelper.GetComponentPosition(endNodeID);
 
+        GameStateManager.Instance.SetInactiveState();
+        GameStateManager.Instance.SetPathCreationState();
+
         var obj = LineGenerator.Instance.CreateAndReturnLineComponent(startNodePos, endNodePos, typeId);
         var valveScript = new Valve(id, typeId, startNodeID, endNodeID, diameter, flow, flowVelocity);
         obj.GetComponent<Valve>().Init(valveScript);
+
+        GameStateManager.Instance.SetInactiveState();
+        GameStateManager.Instance.SetDragComponentsState();
 
         return obj;
     }

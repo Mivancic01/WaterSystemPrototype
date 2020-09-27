@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class LineGenerator : MonoBehaviour
 {
-    public GameObject nodePrefab, pipeSymbol, pumpSymbol, valveSymbol;
+    public GameObject pipePrefab, pumpPrefab, valvePrefab, pipeSymbol, pumpSymbol, valveSymbol;
+    private GameObject line;
 
     private int nodeType = 0, startNodeID, endNodeID;
     private bool hasCreatedStart = false;
     private Vector3 startPosition, endPosition, originalScale;
     private float oldZAngle = 0f, originalWidth;
-    private GameObject line;
     bool isSpaceDown = false;
 
     public static LineGenerator Instance { get; private set; }
@@ -69,7 +69,10 @@ public class LineGenerator : MonoBehaviour
     public GameObject CreateAndReturnLineComponent(Vector3 startNode, Vector3 endNode, int typeID)
     {
         if (!GameStateManager.Instance.createPath)
+        {
+            Debug.LogError("IS NOT IN CREATEPATH STATE!");
             return null;
+        }
 
         //Debug.Log("StartPosition = " + startNode + ", EndPosition = " + endNode + "\n" + "At time = " + Time.time);
 
@@ -87,7 +90,8 @@ public class LineGenerator : MonoBehaviour
     {
         hasCreatedStart = true;
         startPosition = startPos;
-        line = Instantiate(nodePrefab, startPos, Quaternion.identity);
+        CreateLineObject(startPos);
+        //line = Instantiate(nodePrefab, startPos, Quaternion.identity);
         originalWidth = line.GetComponent<SpriteRenderer>().bounds.size.x / 2;
         originalScale = line.transform.localScale;
 
@@ -178,6 +182,25 @@ public class LineGenerator : MonoBehaviour
             case 5:
                 nodeSymbol = Instantiate(valveSymbol, line.transform, false);
                 nodeSymbol.transform.position = pos;
+                break;
+            default:
+                Debug.LogError("INVALID NODE TYPE!");
+                break;
+        }
+    }
+
+    private void CreateLineObject(Vector3 startPos)
+    {
+        switch (nodeType)
+        {
+            case 1:
+                line = Instantiate(pipePrefab, startPos, Quaternion.identity);
+                break;
+            case 2:
+                line = Instantiate(pumpPrefab, startPos, Quaternion.identity);
+                break;
+            case 5:
+                line = Instantiate(valvePrefab, startPos, Quaternion.identity);
                 break;
             default:
                 Debug.LogError("INVALID NODE TYPE!");

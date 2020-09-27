@@ -34,8 +34,13 @@ public class Pump : BaseElement
 
     }
 
-    public override void Initialize(int typeID = -1, int ID = -1)
+    public override void Initialize(int pTypeID = -1, int pID = -1)
     {
+        if (pTypeID != -1)
+            typeID = pTypeID;
+        if (pID != -1)
+            ID = pID;
+
         GameStateManager.Instance.SetInactiveState();
         GameStateManager.Instance.SetPathCreationState();
 
