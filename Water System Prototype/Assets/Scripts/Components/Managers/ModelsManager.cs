@@ -32,23 +32,6 @@ public partial class MainSimulationManager
             foreach (var id in IDsList)
                 mainManager.Instance.componentsList[mainManager.Instance.componentsIdIndexMap[id]].ChangeVisibility(isVisible);
         }
-
-        private static int GetModelIndexFromScrollbar()
-        {
-            float value = GameObject.FindWithTag("Timeline").GetComponent<Scrollbar>().value;
-
-            if (value < 0.25f)
-                return 0;
-            else if (value < 0.5f)
-                return 1;
-            else if (value < 0.75f)
-                return 2;
-            else if (value <= 1.0f)
-                return 3;
-
-            Debug.LogError("INVALID SCROLLBAR VALUE!");
-            return 3;
-        }
     }
 }
 
