@@ -25,8 +25,8 @@ public partial class MainSimulationManager
 
             var mainInstace = mainManager.Instance;
 
+            mainInstace.componentsIdIndexMap.Add(ID, (mainInstace.componentsList.Count));
             mainInstace.componentsList.Add(componentScript);
-            mainInstace.componentsIdIndexMap.Add(ID, (mainInstace.componentsList.Count - 1));
             mainInstace.allIDs.Add(ID);
 
             if(addToCurrentModel)
@@ -51,8 +51,8 @@ public partial class MainSimulationManager
             var mainInstace = mainManager.Instance;
             mainInstace.allConnections.Add(ID, (startNodeID, endNodeID));
 
+            mainInstace.componentsIdIndexMap.Add(ID, (mainInstace.componentsList.Count));
             mainInstace.componentsList.Add(componentScript);
-            mainInstace.componentsIdIndexMap.Add(ID, (mainInstace.componentsList.Count - 1));
             mainInstace.allIDs.Add(ID);
 
             if (addToCurrentModel)
@@ -82,16 +82,7 @@ public partial class MainSimulationManager
         public static void DeleteElement(int elementID)
         {
             var mainInstace = mainManager.Instance;
-            BaseElement elem = null;
-            foreach (var el in mainInstace.componentsList)
-                if (el.ID == elementID)
-                {
-                    elem = el;
-                    break;
-                }
-
-            if (elem == null)
-                return;
+            BaseElement elem = mainInstace.componentsList[mainInstace.componentsIdIndexMap[elementID]];
 
             foreach (var model in mainInstace.modelList)
                 model.RemoveElement(elementID);
