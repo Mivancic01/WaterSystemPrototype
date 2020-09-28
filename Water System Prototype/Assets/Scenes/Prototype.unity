@@ -872,26 +872,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe86e2c70772b94caf932c77cba08e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  junction: {fileID: 5413446921593173116, guid: 29d92adb9280b3542aa36bbac56794d8,
-    type: 3}
-  pipe: {fileID: 4474413255045543268, guid: 9b46df7c761976e40adf1a26b12f0505, type: 3}
-  pump: {fileID: 4474413255045543268, guid: 9b46df7c761976e40adf1a26b12f0505, type: 3}
-  reservoir: {fileID: 8984261976701413730, guid: ef3391b191fafa440ad80f44acd0975a,
-    type: 3}
-  tank: {fileID: 1051747531710566367, guid: 9c53df44ba66b2941a7184836a6ceaab, type: 3}
-  valve: {fileID: 4474413255045543268, guid: 9b46df7c761976e40adf1a26b12f0505, type: 3}
-  junctionWindow: {fileID: 6937694765489323923, guid: 207c3a3e1596e2b4e88f5ccb6498c861,
-    type: 3}
-  pipePropWindow: {fileID: 8360885779593134040, guid: 059b05c09c3911c46948be2b47cc30c6,
-    type: 3}
-  pumpPropWindow: {fileID: 2671284963103855289, guid: c671c39bd69e48344afb6b7eea394944,
-    type: 3}
-  reservoirPropWindow: {fileID: 4815551733185151120, guid: 01f0b0b49a4997c41b6f42f6dee2bf04,
-    type: 3}
-  tankPropWindow: {fileID: 9095377521603873001, guid: 721622bf2ff40304499ed9596288ad4a,
-    type: 3}
-  valvePropWindow: {fileID: 2239573194140800494, guid: c9532023a37e1e744b87b1d9344f6c88,
-    type: 3}
 --- !u!4 &228757240
 Transform:
   m_ObjectHideFlags: 0
@@ -1171,8 +1151,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.92083335}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.32000732}
-  m_SizeDelta: {x: 0, y: -0.6399994}
+  m_AnchoredPosition: {x: 0, y: 0.32003784}
+  m_SizeDelta: {x: 0, y: -0.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &281142782
 MonoBehaviour:
@@ -1187,13 +1167,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.38781592, g: 0.44813773, b: 0.990566, a: 1}
+  m_Color: {r: 0.046146322, g: 0.046146322, b: 0.5754717, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 2bb1b5ec67e4bce43833ec408271a3f8, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2400,7 +2380,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Main Menu
+  m_Text: Exit Game
 --- !u!222 &492226939
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8611,7 +8591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2101463899
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8627,10 +8607,10 @@ RectTransform:
   m_Father: {fileID: 932332036}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 65.376595, y: -28.441387}
+  m_SizeDelta: {x: 126.75319, y: 52.882774}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2101463900
 MonoBehaviour:
