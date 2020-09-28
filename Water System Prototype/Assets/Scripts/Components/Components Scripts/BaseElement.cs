@@ -21,6 +21,8 @@ public class BaseElement : MonoBehaviour
         if (pID != -1)
             ID = pID;
 
+        gameObject.GetComponent<ComponentObject>().elementID = ID;
+
         propertiesWindow = ComponentsFactory.Instance.CreatePropertiesWindow(typeID);
         propertiesWindow.GetComponent<PropertiesWindow>().elementID = ID;
         ChangeWindowVisibility(false);

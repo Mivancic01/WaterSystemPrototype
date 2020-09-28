@@ -45,7 +45,7 @@ public partial class MainSimulationManager
                 componentScript.Initialize();
             componentScript.UpdatePropertiesValues();
 
-            Debug.Log("startNodeID = " + startNodeID + ", endNodeID = " + endNodeID + ", lineID = " + ID + "\n " + Time.time);
+            //Debug.Log("startNodeID = " + startNodeID + ", endNodeID = " + endNodeID + ", lineID = " + ID + "\n " + Time.time);
             AddNodeConnection(ID, startNodeID);
             AddNodeConnection(ID, endNodeID);
 
@@ -66,7 +66,7 @@ public partial class MainSimulationManager
 
             if (mainInstace.nodeConnections.ContainsKey(nodeID))
             {
-                Debug.Log("Adding another nodeConnection to an existing line. lineComponentID = " + lineComponentID + ", nodeID " + nodeID);
+                //Debug.Log("Adding another nodeConnection to an existing line. lineComponentID = " + lineComponentID + ", nodeID " + nodeID);
                 var list = mainInstace.nodeConnections[nodeID];
                 if (!list.Contains(lineComponentID))
                     list.Add(lineComponentID);
@@ -75,7 +75,7 @@ public partial class MainSimulationManager
 
             else
             {
-                Debug.Log("Adding another nodeConnection to a new line. lineComponentID = " + lineComponentID + ", nodeID " + nodeID);
+                //Debug.Log("Adding another nodeConnection to a new line. lineComponentID = " + lineComponentID + ", nodeID " + nodeID);
                 List<int> list = new List<int>();
                 list.Add(lineComponentID);
                 mainInstace.nodeConnections.Add(nodeID, list);
@@ -96,10 +96,9 @@ public partial class MainSimulationManager
 
         public static void UpdateLinesPosition(int componentID)
         {
-            Debug.Log(mainManager.Instance.nodeConnections[componentID]);
-
             foreach(var lineID in mainManager.Instance.nodeConnections[componentID])
             {
+                //Debug.Log("USING lineID " + lineID + " with componentID " + componentID + " for the next update" + "\n" + Time.time);
                 var startNodePosition = helper.GetComponentPosition(mainManager.Instance.allConnections[lineID].First);
                 var endNodePosition = helper.GetComponentPosition(mainManager.Instance.allConnections[lineID].Second);
 

@@ -30,7 +30,8 @@ public class ComponentObject : MonoBehaviour
     {
         if ((Time.time - mouseDownTime) > maxDeltaTime)
         {
-            MainSimulationManager.ComponentsManager.UpdateLinesPosition(elementID);
+            if(isNodeComponent)
+                MainSimulationManager.ComponentsManager.UpdateLinesPosition(elementID);
             return;
         }
 
