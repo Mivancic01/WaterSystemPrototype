@@ -29,7 +29,7 @@ public class Tank : BaseElement
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(0, volume);
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(1, elevation);
 
-        Debug.Log("CALLED Tank::UpdatePropertiesValues()");
+        //Debug.Log("CALLED Tank::UpdatePropertiesValues()");
     }
 
     public override void UpdatePropertiesValues(List<float> values)

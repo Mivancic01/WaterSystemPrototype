@@ -79,6 +79,8 @@ public class LoadGameManager : MonoBehaviour
             int endNodeID = -1;
 
             var lineObj = ComponentsFactory.Instance.CreateComponentFromFile(ID, typeID, line);
+            (startNodeID, endNodeID) = MainSimulationManager.ComponentsHelper.GetNodeIDsFromLineObject(lineObj, typeID);
+            
             componentsManager.AddLineComponent(lineObj, typeID, startNodeID, endNodeID);
         }
 

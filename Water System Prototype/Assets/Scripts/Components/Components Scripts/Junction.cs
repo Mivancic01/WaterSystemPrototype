@@ -35,7 +35,7 @@ public class Junction : BaseElement
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(1, elevation);
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(2, pressure);
 
-        Debug.Log("CALLED Junction::UpdatePropertiesValues()");
+        //Debug.Log("CALLED Junction::UpdatePropertiesValues()");
     }
 
     public override void UpdatePropertiesValues(List<float> values)

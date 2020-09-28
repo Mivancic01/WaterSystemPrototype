@@ -67,7 +67,7 @@ public class Pipe : BaseElement
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(2, flow);
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(3, flowVelocity);
 
-        Debug.Log("CALLED Pipe::UpdatePropertiesValues()");
+        //Debug.Log("CALLED Pipe::UpdatePropertiesValues()");
     }
 
     public override void UpdatePropertiesValues(List<float> values)

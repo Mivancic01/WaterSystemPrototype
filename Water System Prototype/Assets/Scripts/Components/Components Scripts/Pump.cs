@@ -60,7 +60,7 @@ public class Pump : BaseElement
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(0, flow);
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(1, flowVelocity);
 
-        Debug.Log("CALLED Pump::UpdatePropertiesValues()");
+        //Debug.Log("CALLED Pump::UpdatePropertiesValues()");
     }
 
     public override void UpdatePropertiesValues(List<float> values)

@@ -29,7 +29,10 @@ public class ComponentObject : MonoBehaviour
     void OnMouseUp()
     {
         if ((Time.time - mouseDownTime) > maxDeltaTime)
+        {
+            MainSimulationManager.ComponentsManager.UpdateLinesPosition(elementID);
             return;
+        }
 
         transform.position = originalPos;
 

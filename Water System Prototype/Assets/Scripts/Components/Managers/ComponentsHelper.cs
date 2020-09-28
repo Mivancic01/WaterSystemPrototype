@@ -24,5 +24,21 @@ public partial class MainSimulationManager
         {
             return mainManager.Instance.componentsList[mainManager.Instance.componentsIdIndexMap[componentID]].GetPosition();
         }
+
+        public static (int, int) GetNodeIDsFromLineObject(GameObject line, int typeID)
+        {
+
+            if (typeID == 1)
+                return (line.GetComponent<Pipe>().startNodeID, line.GetComponent<Pipe>().endNodeID);
+
+            else if (typeID == 2)
+                return (line.GetComponent<Pump>().startNodeID, line.GetComponent<Pump>().endNodeID);
+
+            else if (typeID == 5)
+                return (line.GetComponent<Valve>().startNodeID, line.GetComponent<Valve>().endNodeID);
+
+            Debug.LogError("OBJECT IS NOT A LINE!");
+            return (-1, -1);
+        }
     }
 }

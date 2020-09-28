@@ -25,7 +25,7 @@ public class Reservoir : BaseElement
     {
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(0, totalHead);
 
-        Debug.Log("CALLED Reservoir::UpdatePropertiesValues()");
+        //Debug.Log("CALLED Reservoir::UpdatePropertiesValues()");
     }
 
     public override void UpdatePropertiesValues(List<float> values)

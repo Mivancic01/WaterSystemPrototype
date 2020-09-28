@@ -70,8 +70,8 @@ public class LineGenerator : MonoBehaviour
             return null;
 
         nodeType = typeID;
-        CreateNodeStart(startNode);
-        CreateNodeEnd(endNode);
+        CreateNodeStart(startNode, false);
+        CreateNodeEnd(endNode, false);
 
         GameObject lineCopy = line;
         Reset();
@@ -79,27 +79,45 @@ public class LineGenerator : MonoBehaviour
         return lineCopy;
     }
 
-    private void CreateNodeStart(Vector3 startPos)
+    public void UpdateLinePosition(GameObject existingLine, Vector3 startNodePos, Vector3 endNodePos)
+    {
+        existingLine.transform.rotation = pipePrefab.transform.rotation;
+        existingLine.transform.position = startNodePos;
+
+        LineGeneratorHelper.EndPositionVariables vars = new LineGeneratorHelper.EndPositionVariables(
+            existingLine, startNodePos, endNodePos, pipePrefab.transform.localScale, pipePrefab.GetComponent<SpriteRenderer>().bounds.size.x / 2, 0.0f);
+        existingLine = LineGeneratorHelper.SetEndPosition(vars);
+
+        //existingLine = SetEndPosition(endNodePos);
+    }
+
+    private void CreateNodeStart(Vector3 startPos, bool runCoroutine = true)
     {
         hasCreatedStart = true;
         startPosition = startPos;
         CreateLineObject(startPos);
-        //line = Instantiate(nodePrefab, startPos, Quaternion.identity);
         originalWidth = line.GetComponent<SpriteRenderer>().bounds.size.x / 2;
         originalScale = line.transform.localScale;
 
-        StartCoroutine("CreateLineFromMousePos");
+        if(runCoroutine)
+            StartCoroutine("CreateLineFromMousePos");
     }
 
-    private void CreateNodeEnd(Vector3 endPos)
+    private void CreateNodeEnd(Vector3 endPos, bool runCoroutine = true)
     {
         hasCreatedStart = false;
         endPosition = endPos;
 
-        StopCoroutine("CreateLineFromMousePos");
+        if(runCoroutine)
+            StopCoroutine("CreateLineFromMousePos");
         GameStateManager.Instance.SetInactiveState();
         GameStateManager.Instance.SetDragComponentsState();
-        SetEndPosition(endPos);
+
+        LineGeneratorHelper.EndPositionVariables vars = new LineGeneratorHelper.EndPositionVariables(
+            line, startPosition, endPosition, originalScale, originalWidth, oldZAngle);
+        line = LineGeneratorHelper.SetEndPosition(vars);
+
+        //SetEndPosition(endPos);
         CreateSymbol();
     }
 
@@ -117,42 +135,14 @@ public class LineGenerator : MonoBehaviour
                 yield break;
             }
 
-            SetEndPosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            LineGeneratorHelper.EndPositionVariables vars = new LineGeneratorHelper.EndPositionVariables(
+            line, startPosition, Camera.main.ScreenToWorldPoint(Input.mousePosition), originalScale, originalWidth, oldZAngle);
+            (line, oldZAngle) = LineGeneratorHelper.SetEndPositionAndGetAngle(vars);
+
+            //SetEndPosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
             yield return null;
         }
-    }
-
-    private void SetEndPosition(Vector3 endPos)
-    {
-        var height = endPos.y - startPosition.y;
-        var width = endPos.x - startPosition.x;
-        var zAngle = Mathf.Atan2(height, width) * Mathf.Rad2Deg;
-
-        UpdateScale(Mathf.Sqrt(width * width + height * height));
-        UpdateRotation(zAngle);
-        UpdatePosition();
-    }
-
-    private void UpdateScale(float hipotenusa)
-    {
-        Vector3 newScale = originalScale;
-        newScale.x *= hipotenusa / originalWidth;
-        line.transform.localScale = newScale;
-    }
-
-    private void UpdateRotation(float zAngle)
-    {
-        line.transform.Rotate(0.0f, 0.0f, -oldZAngle, Space.Self);
-        line.transform.Rotate(0.0f, 0.0f, zAngle, Space.Self);
-        oldZAngle = zAngle;
-    }
-
-    private void UpdatePosition()
-    {
-        var tempPos = line.transform.position;
-        tempPos.z = 9f;
-        line.transform.position = tempPos;
     }
 
     private void CreateSymbol()

@@ -45,6 +45,7 @@ public partial class MainSimulationManager
                 componentScript.Initialize();
             componentScript.UpdatePropertiesValues();
 
+            Debug.Log("startNodeID = " + startNodeID + ", endNodeID = " + endNodeID + ", lineID = " + ID + "\n " + Time.time);
             AddNodeConnection(ID, startNodeID);
             AddNodeConnection(ID, endNodeID);
 
@@ -65,6 +66,7 @@ public partial class MainSimulationManager
 
             if (mainInstace.nodeConnections.ContainsKey(nodeID))
             {
+                Debug.Log("Adding another nodeConnection to an existing line. lineComponentID = " + lineComponentID + ", nodeID " + nodeID);
                 var list = mainInstace.nodeConnections[nodeID];
                 if (!list.Contains(lineComponentID))
                     list.Add(lineComponentID);
@@ -73,22 +75,37 @@ public partial class MainSimulationManager
 
             else
             {
+                Debug.Log("Adding another nodeConnection to a new line. lineComponentID = " + lineComponentID + ", nodeID " + nodeID);
                 List<int> list = new List<int>();
                 list.Add(lineComponentID);
                 mainInstace.nodeConnections.Add(nodeID, list);
             }
         }
 
-        public static void DeleteElement(int elementID)
+        public static void DeleteElement(int componentID)
         {
             var mainInstace = mainManager.Instance;
-            BaseElement elem = mainInstace.componentsList[mainInstace.componentsIdIndexMap[elementID]];
+            BaseElement component = mainInstace.componentsList[mainInstace.componentsIdIndexMap[componentID]];
 
             foreach (var model in mainInstace.modelList)
-                model.RemoveElement(elementID);
+                model.RemoveElement(componentID);
 
-            elem.DestroyElement();
-            mainInstace.componentsList.Remove(elem);
+            component.DestroyElement();
+            mainInstace.componentsList.Remove(component);
+        }
+
+        public static void UpdateLinesPosition(int componentID)
+        {
+            Debug.Log(mainManager.Instance.nodeConnections[componentID]);
+
+            foreach(var lineID in mainManager.Instance.nodeConnections[componentID])
+            {
+                var startNodePosition = helper.GetComponentPosition(mainManager.Instance.allConnections[lineID].First);
+                var endNodePosition = helper.GetComponentPosition(mainManager.Instance.allConnections[lineID].Second);
+
+                var lineObject = mainManager.Instance.componentsList[mainManager.Instance.componentsIdIndexMap[lineID]].gameObject;
+                LineGenerator.Instance.UpdateLinePosition(lineObject, startNodePosition, endNodePosition);
+            }
         }
     }
 }

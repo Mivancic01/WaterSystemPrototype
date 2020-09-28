@@ -8,7 +8,7 @@ public partial class MainSimulationManager : MonoBehaviour
     private List<BaseElement> componentsList;
     private List<int> allIDs;
     private Dictionary<int, int> componentsIdIndexMap;
-    private Dictionary<int, (int First, int Double)> allConnections;
+    private Dictionary<int, (int First, int Second)> allConnections;
     private Dictionary<int, List<int>> nodeConnections;
     private List<Model> modelList;
 

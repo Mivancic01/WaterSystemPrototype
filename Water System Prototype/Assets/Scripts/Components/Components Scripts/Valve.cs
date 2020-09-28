@@ -64,7 +64,7 @@ public class Valve : BaseElement
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(1, flow);
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(2, flowVelocity);
 
-        Debug.Log("CALLED Valve::UpdatePropertiesValues()");
+        //Debug.Log("CALLED Valve::UpdatePropertiesValues()");
     }
 
     public override void UpdatePropertiesValues(List<float> values)
