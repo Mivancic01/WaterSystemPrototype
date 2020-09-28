@@ -3,22 +3,28 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - CameraManager
     - ComponentCreator
-    - ComponentGameObjectsFactory
     - ComponentHighlight
     - ComponentObject
     - ComponentsFactory
-    - ComponentsManager
     - ExitGame
     - GameStateManager
+    - Junction
     - LineGenerator
     - LineSymbol
     - LoadGameManager
+    - MainSimulationManager
+    - Pipe
     - ProcessGenerator
     - ProgressMenuManager
     - PropertiesWindow
+    - Pump
+    - Reservoir
     - SaveGameManager
+    - Tank
     - TimeProcess
+    - TimelineScrollbar
     - UIObject
+    - Valve
     - VisibilityChangerButton
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -56,67 +62,79 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9676}
+      Script: {instanceID: 9674}
     - Class: 114
-      Script: {instanceID: 9708}
+      Script: {instanceID: 9678}
     - Class: 114
-      Script: {instanceID: 9760}
+      Script: {instanceID: 9756}
+    - Class: 114
+      Script: {instanceID: 9834}
+    - Class: 114
+      Script: {instanceID: 9836}
     - Class: 114
       Script: {instanceID: 9838}
     - Class: 114
-      Script: {instanceID: 9840}
+      Script: {instanceID: 9876}
     - Class: 114
-      Script: {instanceID: 9842}
+      Script: {instanceID: 9918}
     - Class: 114
-      Script: {instanceID: 9880}
+      Script: {instanceID: 9950}
     - Class: 114
-      Script: {instanceID: 9954}
+      Script: {instanceID: 10066}
     - Class: 114
-      Script: {instanceID: 10236}
+      Script: {instanceID: 10126}
     - Class: 114
-      Script: {instanceID: 10260}
+      Script: {instanceID: 10188}
     - Class: 114
-      Script: {instanceID: 10404}
+      Script: {instanceID: 10232}
     - Class: 114
-      Script: {instanceID: 10560}
+      Script: {instanceID: 10256}
     - Class: 114
-      Script: {instanceID: 10588}
+      Script: {instanceID: 10306}
     - Class: 114
-      Script: {instanceID: 10606}
+      Script: {instanceID: 10400}
     - Class: 114
-      Script: {instanceID: 10648}
+      Script: {instanceID: 10494}
     - Class: 114
-      Script: {instanceID: 10696}
+      Script: {instanceID: 10554}
     - Class: 114
-      Script: {instanceID: 10716}
+      Script: {instanceID: 10582}
     - Class: 114
-      Script: {instanceID: 10728}
+      Script: {instanceID: 10600}
     - Class: 114
-      Script: {instanceID: 10800}
+      Script: {instanceID: 10642}
     - Class: 114
-      Script: {instanceID: 10820}
+      Script: {instanceID: 10686}
     - Class: 114
-      Script: {instanceID: 10826}
+      Script: {instanceID: 10706}
     - Class: 114
-      Script: {instanceID: 10840}
+      Script: {instanceID: 10718}
     - Class: 114
-      Script: {instanceID: 11062}
+      Script: {instanceID: 10776}
     - Class: 114
-      Script: {instanceID: 11072}
+      Script: {instanceID: 10790}
     - Class: 114
-      Script: {instanceID: 11104}
+      Script: {instanceID: 10814}
     - Class: 114
-      Script: {instanceID: 11204}
+      Script: {instanceID: 10828}
     - Class: 114
-      Script: {instanceID: 11360}
+      Script: {instanceID: 11054}
     - Class: 114
-      Script: {instanceID: 11362}
+      Script: {instanceID: 11086}
     - Class: 114
-      Script: {instanceID: 11368}
+      Script: {instanceID: 11136}
     - Class: 114
-      Script: {instanceID: 11424}
+      Script: {instanceID: 11186}
     - Class: 114
-      Script: {instanceID: 41808}
+      Script: {instanceID: 11342}
+    - Class: 114
+      Script: {instanceID: 11344}
+    - Class: 114
+      Script: {instanceID: 11350}
+    - Class: 114
+      Script: {instanceID: 11406}
+    - Class: 114
+      Script: {instanceID: 13640}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -136,16 +154,16 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
+      Hash: 5999c83d80a3f02cf676ed593e538975
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Tank
+  - hash:
+      serializedVersion: 2
       Hash: 4bc4346a71a8df53a6b106f68ef3a190
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: CanvasScaler
-  - hash:
-      serializedVersion: 2
-      Hash: 96cc484e22d02388ba16464050e06181
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ComponentOutline
   - hash:
       serializedVersion: 2
       Hash: 3c08375166df118bd1801438fc36b92f
@@ -176,6 +194,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_ScrollbarEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 438dcdf374446e68d01922e996c9d29f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BaseElement
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -244,6 +268,12 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
+      Hash: 3265c4bc358a9716522a71b856a047f2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Pipe
+  - hash:
+      serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -293,6 +323,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TimelineScrollbar
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: RectMask2D
@@ -302,6 +338,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SubMeshUI
+  - hash:
+      serializedVersion: 2
+      Hash: 45d79ef4733386f866658bd1f2fdb0e8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Junction
   - hash:
       serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
@@ -314,6 +356,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Mask
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MainSimulationManager
   - hash:
       serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
@@ -358,6 +406,12 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
+      Hash: 62c0f364c3d86014a6903768f7da10c4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Reservoir
+  - hash:
+      serializedVersion: 2
       Hash: 3148bafb01b4c12e44e574b89ecb4d95
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -388,6 +442,12 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
+      Hash: 6242ec2d3d7028ce16987359ac6db470
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Pump
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
@@ -406,7 +466,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 346d6456abb6aeb15c22fb597ebf960d
+      Hash: 123dbc8bf186b8076783def43ae68629
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LineGenerator
@@ -424,7 +484,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 924714772eb5735e5658e63887d6f3a5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ComponentsFactory
@@ -448,6 +508,12 @@ ScriptsOnlyBuild:
     className: ProcessGenerator
   - hash:
       serializedVersion: 2
+      Hash: d3be34ffbc32ce8d66597daf9b4c1719
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Valve
+  - hash:
+      serializedVersion: 2
       Hash: 783f593b9380cf72d0f7ebfd4a0d4bcd
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -458,12 +524,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalReceiver
-  - hash:
-      serializedVersion: 2
-      Hash: 66160cc56bfe5dd66fd0a914d67e4ca7
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ComponentsManager
   - hash:
       serializedVersion: 2
       Hash: 5ad4aa237d47ac2bab17bacb672edf7a
@@ -526,12 +586,6 @@ ScriptsOnlyBuild:
     className: AudioTrack
   - hash:
       serializedVersion: 2
-      Hash: 924714772eb5735e5658e63887d6f3a5
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ComponentGameObjectsFactory
-  - hash:
-      serializedVersion: 2
       Hash: ae83e830e7a90c0aff918c4c2e520825
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -548,6 +602,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: VisibilityChangerButton
+  - hash:
+      serializedVersion: 2
+      Hash: d1995bca85d5f3d6e394d745d8170149
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LineSymbol
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -676,10 +736,10 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: d1995bca85d5f3d6e394d745d8170149
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: LineSymbol
+    className: LineGeneratorHelper
   platform: 5
   scenePathNames:
   - Assets/Scenes/Prototype.unity

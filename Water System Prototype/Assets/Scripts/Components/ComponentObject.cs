@@ -6,7 +6,7 @@ public class ComponentObject : MonoBehaviour
 {
     public bool useDebug = false, isNodeComponent = true;
     public int elementID;
-    public float maxDeltaTime = 0.3f;
+    public float maxDeltaTime = 0.1f;
 
     private float mouseDownTime;
     private Vector3 originalPos;
@@ -49,7 +49,7 @@ public class ComponentObject : MonoBehaviour
             return;
         }
 
-        if(!GameStateManager.Instance.createPath)
+        if(GameStateManager.Instance.dragComponents)
         {
             //componentsManager.OpenPropertiesWindow(elementID);
             gameObject.GetComponent<BaseElement>().ChangeWindowVisibility(true);
