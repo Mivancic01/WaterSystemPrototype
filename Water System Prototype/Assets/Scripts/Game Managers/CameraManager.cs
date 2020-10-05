@@ -28,7 +28,7 @@ public class CameraManager : MonoBehaviour
     void Update()
     {
         UpdateCameraZPos();
-        UpdateZoom();
+        UpdateZoomFromMouseWheel();
 
         if (!GameStateManager.Instance.dragMap)
             return;
@@ -46,24 +46,45 @@ public class CameraManager : MonoBehaviour
             UpdateDrag();
     }
 
-    private void UpdateZoom()
+    private void UpdateZoomFromMouseWheel(float strengthFactor = 1.0f)
     {
         // -------------------Zooming Out------------
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
             if (Camera.main.fieldOfView <= maxFov)
-                Camera.main.fieldOfView += 2;
+                Camera.main.fieldOfView += 2 * strengthFactor;
             if (Camera.main.orthographicSize <= maxOrthSize)
-                Camera.main.orthographicSize += 0.5f;
+                Camera.main.orthographicSize += 0.5f * strengthFactor;
         }
 
         // ---------------Zooming In------------------------
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             if (Camera.main.fieldOfView > minFov)
-                Camera.main.fieldOfView -= 2;
+                Camera.main.fieldOfView -= 2 * strengthFactor;
             if (Camera.main.orthographicSize >= minOrthSize)
-                Camera.main.orthographicSize -= 0.5f;
+                Camera.main.orthographicSize -= 0.5f * strengthFactor;
+        }
+    }
+
+    public void UpdateZoom(bool useZoomIn)
+    {
+        float strengthFactor = 1.0f;
+
+        if (useZoomIn)
+        {
+            if (Camera.main.fieldOfView > minFov)
+                Camera.main.fieldOfView -= 2 * strengthFactor;
+            if (Camera.main.orthographicSize >= minOrthSize)
+                Camera.main.orthographicSize -= 0.5f * strengthFactor;
+        }
+
+        else 
+        {
+            if (Camera.main.fieldOfView <= maxFov)
+                Camera.main.fieldOfView += 2 * strengthFactor;
+            if (Camera.main.orthographicSize <= maxOrthSize)
+                Camera.main.orthographicSize += 0.5f * strengthFactor;
         }
     }
 
