@@ -7,21 +7,24 @@ public class Pump : BaseElement
 {
     public int startNodeID, endNodeID;
     public float flow, flowVelocity;
+    public int curveID;
 
-    public Pump(int id, int typeId, int pStartNodeID, int pEndNodeID, float pFlow, float pFlowVelocity) : base(id, typeId)
+    public Pump(int id, int typeId, int pStartNodeID, int pEndNodeID, float pFlow, float pFlowVelocity, int pCurveID) : base(id, typeId)
     {
         flow = pFlow;
         flowVelocity = pFlowVelocity;
         startNodeID = pStartNodeID;
         endNodeID = pEndNodeID;
+        curveID = pCurveID;
     }
 
-    public Pump(int id, int typeId, int pStartNodeID, int pEndNodeID) : base(id, typeId)
+    public Pump(int id, int typeId, int pStartNodeID, int pEndNodeID, int pCurveID) : base(id, typeId)
     {
         flow = 0.0f;
         flowVelocity = 0.0f;
         startNodeID = pStartNodeID;
         endNodeID = pEndNodeID;
+        curveID = pCurveID;
     }
 
     public void Init(Pump pumpScript)
@@ -31,6 +34,7 @@ public class Pump : BaseElement
 
         flow = pumpScript.flow;
         flowVelocity = pumpScript.flowVelocity;
+        curveID = pumpScript.curveID;
 
     }
 
@@ -59,6 +63,8 @@ public class Pump : BaseElement
     {
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(0, flow);
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(1, flowVelocity);
+
+        propertiesWindow.GetComponent<PropertiesWindow>().UpdateDropdowns(0, curveID);
 
         //Debug.Log("CALLED Pump::UpdatePropertiesValues()");
     }

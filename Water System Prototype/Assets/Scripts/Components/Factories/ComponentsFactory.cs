@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -124,6 +125,9 @@ public class ComponentsFactory : MonoBehaviour
         line = line.Remove(0, FileReaderHelper.FindNextNumberIndex(line));
 
         float flowVelocity = FileReaderHelper.GetNextNumber(line);
+        line = line.Remove(0, FileReaderHelper.FindNextNumberIndex(line));
+
+        int statusID = (int)FileReaderHelper.GetNextNumber(line);
 
         GameStateManager.Instance.SetInactiveState();
         GameStateManager.Instance.SetPathCreationState();
@@ -132,7 +136,7 @@ public class ComponentsFactory : MonoBehaviour
         var endNodePos = MainSimulationManager.ComponentsHelper.GetComponentPosition(endNodeID);
 
         var obj = LineGenerator.Instance.CreateAndReturnLineComponent(startNodePos, endNodePos, typeId);
-        var pipeScript = new Pipe(id, typeId, startNodeID, endNodeID, length, diameter, flow, flowVelocity);
+        var pipeScript = new Pipe(id, typeId, startNodeID, endNodeID, length, diameter, flow, flowVelocity, statusID);
         obj.GetComponent<Pipe>().Init(pipeScript);
 
         GameStateManager.Instance.SetInactiveState();
@@ -153,6 +157,9 @@ public class ComponentsFactory : MonoBehaviour
         line = line.Remove(0, FileReaderHelper.FindNextNumberIndex(line));
 
         float flowVelocity = FileReaderHelper.GetNextNumber(line);
+        line = line.Remove(0, FileReaderHelper.FindNextNumberIndex(line));
+
+        int curveTypeID = (int)FileReaderHelper.GetNextNumber(line);
 
         var startNodePos = MainSimulationManager.ComponentsHelper.GetComponentPosition(startNodeID);
         var endNodePos = MainSimulationManager.ComponentsHelper.GetComponentPosition(endNodeID);
@@ -161,7 +168,7 @@ public class ComponentsFactory : MonoBehaviour
         GameStateManager.Instance.SetPathCreationState();
 
         var obj = LineGenerator.Instance.CreateAndReturnLineComponent(startNodePos, endNodePos, typeId);
-        var pumpScript = new Pump(id, typeId, startNodeID, endNodeID, flow, flowVelocity);
+        var pumpScript = new Pump(id, typeId, startNodeID, endNodeID, flow, flowVelocity, curveTypeID);
         obj.GetComponent<Pump>().Init(pumpScript);
 
         GameStateManager.Instance.SetInactiveState();
@@ -214,6 +221,13 @@ public class ComponentsFactory : MonoBehaviour
         line = line.Remove(0, FileReaderHelper.FindNextNumberIndex(line));
 
         float flowVelocity = FileReaderHelper.GetNextNumber(line);
+        line = line.Remove(0, FileReaderHelper.FindNextNumberIndex(line));
+
+        int statusID = (int)FileReaderHelper.GetNextNumber(line);
+        line = line.Remove(0, FileReaderHelper.FindNextNumberIndex(line));
+
+        int valveTypeID = (int)FileReaderHelper.GetNextNumber(line);
+        Debug.Log("Read valveTypeID is : " + valveTypeID);
 
         var startNodePos = MainSimulationManager.ComponentsHelper.GetComponentPosition(startNodeID);
         var endNodePos = MainSimulationManager.ComponentsHelper.GetComponentPosition(endNodeID);
@@ -222,7 +236,7 @@ public class ComponentsFactory : MonoBehaviour
         GameStateManager.Instance.SetPathCreationState();
 
         var obj = LineGenerator.Instance.CreateAndReturnLineComponent(startNodePos, endNodePos, typeId);
-        var valveScript = new Valve(id, typeId, startNodeID, endNodeID, diameter, flow, flowVelocity);
+        var valveScript = new Valve(id, typeId, startNodeID, endNodeID, diameter, flow, flowVelocity, statusID, valveTypeID);
         obj.GetComponent<Valve>().Init(valveScript);
 
         GameStateManager.Instance.SetInactiveState();

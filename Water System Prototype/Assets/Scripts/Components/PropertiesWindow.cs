@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PropertiesWindow : MonoBehaviour
 {
     public InputField field1, field2, field3, field4;
+    public Dropdown status, curve, valveType;
     private float value1 = 0.0f, value2 = 0.0f, value3 = 0.0f, value4 = 0.0f;
     public int elementID;
 
@@ -48,6 +49,18 @@ public class PropertiesWindow : MonoBehaviour
             value4 = value;
             field4.SetTextWithoutNotify(value.ToString());
         }
+    }
+
+    public void UpdateDropdowns(int dropdownID, int valueID)
+    {
+        if (dropdownID == 0 && status != null)
+            status.SetValueWithoutNotify(valueID);
+
+        else if(dropdownID == 1 && curve != null)
+            curve.SetValueWithoutNotify(valueID);
+
+        else if (dropdownID == 2 && valveType != null)
+            valveType.SetValueWithoutNotify(valueID);
     }
 
     public void ChangeValue()

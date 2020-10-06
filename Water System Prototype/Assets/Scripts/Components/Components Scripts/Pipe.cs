@@ -7,8 +7,9 @@ public class Pipe : BaseElement
 {
     public int startNodeID, endNodeID;
     public float length, diameter, flow, flowVelocity;
+    public int statusID;
 
-    public Pipe(int id, int typeId, int pStartNodeID, int pEndNodeID, float pLength, float pDiameter, float pFlow, float pFlowVelocity) : base(id, typeId)
+    public Pipe(int id, int typeId, int pStartNodeID, int pEndNodeID, float pLength, float pDiameter, float pFlow, float pFlowVelocity, int pStatusID) : base(id, typeId)
     {
         length = pLength;
         diameter = pDiameter;
@@ -16,8 +17,9 @@ public class Pipe : BaseElement
         flowVelocity = pFlowVelocity;
         startNodeID = pStartNodeID;
         endNodeID = pEndNodeID;
+        statusID = pStatusID;
     }
-    public Pipe(int id, int typeId, int pStartNodeID, int pEndNodeID) : base(id, typeId)
+    public Pipe(int id, int typeId, int pStartNodeID, int pEndNodeID, int pStatusID) : base(id, typeId)
     {
         length = 0.0f;
         diameter = 0.0f;
@@ -25,6 +27,7 @@ public class Pipe : BaseElement
         flowVelocity = 0.0f;
         startNodeID = pStartNodeID;
         endNodeID = pEndNodeID;
+        statusID = pStatusID;
     }
 
     public void Init(Pipe pipeScript)
@@ -36,6 +39,7 @@ public class Pipe : BaseElement
         diameter = pipeScript.diameter;
         flow = pipeScript.flow;
         flowVelocity = pipeScript.flowVelocity;
+        statusID = pipeScript.statusID;
 
     }
 
@@ -66,6 +70,8 @@ public class Pipe : BaseElement
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(1, diameter);
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(2, flow);
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(3, flowVelocity);
+
+        propertiesWindow.GetComponent<PropertiesWindow>().UpdateDropdowns(0, statusID);
 
         //Debug.Log("CALLED Pipe::UpdatePropertiesValues()");
     }

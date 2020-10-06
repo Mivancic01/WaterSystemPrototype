@@ -2851,6 +2851,9 @@ MonoBehaviour:
   field2: {fileID: 2756748506450555646}
   field3: {fileID: 5002050911145436326}
   field4: {fileID: 6578578889545464664}
+  status: {fileID: 4254414825871355258}
+  curve: {fileID: 0}
+  valveType: {fileID: 0}
   elementID: 0
 --- !u!1 &8360885779594316693
 GameObject:

@@ -8,23 +8,28 @@ public class Valve : BaseElement
 {
     public int startNodeID, endNodeID;
     public float diameter, flow, flowVelocity;
+    public int statusID, valveTypeID;
 
-    public Valve(int id, int typeId, int pStartNodeID, int pEndNodeID, float pDiameter, float pFlow, float pFlowVelocity) : base(id, typeId)
+    public Valve(int id, int typeId, int pStartNodeID, int pEndNodeID, float pDiameter, float pFlow, float pFlowVelocity, int pStatusID, int pValveTypeID) : base(id, typeId)
     {
         diameter = pDiameter;
         flow = pFlow;
         flowVelocity = pFlowVelocity;
         startNodeID = pStartNodeID;
         endNodeID = pEndNodeID;
+        statusID = pStatusID;
+        valveTypeID = pValveTypeID;
     }
 
-    public Valve(int id, int typeId, int pStartNodeID, int pEndNodeID) : base(id, typeId)
+    public Valve(int id, int typeId, int pStartNodeID, int pEndNodeID, int pStatusID, int pValveTypeID) : base(id, typeId)
     {
         diameter = 0.0f;
         flow = 0.0f;
         flowVelocity = 0.0f;
         startNodeID = pStartNodeID;
         endNodeID = pEndNodeID;
+        statusID = pStatusID;
+        valveTypeID = pValveTypeID;
     }
 
     public void Init(Valve valveScript)
@@ -35,6 +40,8 @@ public class Valve : BaseElement
         diameter = valveScript.diameter;
         flow = valveScript.flow;
         flowVelocity = valveScript.flowVelocity;
+        statusID = valveScript.statusID;
+        valveTypeID = valveScript.valveTypeID;
     }
 
     public override void Initialize(int pTypeID = -1, int pID = -1)
@@ -63,6 +70,9 @@ public class Valve : BaseElement
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(0, diameter);
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(1, flow);
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(2, flowVelocity);
+
+        propertiesWindow.GetComponent<PropertiesWindow>().UpdateDropdowns(0, statusID);
+        propertiesWindow.GetComponent<PropertiesWindow>().UpdateDropdowns(2, valveTypeID);
 
         //Debug.Log("CALLED Valve::UpdatePropertiesValues()");
     }
