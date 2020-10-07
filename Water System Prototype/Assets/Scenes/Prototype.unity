@@ -6066,8 +6066,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48718182dd3fe1343ac751cad184ea94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeImage: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 3}
-  inactiveImage: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 3}
+  activeImage: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  inactiveImage: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
   useDebug: 0
 --- !u!1 &1289801191
 GameObject:
