@@ -9,7 +9,7 @@ public class Pump : BaseElement
     public float flow, flowVelocity;
     public int curveID;
 
-    public Pump(int id, int typeId, int pStartNodeID, int pEndNodeID, float pFlow, float pFlowVelocity, int pCurveID) : base(id, typeId)
+    public Pump(int id, int typeId, int pStartNodeID, int pEndNodeID, float pFlow, float pFlowVelocity, int pCurveID) : base(id, typeId, false)
     {
         flow = pFlow;
         flowVelocity = pFlowVelocity;
@@ -18,7 +18,7 @@ public class Pump : BaseElement
         curveID = pCurveID;
     }
 
-    public Pump(int id, int typeId, int pStartNodeID, int pEndNodeID, int pCurveID) : base(id, typeId)
+    public Pump(int id, int typeId, int pStartNodeID, int pEndNodeID, int pCurveID) : base(id, typeId, false)
     {
         flow = 0.0f;
         flowVelocity = 0.0f;
@@ -36,14 +36,17 @@ public class Pump : BaseElement
         flowVelocity = pumpScript.flowVelocity;
         curveID = pumpScript.curveID;
 
+        isNodeComponent = false;
     }
 
-    public override void Initialize(int pTypeID = -1, int pID = -1)
+    public override void Initialize(int pTypeID = -1, int pID = -1, bool isNode = false)
     {
         if (pTypeID != -1)
             typeID = pTypeID;
         if (pID != -1)
             ID = pID;
+
+        isNodeComponent = isNode;
 
         GameStateManager.Instance.SetInactiveState();
         GameStateManager.Instance.SetPathCreationState();

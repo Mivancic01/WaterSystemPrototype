@@ -40,5 +40,14 @@ public partial class MainSimulationManager
             Debug.LogError("OBJECT IS NOT A LINE!");
             return (-1, -1);
         }
+
+        public static bool IsSimulationViable()
+        {
+            foreach (var component in mainManager.Instance.componentsList)
+                if (component.isNodeComponent && !mainManager.Instance.nodeConnections.ContainsKey(component.ID))
+                    return false;
+
+            return true;
+        }
     }
 }

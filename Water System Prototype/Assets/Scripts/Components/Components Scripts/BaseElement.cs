@@ -7,19 +7,23 @@ public class BaseElement : MonoBehaviour
 {
     protected GameObject propertiesWindow;
     public int typeID = -1, ID = -1;
+    public bool isNodeComponent { get; protected set; }
 
-    public BaseElement(int id, int typeId)
+    public BaseElement(int id, int typeId, bool isNode)
     {
         ID = id;
         typeID = typeId;
+        isNodeComponent = isNode;
     }
 
-    public virtual void Initialize(int pTypeID = -1, int pID = -1)
+    public virtual void Initialize(int pTypeID = -1, int pID = -1, bool isNode = true)
     {
         if (pTypeID != -1)
             typeID = pTypeID;
         if (pID != -1)
             ID = pID;
+
+        isNodeComponent = isNode;
 
         gameObject.GetComponent<ComponentObject>().elementID = ID;
 

@@ -7,14 +7,14 @@ public class Junction : BaseElement
 {
     public float baseDemand, elevation, pressure;
 
-    public Junction(int id, int typeId, float pBaseDemand, float pElevation, float pPressure) : base(id, typeId)
+    public Junction(int id, int typeId, float pBaseDemand, float pElevation, float pPressure) : base(id, typeId, true)
     {
 
         baseDemand = pBaseDemand;
         elevation = pElevation;
         pressure = pPressure;
     }
-    public Junction(int id, int typeId) : base(id, typeId)
+    public Junction(int id, int typeId) : base(id, typeId, true)
     {
 
         baseDemand = 0.0f;

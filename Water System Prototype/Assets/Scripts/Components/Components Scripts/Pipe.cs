@@ -9,7 +9,7 @@ public class Pipe : BaseElement
     public float length, diameter, flow, flowVelocity;
     public int statusID;
 
-    public Pipe(int id, int typeId, int pStartNodeID, int pEndNodeID, float pLength, float pDiameter, float pFlow, float pFlowVelocity, int pStatusID) : base(id, typeId)
+    public Pipe(int id, int typeId, int pStartNodeID, int pEndNodeID, float pLength, float pDiameter, float pFlow, float pFlowVelocity, int pStatusID) : base(id, typeId, false)
     {
         length = pLength;
         diameter = pDiameter;
@@ -19,7 +19,7 @@ public class Pipe : BaseElement
         endNodeID = pEndNodeID;
         statusID = pStatusID;
     }
-    public Pipe(int id, int typeId, int pStartNodeID, int pEndNodeID, int pStatusID) : base(id, typeId)
+    public Pipe(int id, int typeId, int pStartNodeID, int pEndNodeID, int pStatusID) : base(id, typeId, false)
     {
         length = 0.0f;
         diameter = 0.0f;
@@ -41,14 +41,17 @@ public class Pipe : BaseElement
         flowVelocity = pipeScript.flowVelocity;
         statusID = pipeScript.statusID;
 
+        isNodeComponent = false;
     }
 
-    public override void Initialize(int pTypeID = -1, int pID = -1)
+    public override void Initialize(int pTypeID = -1, int pID = -1, bool isNode = false)
     {
         if (pTypeID != -1)
             typeID = pTypeID;
         if (pID != -1)
             ID = pID;
+
+        isNodeComponent = isNode;
 
         GameStateManager.Instance.SetInactiveState();
         GameStateManager.Instance.SetPathCreationState();

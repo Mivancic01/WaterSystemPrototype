@@ -16,7 +16,7 @@ public partial class MainSimulationManager
             if (ID == -1)
             {
                 ID = helper.GetNextFreeID();
-                componentScript.Initialize(typeID, ID);
+                componentScript.Initialize(typeID, ID, true);
             }
             else
                 componentScript.Initialize();
@@ -39,7 +39,7 @@ public partial class MainSimulationManager
             if (ID == -1)
             {
                 ID = helper.GetNextFreeID();
-                componentScript.Initialize(typeID, ID);
+                componentScript.Initialize(typeID, ID, false);
             }
             else
                 componentScript.Initialize();
@@ -90,8 +90,20 @@ public partial class MainSimulationManager
             foreach (var model in mainInstace.modelList)
                 model.RemoveElement(componentID);
 
-            component.DestroyElement();
+            foreach (var connection in mainInstace.allConnections)
+                if (connection.Value.First == componentID || connection.Value.Second == componentID)
+                    mainInstace.allConnections.Remove(connection.Key);
+
             mainInstace.componentsList.Remove(component);
+            mainInstace.allIDs.Remove(componentID);
+            mainInstace.componentsIdIndexMap.Remove(componentID);
+            mainInstace.nodeConnections.Remove(componentID);
+
+            for (int i = 0; i < mainInstace.componentsList.Count; i++)
+                mainInstace.componentsIdIndexMap[mainInstace.componentsList[i].ID] = i;
+
+
+            component.DestroyElement();
         }
 
         public static void UpdateLinesPosition(int componentID)

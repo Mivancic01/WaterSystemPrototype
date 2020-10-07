@@ -10,7 +10,7 @@ public class Valve : BaseElement
     public float diameter, flow, flowVelocity;
     public int statusID, valveTypeID;
 
-    public Valve(int id, int typeId, int pStartNodeID, int pEndNodeID, float pDiameter, float pFlow, float pFlowVelocity, int pStatusID, int pValveTypeID) : base(id, typeId)
+    public Valve(int id, int typeId, int pStartNodeID, int pEndNodeID, float pDiameter, float pFlow, float pFlowVelocity, int pStatusID, int pValveTypeID) : base(id, typeId, false)
     {
         diameter = pDiameter;
         flow = pFlow;
@@ -21,7 +21,7 @@ public class Valve : BaseElement
         valveTypeID = pValveTypeID;
     }
 
-    public Valve(int id, int typeId, int pStartNodeID, int pEndNodeID, int pStatusID, int pValveTypeID) : base(id, typeId)
+    public Valve(int id, int typeId, int pStartNodeID, int pEndNodeID, int pStatusID, int pValveTypeID) : base(id, typeId, false)
     {
         diameter = 0.0f;
         flow = 0.0f;
@@ -42,14 +42,18 @@ public class Valve : BaseElement
         flowVelocity = valveScript.flowVelocity;
         statusID = valveScript.statusID;
         valveTypeID = valveScript.valveTypeID;
+
+        isNodeComponent = false;
     }
 
-    public override void Initialize(int pTypeID = -1, int pID = -1)
+    public override void Initialize(int pTypeID = -1, int pID = -1, bool isNode = false)
     {
         if (pTypeID != -1)
             typeID = pTypeID;
         if (pID != -1)
             ID = pID;
+
+        isNodeComponent = isNode;
 
         GameStateManager.Instance.SetInactiveState();
         GameStateManager.Instance.SetPathCreationState();

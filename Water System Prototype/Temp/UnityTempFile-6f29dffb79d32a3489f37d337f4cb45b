@@ -1,11 +1,12 @@
 /target:library
 /nowarn:0169
-/out:Temp/UnityEditor.UI.dll
+/out:Temp/Unity.Rider.Editor.dll
 /debug:portable
 /optimize-
 /nostdlib+
 /preferreduilang:en-US
 /langversion:latest
+/reference:Library/ScriptAssemblies/UnityEditor.UI.dll
 /reference:Library/ScriptAssemblies/UnityEngine.UI.dll
 /reference:Library/ScriptAssemblies/UnityEditor.TestRunner.dll
 /reference:Library/ScriptAssemblies/UnityEngine.TestRunner.dll
@@ -75,7 +76,7 @@
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll"
-/reference:"C:/Users/Marko/Documents/Faks/Diplomski Rad Prototiip/WaterSystemPrototype/Water System Prototype/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll"
+/reference:"D:/Documents/Faks/Diplomski Rad Prototiip/WaterSystemPrototype/Water System Prototype/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Core.dll"
@@ -287,38 +288,14 @@
 /define:ENABLE_LEGACY_INPUT_MANAGER
 /define:CSHARP_7_OR_LATER
 /define:CSHARP_7_3_OR_NEWER
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\EventSystem\EventSystemEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\EventSystem\EventTriggerEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\Properties\AssemblyInfo.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\AspectRatioFitterEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\ButtonEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\CanvasScalerEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\ContentSizeFitterEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\DropdownEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\GraphicEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\GridLayoutGroupEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\HorizontalOrVerticalLayoutGroupEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\ImageEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\InputFieldEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\InterceptedEventsPreview.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\LayoutElementEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\LayoutPropertiesPreview.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\MaskEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\MenuOptions.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\PrefabLayoutRebuilder.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\PropertyDrawers\AnimationTriggersDrawer.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\PropertyDrawers\ColorBlockDrawer.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\PropertyDrawers\DropdownOptionListDrawer.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\PropertyDrawers\FontDataDrawer.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\PropertyDrawers\NavigationDrawer.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\PropertyDrawers\SpriteStateDrawer.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\RawImageEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\RectMask2DEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\ScrollbarEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\ScrollRectEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\SelectableEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\SelfControllerEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\SliderEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\SpriteDrawUtility.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\TextEditor.cs"
-"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Editor\UI\ToggleEditor.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\Discovery.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\EditorPluginInterop.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\LoggingLevel.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\PluginSettings.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\ProjectGeneration.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\RiderInitializer.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\RiderScriptEditor.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\RiderScriptEditorData.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\Util\FileSystemUtil.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\Util\LibcNativeInterop.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\Util\UnityUtils.cs"

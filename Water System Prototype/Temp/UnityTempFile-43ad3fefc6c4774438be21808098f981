@@ -1,11 +1,12 @@
 /target:library
 /nowarn:0169
-/out:Temp/Unity.Rider.Editor.dll
+/out:Temp/Unity.TextMeshPro.Editor.dll
 /debug:portable
 /optimize-
 /nostdlib+
 /preferreduilang:en-US
 /langversion:latest
+/reference:Library/ScriptAssemblies/Unity.TextMeshPro.dll
 /reference:Library/ScriptAssemblies/UnityEditor.UI.dll
 /reference:Library/ScriptAssemblies/UnityEngine.UI.dll
 /reference:Library/ScriptAssemblies/UnityEditor.TestRunner.dll
@@ -76,7 +77,7 @@
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll"
-/reference:"C:/Users/Marko/Documents/Faks/Diplomski Rad Prototiip/WaterSystemPrototype/Water System Prototype/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll"
+/reference:"D:/Documents/Faks/Diplomski Rad Prototiip/WaterSystemPrototype/Water System Prototype/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Core.dll"
@@ -288,14 +289,50 @@
 /define:ENABLE_LEGACY_INPUT_MANAGER
 /define:CSHARP_7_OR_LATER
 /define:CSHARP_7_3_OR_NEWER
-"C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\Discovery.cs"
-"C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\EditorPluginInterop.cs"
-"C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\LoggingLevel.cs"
-"C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\PluginSettings.cs"
-"C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\ProjectGeneration.cs"
-"C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\RiderInitializer.cs"
-"C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\RiderScriptEditor.cs"
-"C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\RiderScriptEditorData.cs"
-"C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\Util\FileSystemUtil.cs"
-"C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\Util\LibcNativeInterop.cs"
-"C:\Users\Marko\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.ide.rider@1.1.0\Rider\Editor\Util\UnityUtils.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\DropdownOptionListDrawer.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\GlyphInfoDrawer.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\GlyphMetricsPropertyDrawer.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\GlyphRectPropertyDrawer.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_BaseEditorPanel.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_BaseShaderGUI.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_BitmapShaderGUI.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_CharacterPropertyDrawer.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_ColorGradientAssetMenu.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_ColorGradientEditor.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_DropdownEditor.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_EditorCoroutine.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_EditorPanel.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_EditorUtility.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_FontAsset_CreationMenu.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_FontAssetEditor.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_GlyphPairAdjustmentRecordPropertyDrawer.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_GlyphPropertyDrawer.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_InputFieldEditor.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_MeshRendererEditor.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_PackageUtilities.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_PostBuildProcessHandler.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_ProjectTextSettings.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_ResourcesLoader.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_SDFShaderGUI.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_SerializedPropertyHolder.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_SettingsEditor.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_SpriteAssetEditor.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_SpriteAssetImporter.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_SpriteAssetMenu.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_SpriteCharacterPropertyDrawer.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_SpriteGlyphPropertyDrawer.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_StyleAssetMenu.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_StyleSheetEditor.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_SubMesh_Editor.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_SubMeshUI_Editor.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_TextAlignmentDrawer.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_UiEditorPanel.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMP_UIStyleManager.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMPro_ContextMenus.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMPro_CreateObjectMenu.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMPro_EditorShaderUtilities.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMPro_FontAssetCreatorWindow.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMPro_FontPlugin.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMPro_SortingLayerHelper.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMPro_TextContainerEditor.cs"
+"D:\Documents\Faks\Diplomski Rad Prototiip\WaterSystemPrototype\Water System Prototype\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Editor\TMPro_TexturePostProcessor.cs"

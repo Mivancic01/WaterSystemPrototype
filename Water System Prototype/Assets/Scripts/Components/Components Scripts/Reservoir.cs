@@ -7,11 +7,11 @@ public class Reservoir : BaseElement
 {
     public float totalHead;
 
-    public Reservoir(int id, int typeId, float pTotalHead) : base(id, typeId)
+    public Reservoir(int id, int typeId, float pTotalHead) : base(id, typeId, true)
     {
         totalHead = pTotalHead;
     }
-    public Reservoir(int id, int typeId) : base(id, typeId)
+    public Reservoir(int id, int typeId) : base(id, typeId, true)
     {
         totalHead = 0.0f;
     }
