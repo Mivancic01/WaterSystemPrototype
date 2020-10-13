@@ -12,6 +12,8 @@ public partial class MainSimulationManager : MonoBehaviour
     private Dictionary<int, List<int>> nodeConnections;
     private List<Model> modelList;
 
+    private const int defaultModelSize = 4;
+
     public static MainSimulationManager Instance { get; private set; }
 
     private int currentOpenModel;
@@ -41,6 +43,10 @@ public partial class MainSimulationManager : MonoBehaviour
     {
         for (int i = 0; i < modelList.Count; i++)
             ModelsManager.SwitchComponentsVisibility(modelList[i].GetComponentsList(), false);
+
+        if(modelList.Count == 0)
+            for(int i = 0, startYear = 2020; i < defaultModelSize; i++)
+                modelList.Add(new Model(startYear + 5*i));
 
         ModelsManager.SwitchComponentsVisibility(modelList[0].GetComponentsList(), true);
 
