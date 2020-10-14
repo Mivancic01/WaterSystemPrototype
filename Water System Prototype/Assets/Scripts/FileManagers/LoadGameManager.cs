@@ -27,11 +27,20 @@ public class LoadGameManager : MonoBehaviour
 
     void Start()
     {
-        string line;
+        string fileName = PlayerPrefs.GetString("SaveFile", "INVALID_NAME");
+
+        if (fileName.Equals("INVALID_NAME"))
+        {
+            MainSimulationManager.Instance.InitializeScene();
+            return;
+        }
+
+        fileName = "SaveFiles/" + fileName + ".txt";
 
         System.IO.StreamReader file =
             new System.IO.StreamReader("SaveFiles/SaveFileConcept.txt");
 
+        string line;
         while ((line = file.ReadLine()) != null)
             ReadSaveFile(line);
 

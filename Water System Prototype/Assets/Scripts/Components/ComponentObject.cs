@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class ComponentObject : MonoBehaviour
 {
-    public bool useDebug = false, isNodeComponent = true;
-    public int elementID;
+    public bool useDebug = false, isNodeComponent = true, isTutorial = false;
+    public int elementID, localEventID = -1;
     public float maxDeltaTime = 0.1f;
 
     private float mouseDownTime;
     private Vector3 originalPos;
+
+    void Awake()
+    {
+        if (TutorialManager.Instance != null)
+            isTutorial = true;
+    }
 
     void OnMouseDrag()
     {
@@ -32,6 +38,7 @@ public class ComponentObject : MonoBehaviour
         {
             if(isNodeComponent)
                 MainSimulationManager.ComponentsManager.UpdateLinesPosition(elementID);
+
             return;
         }
 
@@ -84,6 +91,10 @@ public class ComponentObject : MonoBehaviour
 
             yield return null;
         }
-        
+
+
+        if (isTutorial)
+            TutorialManager.Instance.CheckEvent(localEventID);
+
     }
 }

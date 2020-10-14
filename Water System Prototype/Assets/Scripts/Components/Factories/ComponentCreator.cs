@@ -6,10 +6,10 @@ using UnityEngine.EventSystems;
 public class ComponentCreator : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     public static bool isInstantiated = false;
-    public bool useDebug = false;
+    public bool useDebug = false, isTutorial = false;
 
     public GameObject componentPrefab;
-    public int componentTypeID;
+    public int componentTypeID, localEventID = -1;
 
     private const int nullID = -1;
     private const bool addToCurrentModel = true;
@@ -18,6 +18,10 @@ public class ComponentCreator : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         if (GameStateManager.Instance.createPath || GameStateManager.Instance.dragMap)
             return;
+
+        if(isTutorial)
+            if (!TutorialManager.Instance.CheckEvent(localEventID))
+                return;
 
         GameStateManager.Instance.SetInactiveState();
         if (useDebug) Debug.Log("DRAGGING!");

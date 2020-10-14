@@ -205,7 +205,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useDebug: 0
   isNodeComponent: 1
+  isTutorial: 0
   elementID: 0
+  localEventID: 3
   maxDeltaTime: 0.3
 --- !u!114 &657710796248101068
 MonoBehaviour:
@@ -237,4 +239,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeID: 0
   ID: 0
-  position: {x: 0, y: 0, z: 0}
+  totalHead: 0

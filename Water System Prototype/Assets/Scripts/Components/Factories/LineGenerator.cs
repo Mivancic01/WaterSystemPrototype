@@ -7,6 +7,9 @@ public class LineGenerator : MonoBehaviour
     public GameObject pipePrefab, pumpPrefab, valvePrefab, pipeSymbol, pumpSymbol, valveSymbol;
     private GameObject line;
 
+    public bool isTutorial = false;
+    public int localEventID = -1;
+
     private int nodeType = 0, startNodeID, endNodeID;
     private bool hasCreatedStart = false;
     private Vector3 startPosition, endPosition, originalScale;
@@ -28,6 +31,9 @@ public class LineGenerator : MonoBehaviour
         {
             Instance = this;
         }
+
+        if (TutorialManager.Instance != null)
+            isTutorial = true;
     }
 
     public void EnterNodeCreationMode()
@@ -116,6 +122,9 @@ public class LineGenerator : MonoBehaviour
         LineGeneratorHelper.EndPositionVariables vars = new LineGeneratorHelper.EndPositionVariables(
             line, startPosition, endPosition, originalScale, originalWidth, oldZAngle);
         line = LineGeneratorHelper.SetEndPosition(vars);
+
+        if (TutorialManager.Instance != null)
+            TutorialManager.Instance.CheckEvent(localEventID);
 
         //SetEndPosition(endPos);
         CreateSymbol();
