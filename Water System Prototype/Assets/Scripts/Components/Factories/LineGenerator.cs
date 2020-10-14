@@ -123,7 +123,7 @@ public class LineGenerator : MonoBehaviour
             line, startPosition, endPosition, originalScale, originalWidth, oldZAngle);
         line = LineGeneratorHelper.SetEndPosition(vars);
 
-        if (isTutorial)
+        if (TutorialManager.Instance != null)
             TutorialManager.Instance.CheckEvent(localEventID);
 
         //SetEndPosition(endPos);

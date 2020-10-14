@@ -318,6 +318,7 @@ Assets\Scripts\FileManagers\SaveGameManager.cs
 "Assets\Scripts\UI objects\ExitGame.cs"
 "Assets\Scripts\UI objects\LoadGameButton.cs"
 "Assets\Scripts\UI objects\LoadMainMenu.cs"
+"Assets\Scripts\UI objects\LoadTutorial.cs"
 "Assets\Scripts\UI objects\MapTypeSwitcher.cs"
 "Assets\Scripts\UI objects\ProcessGenerator.cs"
 "Assets\Scripts\UI objects\ProgressMenuManager.cs"

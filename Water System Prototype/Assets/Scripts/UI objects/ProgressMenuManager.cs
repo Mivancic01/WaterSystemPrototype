@@ -87,6 +87,6 @@ public class ProgressMenuManager : MonoBehaviour
                 childrenBars[i].sprite = inactiveImage;
 
         else if (activeProcess == processID)
-            SwitchProcessDisplay(0);
+            SwitchProcessDisplay(processBarCounter.First().Key);
     }
 }
