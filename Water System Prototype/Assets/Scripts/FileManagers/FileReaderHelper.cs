@@ -75,8 +75,14 @@ public class FileReaderHelper : MonoBehaviour
     public static (string, string) ReadSaveData(string fileData)
     {
 
-        if (fileData.IndexOf("\n") <= 0)
+        if(fileData != null)
+        {
+            if (fileData.IndexOf("\n") <= 0)
+                return ("#", null);
+        }
+        else
             return ("#", null);
+
 
         string line = fileData.Substring(0, fileData.IndexOf("\n"));
         string restOfData = fileData.Substring(fileData.IndexOf("\n")+1);

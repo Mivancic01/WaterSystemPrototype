@@ -1,11 +1,13 @@
 /target:library
 /nowarn:0169
-/out:Temp/Assembly-CSharp.dll
+/out:Temp/Unity.Timeline.dll
 /debug:portable
 /optimize-
 /nostdlib+
 /preferreduilang:en-US
 /langversion:latest
+/reference:Library/ScriptAssemblies/UnityEditor.UI.dll
+/reference:Library/ScriptAssemblies/UnityEngine.UI.dll
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.ARModule.dll"
@@ -15,8 +17,6 @@
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.AssetBundleModule.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.AudioModule.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.ClothModule.dll"
-/reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterInputModule.dll"
-/reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterRendererModule.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.CrashReportingModule.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.DSPGraphModule.dll"
@@ -64,21 +64,15 @@
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.VRModule.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.VehiclesModule.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.VideoModule.dll"
+/reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/PlaybackEngines/WebGLSupport/Managed/UnityEngine.WebGLModule.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.WindModule.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/Managed/UnityEditor.dll"
-/reference:Library/ScriptAssemblies/Unity.Timeline.Editor.dll
-/reference:Library/ScriptAssemblies/Unity.VSCode.Editor.dll
-/reference:Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll
-/reference:Library/ScriptAssemblies/UnityEngine.UI.dll
-/reference:Library/ScriptAssemblies/Unity.Timeline.dll
-/reference:Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll
-/reference:Library/ScriptAssemblies/Unity.Rider.Editor.dll
-/reference:Library/ScriptAssemblies/LeanCommon.dll
-/reference:Library/ScriptAssemblies/LeanTransition.dll
-/reference:Library/ScriptAssemblies/LeanGUI.dll
-/reference:Library/ScriptAssemblies/Unity.TextMeshPro.dll
-/reference:Library/ScriptAssemblies/UnityEditor.UI.dll
+/reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll"
+/reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
+/reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll"
+/reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll"
+/reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/Microsoft.Win32.Primitives.dll"
 /reference:"D:/Program Files/Unity/Install/2019.2.13f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.AppContext.dll"
@@ -215,18 +209,15 @@
 /define:ENABLE_AUDIO
 /define:ENABLE_CACHING
 /define:ENABLE_CLOTH
-/define:ENABLE_MICROPHONE
 /define:ENABLE_MULTIPLE_DISPLAYS
 /define:ENABLE_PHYSICS
 /define:ENABLE_TEXTURE_STREAMING
 /define:ENABLE_UNET
-/define:ENABLE_LZMA
 /define:ENABLE_UNITYEVENTS
 /define:ENABLE_WEBCAM
 /define:ENABLE_WWW
 /define:ENABLE_CLOUD_SERVICES_COLLAB
 /define:ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS
-/define:ENABLE_CLOUD_SERVICES_ADS
 /define:ENABLE_CLOUD_SERVICES_USE_WEBREQUEST
 /define:ENABLE_CLOUD_SERVICES_UNET
 /define:ENABLE_CLOUD_SERVICES_BUILD
@@ -239,32 +230,24 @@
 /define:ENABLE_MANAGED_TRANSFORM_JOBS
 /define:ENABLE_MANAGED_ANIMATION_JOBS
 /define:ENABLE_MANAGED_AUDIO_JOBS
-/define:INCLUDE_DYNAMIC_GI
 /define:ENABLE_MONO_BDWGC
-/define:ENABLE_SCRIPTING_GC_WBARRIERS
-/define:PLATFORM_SUPPORTS_MONO
 /define:RENDER_SOFTWARE_CURSOR
 /define:ENABLE_VIDEO
-/define:PLATFORM_STANDALONE_WIN
-/define:PLATFORM_STANDALONE
-/define:UNITY_STANDALONE_WIN
-/define:UNITY_STANDALONE
-/define:ENABLE_RUNTIME_GI
-/define:ENABLE_MOVIES
-/define:ENABLE_NETWORK
+/define:PLATFORM_WEBGL
+/define:UNITY_WEBGL
+/define:UNITY_WEBGL_API
+/define:UNITY_DISABLE_WEB_VERIFICATION
+/define:UNITY_GFX_USE_PLATFORM_VSYNC
 /define:ENABLE_CRUNCH_TEXTURE_COMPRESSION
 /define:ENABLE_UNITYWEBREQUEST
 /define:ENABLE_CLOUD_SERVICES
+/define:ENABLE_CLOUD_SERVICES_ADS
 /define:ENABLE_CLOUD_SERVICES_ANALYTICS
 /define:ENABLE_CLOUD_SERVICES_PURCHASING
 /define:ENABLE_CLOUD_SERVICES_CRASH_REPORTING
-/define:ENABLE_OUT_OF_PROCESS_CRASH_HANDLER
-/define:ENABLE_EVENT_QUEUE
-/define:ENABLE_CLUSTER_SYNC
-/define:ENABLE_CLUSTERINPUT
+/define:ENABLE_ENGINE_CODE_STRIPPING
 /define:ENABLE_VR
-/define:ENABLE_AR
-/define:ENABLE_WEBSOCKET_HOST
+/define:ENABLE_SPATIALTRACKING
 /define:ENABLE_MONO
 /define:NET_STANDARD_2_0
 /define:ENABLE_PROFILER
@@ -287,42 +270,69 @@
 /define:ENABLE_LEGACY_INPUT_MANAGER
 /define:CSHARP_7_OR_LATER
 /define:CSHARP_7_3_OR_NEWER
-Assets\Scripts\Components\ComponentHighlight.cs
-Assets\Scripts\Components\ComponentObject.cs
-"Assets\Scripts\Components\Components Scripts\BaseElement.cs"
-"Assets\Scripts\Components\Components Scripts\Junction.cs"
-"Assets\Scripts\Components\Components Scripts\Model.cs"
-"Assets\Scripts\Components\Components Scripts\Pipe.cs"
-"Assets\Scripts\Components\Components Scripts\Pump.cs"
-"Assets\Scripts\Components\Components Scripts\Reservoir.cs"
-"Assets\Scripts\Components\Components Scripts\Tank.cs"
-"Assets\Scripts\Components\Components Scripts\Valve.cs"
-Assets\Scripts\Components\Factories\ComponentCreator.cs
-Assets\Scripts\Components\Factories\ComponentsFactory.cs
-Assets\Scripts\Components\Factories\LineGenerator.cs
-Assets\Scripts\Components\Factories\LineGeneratorHelper.cs
-Assets\Scripts\Components\LineSymbol.cs
-Assets\Scripts\Components\Managers\ComponentsHelper.cs
-Assets\Scripts\Components\Managers\ComponentsManager.cs
-Assets\Scripts\Components\Managers\MainSimulationManager.cs
-Assets\Scripts\Components\Managers\ModelsManager.cs
-Assets\Scripts\Components\PropertiesWindow.cs
-Assets\Scripts\FileManagers\FileReaderHelper.cs
-Assets\Scripts\FileManagers\LoadGameManager.cs
-Assets\Scripts\FileManagers\Reader.cs
-Assets\Scripts\FileManagers\SaveGameManager.cs
-"Assets\Scripts\Game Managers\CameraManager.cs"
-"Assets\Scripts\Game Managers\GameStateManager.cs"
-"Assets\Scripts\Game Managers\MouseManager.cs"
-"Assets\Scripts\Game Managers\TutorialManager.cs"
-"Assets\Scripts\UI objects\ExitGame.cs"
-"Assets\Scripts\UI objects\LoadGameButton.cs"
-"Assets\Scripts\UI objects\LoadMainMenu.cs"
-"Assets\Scripts\UI objects\LoadTutorial.cs"
-"Assets\Scripts\UI objects\MapTypeSwitcher.cs"
-"Assets\Scripts\UI objects\ProcessGenerator.cs"
-"Assets\Scripts\UI objects\ProgressMenuManager.cs"
-"Assets\Scripts\UI objects\TimelineScrollbar.cs"
-"Assets\Scripts\UI objects\TimeProcess.cs"
-"Assets\Scripts\UI objects\UIObject.cs"
-"Assets\Scripts\UI objects\VisibilityChangerButton.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Activation\ActivationMixerPlayable.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Activation\ActivationPlayableAsset.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Activation\ActivationTrack.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Animation\AnimationOutputWeightProcessor.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Animation\AnimationPlayableAsset.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Animation\AnimationTrack.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Animation\ICurvesOwner.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\AssetUpgrade\AnimationPlayableAssetUpgrade.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\AssetUpgrade\AnimationTrackUpgrade.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\AssetUpgrade\ClipUpgrade.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\AssetUpgrade\TimelineUpgrade.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\AssetUpgrade\TrackUpgrade.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Attributes\TrackColorAttribute.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Audio\AudioClipProperties.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Audio\AudioMixerProperties.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Audio\AudioPlayableAsset.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Audio\AudioTrack.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\ClipCaps.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Control\ControlPlayableAsset.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Control\ControlTrack.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\DiscreteTime.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Evaluation\InfiniteRuntimeClip.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Evaluation\IntervalTree.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Evaluation\RuntimeClip.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Evaluation\RuntimeClipBase.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Evaluation\RuntimeElement.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Evaluation\ScheduleRuntimeClip.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\IMarker.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\INotificationOptionProvider.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\Marker.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\MarkerList.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\MarkerTrack.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\Signals\CustomSignalEventDrawer.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\Signals\SignalAsset.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\Signals\SignalEmitter.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\Signals\SignalReceiver.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\SignalTrack.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Extensions\TrackExtensions.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\GroupTrack.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Playables\ActivationControlPlayable.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Playables\BasicScriptPlayable.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Playables\DirectorControlPlayable.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Playables\ITimeControl.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Playables\NotificationFlags.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Playables\ParticleControlPlayable.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Playables\PrefabControlPlayable.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Playables\TimeControlPlayable.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Playables\TimeNotificationBehaviour.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Properties\AssemblyInfo.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Scripting\PlayableTrack.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Timeline.deprecated.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\TimelineAsset.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\TimelineAsset_CreateRemove.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\TimelineAttributes.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\TimelineClip.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\TimelinePlayable.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\TrackAsset.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Utilities\Extrapolation.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Utilities\HashUtility.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Utilities\IPropertyCollector.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Utilities\IPropertyPreview.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Utilities\NotificationUtilities.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Utilities\TimelineCreateUtilities.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Utilities\TimelineUndo.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Utilities\TimeUtility.cs"
+"D:\Program Files\Unity\Install\2019.2.13f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Utilities\WeightUtility.cs"
