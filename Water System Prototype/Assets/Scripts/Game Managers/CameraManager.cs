@@ -14,8 +14,15 @@ public class CameraManager : MonoBehaviour
     private Vector3 mouseOrigin; // place where mouse is first pressed
     private Vector3 diference; // change in position of mouse relative to origin
 
+    private float height, width;
+
     void Start()
     {
+        height = 2f * Camera.main.orthographicSize;
+        width = height * Camera.main.aspect;
+
+        Debug.Log("Height = " + height + ", Width = " + width + "\n " + Time.time);
+
         maxFov = Camera.main.fieldOfView;
         minFov = maxFov / scaleFactor;
 
@@ -90,20 +97,45 @@ public class CameraManager : MonoBehaviour
 
     private void UpdateDrag()
     {
+        height = 2f * Camera.main.orthographicSize;
+        width = height * Camera.main.aspect;
+
         if (Input.GetMouseButtonDown(0))
             mouseOrigin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (Input.GetMouseButton(0))
         {
             diference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            transform.position = mouseOrigin - diference;
-        }
+            var newPos = mouseOrigin - diference;
 
-        if (Input.GetMouseButton(1))
-            transform.position = originalCameraPos;
+            if (transform.position.x > (mouseOrigin - diference).x)
+            {
+                if ((transform.position.x - width / 2) < -9.5f)
+                    newPos.x = transform.position.x;
+            }
+            else
+            {
+                if ((transform.position.x + width / 2) > 9.5f)
+                    newPos.x = transform.position.x;
+            }
+
+            if (transform.position.y > (mouseOrigin - diference).y)
+            {
+                if ((transform.position.y - height / 2) < -5f)
+                    newPos.y = transform.position.y;
+            }
+            else
+            {
+                if ((transform.position.y + height / 2) > 6f)
+                    newPos.y = transform.position.y;
+            }
+
+            transform.position = newPos;
+
+        }
     }
 
-    void UpdateCameraZPos()
+        void UpdateCameraZPos()
     {
         var pos = Camera.main.transform.position;
         pos.z = -10;
