@@ -12,6 +12,9 @@ public class Reader : MonoBehaviour
 
     public static string saveGameData = "";
 
+    public GameObject panel;
+    public Text panelText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,13 +49,19 @@ public class Reader : MonoBehaviour
         yield return www;
 
         if (www.error != null)
+        {
+            panel.SetActive(true);
+            panelText.text = www.error + "\n" + www.text;
             successful = false;
+        }
         else
         {
             saveGameData = www.text;
 
             var btnObj = Instantiate(buttonPrefab, loadGamePanel.transform);
             btnObj.GetComponentInChildren<Text>().text = "Save1";
+
+            //PlayerPrefs.SetString("SaveData", saveGameData);
 
             Debug.Log(www.text);
             successful = true;

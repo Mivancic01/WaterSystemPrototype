@@ -285,6 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95f61bdecb0b804fb258eda940b89cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isWebGLBuild: 1
 --- !u!1 &460146079752055817
 GameObject:
   m_ObjectHideFlags: 0
