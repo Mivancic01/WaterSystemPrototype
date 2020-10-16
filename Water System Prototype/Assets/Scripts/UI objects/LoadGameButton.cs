@@ -12,7 +12,7 @@ public class LoadGameButton : MonoBehaviour
     {
         if(isWebGLBuild)
         {
-
+            Debug.Log("THE PLAYERPREF IS: " + Reader.saveGameData);
             PlayerPrefs.SetString("SaveFile", Reader.saveGameData);
             SceneManager.LoadScene("Prototype");
         }

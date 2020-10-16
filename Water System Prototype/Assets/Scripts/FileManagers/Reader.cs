@@ -63,7 +63,7 @@ public class Reader : MonoBehaviour
 
             //PlayerPrefs.SetString("SaveData", saveGameData);
 
-            Debug.Log(www.text);
+            Debug.Log(saveGameData);
             successful = true;
         }
     }
