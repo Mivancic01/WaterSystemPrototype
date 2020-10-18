@@ -9,7 +9,7 @@ using modelsManager = MainSimulationManager.ModelsManager;
 
 public class LoadGameManager : MonoBehaviour
 {
-    public bool useDebug = false, isWebGLBuild = false;
+    public bool useDebug = false, isWebGLBuild = false, isTutorialScene = false;
     public static LoadGameManager Instance { get; private set; }
 
     private void Awake()
@@ -27,10 +27,23 @@ public class LoadGameManager : MonoBehaviour
 
     void Start()
     {
+        if(isTutorialScene)
+        {
+            MainSimulationManager.Instance.InitializeScene();
+            return;
+        }
+
         if(isWebGLBuild)
         {
             int count = 0;
             var saveFileData = PlayerPrefs.GetString("SaveFile");
+
+            if (saveFileData.Equals("INVALID_NAME"))
+            {
+                MainSimulationManager.Instance.InitializeScene();
+                return;
+            }
+
             string dataLine = "";
 
             (dataLine, saveFileData) = FileReaderHelper.ReadSaveData(saveFileData);

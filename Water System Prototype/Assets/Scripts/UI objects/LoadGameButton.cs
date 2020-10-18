@@ -12,8 +12,14 @@ public class LoadGameButton : MonoBehaviour
     {
         if(isWebGLBuild)
         {
-            Debug.Log("THE PLAYERPREF IS: " + Reader.saveGameData);
-            PlayerPrefs.SetString("SaveFile", Reader.saveGameData);
+            string btnText = GetComponentInChildren<Text>().text;
+            if(btnText.Equals("New Simulation"))
+                PlayerPrefs.SetString("SaveFile", "INVALID_NAME");
+            else
+                PlayerPrefs.SetString("SaveFile", Reader.saveGameData);
+
+            //Debug.Log("THE PLAYERPREF IS: " + Reader.saveGameData);
+            //PlayerPrefs.SetString("SaveFile", Reader.saveGameData);
             SceneManager.LoadScene("Prototype");
         }
         else
