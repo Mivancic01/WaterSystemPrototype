@@ -237,7 +237,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11632}
     - Class: 114
-      Script: {instanceID: 17732}
+      Script: {instanceID: 14774}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -376,7 +376,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11632}
     - Class: 114
-      Script: {instanceID: 17732}
+      Script: {instanceID: 14774}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -846,7 +846,7 @@ ScriptsOnlyBuild:
     className: LeanHover
   - hash:
       serializedVersion: 2
-      Hash: 81ca2639cdaf22154dc322a3bc2761bb
+      Hash: cb49ff33c8e5691bca3346b1d5ccc00e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MapTypeSwitcher
