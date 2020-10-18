@@ -1630,10 +1630,10 @@ RectTransform:
   m_Father: {fileID: 1062779527}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 35.37104, y: -9.442076}
-  m_SizeDelta: {x: 21.570732, y: 18.884151}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &467859584
 MonoBehaviour:
@@ -1707,7 +1707,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4090e40e3cbe5824bafe8d0ecc9f1bfa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 32a835313df739c46b48e0fe7618342d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1910,10 +1910,10 @@ RectTransform:
   m_Father: {fileID: 1062779527}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 59.182034, y: -9.442076}
-  m_SizeDelta: {x: 23.051245, y: 18.884151}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &551549738
 MonoBehaviour:
@@ -1987,7 +1987,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 68b8dd501455965409dfe14dc6c6ac44, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8010ed5ea6506c44fa30db9fe2f8f177, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2246,10 +2246,10 @@ RectTransform:
   m_Father: {fileID: 1062779527}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 11.542838, y: -9.442076}
-  m_SizeDelta: {x: 23.085676, y: 18.884151}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &652931614
 MonoBehaviour:
@@ -2323,7 +2323,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ec8c0018b7448024f8589d8a2248ce56, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e27bd19733502554cabb8350a2f3571f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4140,7 +4140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1062779527
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4158,10 +4158,10 @@ RectTransform:
   m_Father: {fileID: 363744455}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.063100815, y: 0.143}
-  m_AnchorMax: {x: 0.23400001, y: 0.23372938}
-  m_AnchoredPosition: {x: 0.4000244, y: -0.6000061}
-  m_SizeDelta: {x: -1.0700073, y: -0.94000244}
+  m_AnchorMin: {x: 0.063100815, y: 0.27320307}
+  m_AnchorMax: {x: 0.23319551, y: 0.347}
+  m_AnchoredPosition: {x: 1.0350001, y: 1}
+  m_SizeDelta: {x: -0.07000005, y: -0.3699999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1062779528
 MonoBehaviour:
@@ -5804,7 +5804,7 @@ PrefabInstance:
     - target: {fileID: 1295222877045210994, guid: be3ddd1e7ddbf584a993382683f55bde,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.47999573
+      value: -0.47998047
       objectReference: {fileID: 0}
     - target: {fileID: 1295222877045210994, guid: be3ddd1e7ddbf584a993382683f55bde,
         type: 3}
@@ -6566,7 +6566,7 @@ SpriteRenderer:
   m_SortingLayerID: 1848027743
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ec8c0018b7448024f8589d8a2248ce56, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e27bd19733502554cabb8350a2f3571f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6603,9 +6603,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e175a7a5d6227e44a9390fb536f2a1fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  simpleMap: {fileID: 21300000, guid: ec8c0018b7448024f8589d8a2248ce56, type: 3}
-  sateliteMap: {fileID: 21300000, guid: 4090e40e3cbe5824bafe8d0ecc9f1bfa, type: 3}
-  topographicMap: {fileID: 21300000, guid: 68b8dd501455965409dfe14dc6c6ac44, type: 3}
+  mapTypeID: 1
+  simpleMap_lv0: {fileID: 21300000, guid: d9e91ca3f35d545488d1040faedc992d, type: 3}
+  sateliteMap_lv0: {fileID: 21300000, guid: 1b1c665f2adb6694aa0b0112e4fd68e1, type: 3}
+  vectorMap_lv0: {fileID: 21300000, guid: 6b4f6f95165530748b7d084626c42e31, type: 3}
+  simpleMap_lv1: {fileID: 21300000, guid: 8010ed5ea6506c44fa30db9fe2f8f177, type: 3}
+  sateliteMap_lv1: {fileID: 21300000, guid: 32a835313df739c46b48e0fe7618342d, type: 3}
+  vectorMap_lv1: {fileID: 21300000, guid: e27bd19733502554cabb8350a2f3571f, type: 3}
+  simpleMap_lv2: {fileID: 21300000, guid: a2058924e91ad414b9bf7765a99bf425, type: 3}
+  sateliteMap_lv2: {fileID: 21300000, guid: 0790b55a169047645ae1807cef3d51a5, type: 3}
+  vectorMap_lv2: {fileID: 21300000, guid: 42c73222a18fa1f439652a8db30c99c2, type: 3}
 --- !u!1 &1635693297
 GameObject:
   m_ObjectHideFlags: 0

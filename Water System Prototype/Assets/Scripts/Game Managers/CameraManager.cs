@@ -135,6 +135,11 @@ public class CameraManager : MonoBehaviour
         }
     }
 
+    public void ChechMapType()
+    {
+
+    }
+
         void UpdateCameraZPos()
     {
         var pos = Camera.main.transform.position;
