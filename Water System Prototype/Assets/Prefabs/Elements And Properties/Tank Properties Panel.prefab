@@ -1020,6 +1020,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 9095377521603873001}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9095377521603873001
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,7 +1045,7 @@ GameObject:
   - component: {fileID: 7208263684947263740}
   m_Layer: 5
   m_Name: Tank Properties Panel
-  m_TagString: Untagged
+  m_TagString: TankPropertiesWindow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1111,7 +1122,10 @@ MonoBehaviour:
   field2: {fileID: 7444490584533645637}
   field3: {fileID: 0}
   field4: {fileID: 0}
-  elementID: 0
+  status: {fileID: 0}
+  curve: {fileID: 0}
+  valveType: {fileID: 0}
+  elementID: 
 --- !u!1 &9095377521604787364
 GameObject:
   m_ObjectHideFlags: 0

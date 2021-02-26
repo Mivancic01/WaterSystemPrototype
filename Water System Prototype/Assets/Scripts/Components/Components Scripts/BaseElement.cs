@@ -6,30 +6,31 @@ using System.Linq;
 public class BaseElement : MonoBehaviour
 {
     protected GameObject propertiesWindow;
-    public int typeID = -1, ID = -1;
+    public int typeID = -1;
+    public string ID = "";
     public bool isNodeComponent { get; protected set; }
 
-    public BaseElement(int id, int typeId, bool isNode)
+    public BaseElement(string id, int typeId, bool isNode)
     {
         ID = id;
         typeID = typeId;
         isNodeComponent = isNode;
     }
 
-    public virtual void Initialize(int pTypeID = -1, int pID = -1, bool isNode = true)
+    public virtual void Initialize(int pTypeID = -1, string pID = "", bool isNode = true)
     {
         if (pTypeID != -1)
             typeID = pTypeID;
-        if (pID != -1)
+        if (!pID.Equals(""))
             ID = pID;
 
         isNodeComponent = isNode;
 
         gameObject.GetComponent<ComponentObject>().elementID = ID;
 
-        propertiesWindow = ComponentsFactory.Instance.CreatePropertiesWindow(typeID);
-        propertiesWindow.GetComponent<PropertiesWindow>().elementID = ID;
-        ChangeWindowVisibility(false);
+        //propertiesWindow = ComponentsFactory.Instance.CreatePropertiesWindow(typeID);
+        //propertiesWindow.GetComponent<PropertiesWindow>().elementID = ID;
+        //ChangeWindowVisibility(false);
     }
 
     public virtual void UpdatePropertiesValues()

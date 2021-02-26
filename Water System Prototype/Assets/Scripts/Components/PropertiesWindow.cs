@@ -8,7 +8,7 @@ public class PropertiesWindow : MonoBehaviour
     public InputField field1, field2, field3, field4;
     public Dropdown status, curve, valveType;
     private float value1 = 0.0f, value2 = 0.0f, value3 = 0.0f, value4 = 0.0f;
-    public int elementID;
+    public string elementID;
 
     public void CloseWindow()
     {

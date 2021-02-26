@@ -5,7 +5,8 @@ using UnityEngine;
 public class ComponentObject : MonoBehaviour
 {
     public bool useDebug = false, isNodeComponent = true, isTutorial = false;
-    public int elementID, localEventID = -1;
+    public int localEventID = -1;
+    public string elementID;
     public float maxDeltaTime = 0.1f;
 
     private float mouseDownTime;
@@ -25,8 +26,7 @@ public class ComponentObject : MonoBehaviour
         if (GameStateManager.Instance.dragComponents)
         {
             var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            pos.z = 10;
-
+            pos.y = 50;
             transform.position = pos;
         }
 
@@ -36,6 +36,8 @@ public class ComponentObject : MonoBehaviour
     {
         if ((Time.time - mouseDownTime) > maxDeltaTime)
         {
+
+            Debug.Log("The elementID is: " + elementID);
             if(isNodeComponent)
                 MainSimulationManager.ComponentsManager.UpdateLinesPosition(elementID);
 
@@ -58,8 +60,33 @@ public class ComponentObject : MonoBehaviour
 
         if(GameStateManager.Instance.dragComponents)
         {
-            //componentsManager.OpenPropertiesWindow(elementID);
-            gameObject.GetComponent<BaseElement>().ChangeWindowVisibility(true);
+            int typeID = gameObject.GetComponent<BaseElement>().typeID;
+            switch(typeID)
+            {
+                case 0:
+                    ComponentsHelper.Instance.UpdateJunctionPropertiesWindow(gameObject.GetComponent<Junction>(), elementID);
+                    break;
+                case 1:
+                    ComponentsHelper.Instance.UpdatePipePropertiesWindow(gameObject.GetComponent<Pipe>(), elementID);
+                    break;
+                case 2:
+                    ComponentsHelper.Instance.UpdatePumpPropertiesWindow(gameObject.GetComponent<Pump>(), elementID);
+                    break;
+                case 3:
+                    ComponentsHelper.Instance.UpdateReservoirPropertiesWindow(gameObject.GetComponent<Reservoir>(), elementID);
+                    break;
+                case 4:
+                    ComponentsHelper.Instance.UpdateTankPropertiesWindow(gameObject.GetComponent<Tank>(), elementID);
+                    break;
+                case 5:
+                    ComponentsHelper.Instance.UpdateValvePropertiesWindow(gameObject.GetComponent<Valve>(), elementID);
+                    break;
+                default:
+                    Debug.LogError("TRYING TO OPEN A WINDOW FROM AN UKNOWN TYPE OF COMPONENT!");
+                    break;
+            }
+            //gameObject.GetComponent<BaseElement>().ChangeWindowVisibility(true);
+
             GameStateManager.Instance.SetInactiveState();
         }
     }
@@ -68,6 +95,7 @@ public class ComponentObject : MonoBehaviour
     {
         originalPos = transform.position;
         mouseDownTime = Time.time;
+        Debug.Log("ENTERED ON MOUSE DOWN! on elementID "  + elementID);
     }
 
     public void StartInitialDrag()
@@ -86,8 +114,10 @@ public class ComponentObject : MonoBehaviour
                     + "At time " + Time.time);
 
             var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            pos.z = 10;
+            pos.y = 50;
             transform.position = pos;
+
+            transform.rotation = Quaternion.Euler(90, 0, 0);
 
             yield return null;
         }
@@ -95,6 +125,5 @@ public class ComponentObject : MonoBehaviour
 
         if (isTutorial)
             TutorialManager.Instance.CheckEvent(localEventID);
-
     }
 }

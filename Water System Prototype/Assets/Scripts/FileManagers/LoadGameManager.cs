@@ -94,14 +94,14 @@ public class LoadGameManager : MonoBehaviour
             line = line.Remove(0, 3);
 
             //Get ID
-            int ID = (int)FileReaderHelper.GetNextNumber(line);
+            string ID = FileReaderHelper.GetNextNumber(line).ToString();
             line = line.Remove(0, FileReaderHelper.FindNextNumberIndex(line));
 
             //Get typeID
             int typeID = Int32.Parse(line.Substring(0, 1));
             line = line.Remove(0, 3);
 
-            componentsManager.AddNodeComponent(ComponentsFactory.Instance.CreateComponentFromFile(ID, typeID, line), ID);
+            componentsManager.AddNodeComponent(ComponentsFactory.Instance.CreateComponentFromFile(ID, typeID, line), typeID, ID);
         }
 
         else if(line.StartsWith("ln"))
@@ -110,15 +110,15 @@ public class LoadGameManager : MonoBehaviour
             line = line.Remove(0, 3);
 
             //Get ID
-            int ID = (int)FileReaderHelper.GetNextNumber(line);
+            string ID = FileReaderHelper.GetNextNumber(line).ToString();
             line = line.Remove(0, FileReaderHelper.FindNextNumberIndex(line));
 
             //Get typeID
             int typeID = Int32.Parse(line.Substring(0, 1));
             line = line.Remove(0, 3);
 
-            int startNodeID = -1;
-            int endNodeID = -1;
+            string startNodeID = "";
+            string endNodeID = "";
 
             var lineObj = ComponentsFactory.Instance.CreateComponentFromFile(ID, typeID, line);
             (startNodeID, endNodeID) = MainSimulationManager.ComponentsHelper.GetNodeIDsFromLineObject(lineObj, typeID);
@@ -142,7 +142,7 @@ public class LoadGameManager : MonoBehaviour
             {
                 var endOfNum = FileReaderHelper.FindEndOfNumber(line);
                 var removeSize = line.Length > (endOfNum + 2) ? (endOfNum + 2) : line.Length;
-                int index = Int32.Parse(line.Substring(0, endOfNum));
+                string index = line.Substring(0, endOfNum);
                 model.Add(index);
 
                 line = line.Remove(0, removeSize);

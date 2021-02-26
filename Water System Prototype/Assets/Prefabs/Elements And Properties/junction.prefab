@@ -90,10 +90,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1369875848339990477}
   - component: {fileID: 3941590194011822107}
-  - component: {fileID: -7235672507530423809}
   - component: {fileID: -8654414000745701940}
   - component: {fileID: 6414735392983688935}
   - component: {fileID: -4296586170471876092}
+  - component: {fileID: 462650046981584253}
   m_Layer: 0
   m_Name: junction
   m_TagString: Untagged
@@ -108,14 +108,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5413446921593173116}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.801, y: -0.576, z: 8.453125}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -2.801, y: -3.092, z: 8.453125}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 3.5201912}
   m_Children:
   - {fileID: 4584579912808904190}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!212 &3941590194011822107
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -165,32 +165,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &-7235672507530423809
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5413446921593173116}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5, y: 5}
-    newSize: {x: 5, y: 5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5, y: 5}
-  m_EdgeRadius: 0
 --- !u!114 &-8654414000745701940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,8 +180,8 @@ MonoBehaviour:
   useDebug: 0
   isNodeComponent: 1
   isTutorial: 0
-  elementID: 0
   localEventID: 1
+  elementID: 
   maxDeltaTime: 0.3
 --- !u!114 &6414735392983688935
 MonoBehaviour:
@@ -238,7 +212,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeID: 0
-  ID: 0
+  ID: 
   baseDemand: 0
   elevation: 0
   pressure: 0
+--- !u!65 &462650046981584253
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5413446921593173116}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 5.000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}

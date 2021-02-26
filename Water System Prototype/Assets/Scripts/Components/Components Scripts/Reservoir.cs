@@ -7,17 +7,22 @@ public class Reservoir : BaseElement
 {
     public float totalHead;
 
-    public Reservoir(int id, int typeId, float pTotalHead) : base(id, typeId, true)
+    public Reservoir(string id, int typeId, float pTotalHead) : base(id, typeId, true)
     {
         totalHead = pTotalHead;
     }
-    public Reservoir(int id, int typeId) : base(id, typeId, true)
+    public Reservoir(string id, int typeId) : base(id, typeId, true)
     {
         totalHead = 0.0f;
     }
 
     public void Init(Reservoir reservoirScript)
     {
+
+        ID = reservoirScript.ID;
+        typeID = reservoirScript.typeID;
+        isNodeComponent = reservoirScript.isNodeComponent;
+
         totalHead = reservoirScript.totalHead;
     }
 

@@ -108,7 +108,7 @@ public class CameraManager : MonoBehaviour
             diference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             var newPos = mouseOrigin - diference;
 
-            if (transform.position.x > (mouseOrigin - diference).x)
+            /*if (transform.position.x > (mouseOrigin - diference).x)
             {
                 if ((transform.position.x - width / 2) < -9.5f)
                     newPos.x = transform.position.x;
@@ -128,7 +128,7 @@ public class CameraManager : MonoBehaviour
             {
                 if ((transform.position.y + height / 2) > 6f)
                     newPos.y = transform.position.y;
-            }
+            }*/
 
             transform.position = newPos;
 
@@ -142,8 +142,8 @@ public class CameraManager : MonoBehaviour
 
         void UpdateCameraZPos()
     {
-        var pos = Camera.main.transform.position;
-        pos.z = -10;
-        Camera.main.transform.position = pos;
+        //var pos = Camera.main.transform.position;
+        //pos.z = -10;
+        //Camera.main.transform.position = pos;
     }
 }

@@ -27,7 +27,7 @@ public partial class MainSimulationManager
             mainInstace.currentOpenModel = newModelIndex;
         }
 
-        public static void SwitchComponentsVisibility(List<int> IDsList, bool isVisible)
+        public static void SwitchComponentsVisibility(List<string> IDsList, bool isVisible)
         {
             foreach (var id in IDsList)
                 mainManager.Instance.componentsList[mainManager.Instance.componentsIdIndexMap[id]].ChangeVisibility(isVisible);

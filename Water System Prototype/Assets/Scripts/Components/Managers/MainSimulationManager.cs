@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public partial class MainSimulationManager : MonoBehaviour
 {
     private List<BaseElement> componentsList;
-    private List<int> allIDs;
-    private Dictionary<int, int> componentsIdIndexMap;
-    private Dictionary<int, (int First, int Second)> allConnections;
-    private Dictionary<int, List<int>> nodeConnections;
+    private List<string> allIDs;
+    private Dictionary<string, int> componentsIdIndexMap;
+    private Dictionary<string, (string First, string Second)> allConnections;
+    private Dictionary<string, List<string>> nodeConnections;
     private List<Model> modelList;
 
     private const int defaultModelSize = 4;
@@ -22,10 +22,10 @@ public partial class MainSimulationManager : MonoBehaviour
     {
         componentsList = new List<BaseElement>();
         modelList = new List<Model>();
-        componentsIdIndexMap = new Dictionary<int, int>();
-        allConnections = new Dictionary<int, (int First, int Double)>();
-        nodeConnections = new Dictionary<int, List<int>>();
-        allIDs = new List<int>();
+        componentsIdIndexMap = new Dictionary<string, int>();
+        allConnections = new Dictionary<string, (string First, string Double)>();
+        nodeConnections = new Dictionary<string, List<string>>();
+        allIDs = new List<string>();
         currentOpenModel = 0;
 
         if (Instance != null && Instance != this)

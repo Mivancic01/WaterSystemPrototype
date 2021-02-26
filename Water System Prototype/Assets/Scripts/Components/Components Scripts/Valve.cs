@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class Valve : BaseElement
 {
-    public int startNodeID, endNodeID;
+    public string startNodeID, endNodeID;
     public float diameter, flow, flowVelocity;
     public int statusID, valveTypeID;
 
-    public Valve(int id, int typeId, int pStartNodeID, int pEndNodeID, float pDiameter, float pFlow, float pFlowVelocity, int pStatusID, int pValveTypeID) : base(id, typeId, false)
+    public Valve(string id, int typeId, string pStartNodeID, string pEndNodeID, float pDiameter, float pFlow, float pFlowVelocity, int pStatusID, int pValveTypeID) : base(id, typeId, false)
     {
         diameter = pDiameter;
         flow = pFlow;
@@ -21,7 +21,7 @@ public class Valve : BaseElement
         valveTypeID = pValveTypeID;
     }
 
-    public Valve(int id, int typeId, int pStartNodeID, int pEndNodeID, int pStatusID, int pValveTypeID) : base(id, typeId, false)
+    public Valve(string id, int typeId, string pStartNodeID, string pEndNodeID, int pStatusID, int pValveTypeID) : base(id, typeId, false)
     {
         diameter = 0.0f;
         flow = 0.0f;
@@ -34,6 +34,10 @@ public class Valve : BaseElement
 
     public void Init(Valve valveScript)
     {
+
+        ID = valveScript.ID;
+        typeID = valveScript.typeID;
+
         startNodeID = valveScript.startNodeID;
         endNodeID = valveScript.endNodeID;
 
@@ -44,29 +48,6 @@ public class Valve : BaseElement
         valveTypeID = valveScript.valveTypeID;
 
         isNodeComponent = false;
-    }
-
-    public override void Initialize(int pTypeID = -1, int pID = -1, bool isNode = false)
-    {
-        if (pTypeID != -1)
-            typeID = pTypeID;
-        if (pID != -1)
-            ID = pID;
-
-        isNodeComponent = isNode;
-
-        GameStateManager.Instance.SetInactiveState();
-        GameStateManager.Instance.SetPathCreationState();
-
-       // elemIcon = LineGenerator.Instance.CreateAndReturnLineComponent(ComponentsManager.Instance.GetComponentPosition(startNodeID), ComponentsManager.Instance.GetComponentPosition(endNodeID), 2);
-        gameObject.GetComponent<ComponentObject>().elementID = ID;
-
-        propertiesWindow = ComponentsFactory.Instance.CreatePropertiesWindow(typeID);
-        propertiesWindow.GetComponent<PropertiesWindow>().elementID = ID;
-        ChangeWindowVisibility(false);
-
-        GameStateManager.Instance.SetInactiveState();
-        GameStateManager.Instance.SetDragComponentsState();
     }
 
     public override void UpdatePropertiesValues()
@@ -88,12 +69,12 @@ public class Valve : BaseElement
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(2, values[2]);
     }
 
-    public int GetStartNodeID()
+    public string GetStartNodeID()
     {
         return startNodeID;
     }
 
-    public int GetEndNodeID()
+    public string GetEndNodeID()
     {
         return endNodeID;
     }

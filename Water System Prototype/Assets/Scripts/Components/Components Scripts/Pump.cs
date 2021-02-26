@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class Pump : BaseElement
 {
-    public int startNodeID, endNodeID;
+    public string startNodeID, endNodeID;
     public float flow, flowVelocity;
     public int curveID;
 
-    public Pump(int id, int typeId, int pStartNodeID, int pEndNodeID, float pFlow, float pFlowVelocity, int pCurveID) : base(id, typeId, false)
+    public Pump(string id, int typeId, string pStartNodeID, string pEndNodeID, float pFlow, float pFlowVelocity, int pCurveID) : base(id, typeId, false)
     {
         flow = pFlow;
         flowVelocity = pFlowVelocity;
@@ -18,7 +18,7 @@ public class Pump : BaseElement
         curveID = pCurveID;
     }
 
-    public Pump(int id, int typeId, int pStartNodeID, int pEndNodeID, int pCurveID) : base(id, typeId, false)
+    public Pump(string id, int typeId, string pStartNodeID, string pEndNodeID, int pCurveID) : base(id, typeId, false)
     {
         flow = 0.0f;
         flowVelocity = 0.0f;
@@ -29,6 +29,10 @@ public class Pump : BaseElement
 
     public void Init(Pump pumpScript)
     {
+
+        ID = pumpScript.ID;
+        typeID = pumpScript.typeID;
+
         startNodeID = pumpScript.startNodeID;
         endNodeID = pumpScript.endNodeID;
 
@@ -37,29 +41,6 @@ public class Pump : BaseElement
         curveID = pumpScript.curveID;
 
         isNodeComponent = false;
-    }
-
-    public override void Initialize(int pTypeID = -1, int pID = -1, bool isNode = false)
-    {
-        if (pTypeID != -1)
-            typeID = pTypeID;
-        if (pID != -1)
-            ID = pID;
-
-        isNodeComponent = isNode;
-
-        GameStateManager.Instance.SetInactiveState();
-        GameStateManager.Instance.SetPathCreationState();
-
-        //elemIcon = LineGenerator.Instance.CreateAndReturnLineComponent(MainSimulationManager.ComponentsManager.Instance.GetComponentPosition(startNodeID), ComponentsManager.Instance.GetComponentPosition(endNodeID), 1);
-        gameObject.GetComponent<ComponentObject>().elementID = ID;
-
-        propertiesWindow = ComponentsFactory.Instance.CreatePropertiesWindow(typeID);
-        propertiesWindow.GetComponent<PropertiesWindow>().elementID = ID;
-        ChangeWindowVisibility(false);
-
-        GameStateManager.Instance.SetInactiveState();
-        GameStateManager.Instance.SetDragComponentsState();
     }
 
     public override void UpdatePropertiesValues()
@@ -78,12 +59,12 @@ public class Pump : BaseElement
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(1, values[1]);
     }
 
-    public int GetStartNodeID()
+    public string GetStartNodeID()
     {
         return startNodeID;
     }
 
-    public int GetEndNodeID()
+    public string GetEndNodeID()
     {
         return endNodeID;
     }

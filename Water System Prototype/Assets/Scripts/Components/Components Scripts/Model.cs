@@ -5,7 +5,7 @@ using UnityEngine;
 public class Model
 {
     public int year;
-    public List<int> elementIDsList;
+    public List<string> elementIDsList;
     MainSimulationManager.ComponentsManager componentsManager;
 
     private Model()
@@ -16,14 +16,14 @@ public class Model
     public Model(int yr)
     {
         year = yr;
-        elementIDsList = new List<int>();
+        elementIDsList = new List<string>();
     }
 
-    public void Add(int elementID)
+    public void Add(string elementID)
     {
         //Debug.Log("ADDING INDEX: " + index + "For year: " + year);
         if (elementIDsList == null)
-            elementIDsList = new List<int>();
+            elementIDsList = new List<string>();
 
         elementIDsList.Add(elementID);
     }
@@ -33,14 +33,14 @@ public class Model
         elementIDsList.Clear();
     }
 
-    public void RemoveElement(int elementID)
+    public void RemoveElement(string elementID)
     {
         for (int i = 0; i < elementIDsList.Count; i++)
-            if (elementIDsList[i] == elementID)
+            if (elementIDsList[i].Equals(elementID))
                 elementIDsList.RemoveAt(i);
     }
 
-    public List<int> GetComponentsList()
+    public List<string> GetComponentsList()
     {
         return elementIDsList;
     }

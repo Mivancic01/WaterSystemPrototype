@@ -7,12 +7,12 @@ public class Tank : BaseElement
 {
     public float volume, elevation;
 
-    public Tank(int id, int typeId, float pVolume, float pElevation) : base(id, typeId, true)
+    public Tank(string id, int typeId, float pVolume, float pElevation) : base(id, typeId, true)
     {
         volume = pVolume;
         elevation = pElevation;
     }
-    public Tank(int id, int typeId) : base(id, typeId, true)
+    public Tank(string id, int typeId) : base(id, typeId, true)
     {
         volume = 0.0f;
         elevation = 0.0f;
@@ -20,6 +20,10 @@ public class Tank : BaseElement
 
     public void Init(Tank tankScript)
     {
+        ID = tankScript.ID;
+        typeID = tankScript.typeID;
+        isNodeComponent = tankScript.isNodeComponent;
+
         volume = tankScript.volume;
         elevation = tankScript.elevation;
     }

@@ -1,0 +1,1384 @@
+{
+  "features": {
+    "Level_0": {
+      "centers": [
+        {
+          "geometry": {
+            "coordinates": [
+              -76539.295927,
+              224697.259705
+            ],
+            "type": "Point"
+          },
+          "properties": {
+            "id": "Graz_dummy"
+          },
+          "type": "Feature"
+        }
+      ],
+      "connections": []
+    },
+    "Level_1": {
+      "connections": [
+        {
+          "geometry": {
+            "coordinates": [
+              [
+                -76629.968,
+                224951.8425
+              ],
+              [
+                -76658.9496,
+                225261.9932
+              ]
+            ],
+            "type": "LineString"
+          },
+          "properties": {
+            "id": "1"
+          },
+          "type": "Feature"
+        },
+        {
+          "geometry": {
+            "coordinates": [
+              [
+                -76553.539545,
+                224623.968364
+              ],
+              [
+                -76629.968,
+                224951.8425
+              ]
+            ],
+            "type": "LineString"
+          },
+          "properties": {
+            "id": "2"
+          },
+          "type": "Feature"
+        },
+        {
+          "geometry": {
+            "coordinates": [
+              [
+                -76553.539545,
+                224623.968364
+              ],
+              [
+                -76410.537,
+                224552.667
+              ]
+            ],
+            "type": "LineString"
+          },
+          "properties": {
+            "id": "3"
+          },
+          "type": "Feature"
+        },
+        {
+          "geometry": {
+            "coordinates": [
+              [
+                -76537.45075,
+                224501.4785
+              ],
+              [
+                -76445.330667,
+                224291.608667
+              ]
+            ],
+            "type": "LineString"
+          },
+          "properties": {
+            "id": "4"
+          },
+          "type": "Feature"
+        },
+        {
+          "geometry": {
+            "coordinates": [
+              [
+                -76553.539545,
+                224623.968364
+              ],
+              [
+                -76537.45075,
+                224501.4785
+              ]
+            ],
+            "type": "LineString"
+          },
+          "properties": {
+            "id": "5"
+          },
+          "type": "Feature"
+        },
+        {
+          "geometry": {
+            "coordinates": [
+              [
+                -76445.330667,
+                224291.608667
+              ],
+              [
+                -76410.537,
+                224552.667
+              ]
+            ],
+            "type": "LineString"
+          },
+          "properties": {
+            "id": "6"
+          },
+          "type": "Feature"
+        }
+      ],
+      "zones": [
+        {
+          "geometry": {
+            "coordinates": [
+              -76553.539545,
+              224623.968364
+            ],
+            "type": "Point"
+          },
+          "properties": {
+            "id": "1"
+          },
+          "type": "Feature"
+        },
+        {
+          "geometry": {
+            "coordinates": [
+              -76537.45075,
+              224501.4785
+            ],
+            "type": "Point"
+          },
+          "properties": {
+            "id": "2"
+          },
+          "type": "Feature"
+        },
+        {
+          "geometry": {
+            "coordinates": [
+              -76445.330667,
+              224291.608667
+            ],
+            "type": "Point"
+          },
+          "properties": {
+            "id": "3"
+          },
+          "type": "Feature"
+        },
+        {
+          "geometry": {
+            "coordinates": [
+              -76629.968,
+              224951.8425
+            ],
+            "type": "Point"
+          },
+          "properties": {
+            "id": "4"
+          },
+          "type": "Feature"
+        },
+        {
+          "geometry": {
+            "coordinates": [
+              -76658.9496,
+              225261.9932
+            ],
+            "type": "Point"
+          },
+          "properties": {
+            "id": "5"
+          },
+          "type": "Feature"
+        },
+        {
+          "geometry": {
+            "coordinates": [
+              -76410.537,
+              224552.667
+            ],
+            "type": "Point"
+          },
+          "properties": {
+            "id": "6"
+          },
+          "type": "Feature"
+        }
+      ]
+    },
+    "Level_2": [
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.32386,
+              47.153243,
+              382.890015
+            ],
+            [
+              15.324889,
+              47.15328,
+              380.0
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 400.0,
+          "endnode": "1",
+          "id": "1",
+          "length": 1000.0,
+          "startnode": "1_15",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.322932,
+              47.156068,
+              386.559998
+            ],
+            [
+              15.322939,
+              47.156069,
+              386.549988
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 100.0,
+          "endnode": "6585118",
+          "id": "10120591",
+          "length": 0.55,
+          "startnode": "6585144",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.322939,
+              47.156069,
+              386.549988
+            ],
+            [
+              15.322942,
+              47.156069,
+              386.549988
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 25.0,
+          "endnode": "1_8",
+          "id": "10120650",
+          "length": 0.27,
+          "startnode": "6585118",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.321657,
+              47.159172,
+              385.130005
+            ],
+            [
+              15.321487,
+              47.161678,
+              385.540009
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 900.0,
+          "endnode": "13364624",
+          "id": "13364634",
+          "length": 279.22,
+          "startnode": "1_2",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.321487,
+              47.161678,
+              385.540009
+            ],
+            [
+              15.32121,
+              47.16197,
+              386.299988
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 700.0,
+          "endnode": "1_1",
+          "id": "13364663",
+          "length": 38.71,
+          "startnode": "13364624",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.322196,
+              47.157053,
+              384.279999
+            ],
+            [
+              15.321659,
+              47.159163,
+              385.130005
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 900.0,
+          "endnode": "1_3",
+          "id": "13364748",
+          "length": 238.13,
+          "startnode": "1_4",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.321659,
+              47.159163,
+              385.130005
+            ],
+            [
+              15.321657,
+              47.159172,
+              385.130005
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 900.0,
+          "endnode": "1_2",
+          "id": "13364754",
+          "length": 1.0,
+          "startnode": "1_3",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.322196,
+              47.157053,
+              384.279999
+            ],
+            [
+              15.322199,
+              47.15704,
+              384.279999
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 900.0,
+          "endnode": "1_5",
+          "id": "13364830",
+          "length": 1.52,
+          "startnode": "1_4",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.32294,
+              47.156067,
+              383.5
+            ],
+            [
+              15.324619,
+              47.155605,
+              383.5
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 80.0,
+          "endnode": "6585135",
+          "id": "13365114",
+          "length": 194.62,
+          "startnode": "6585113",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.32386,
+              47.153243,
+              382.890015
+            ],
+            [
+              15.323089,
+              47.154885,
+              383.769989
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 900.0,
+          "endnode": "1_10",
+          "id": "13370943",
+          "length": 191.69,
+          "startnode": "1_15",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.323866,
+              47.153232,
+              382.890015
+            ],
+            [
+              15.32386,
+              47.153243,
+              382.890015
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 900.0,
+          "endnode": "1_15",
+          "id": "13370949",
+          "length": 1.41,
+          "startnode": "1_16",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.323084,
+              47.154894,
+              383.769989
+            ],
+            [
+              15.322826,
+              47.155363,
+              383.799988
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 900.0,
+          "endnode": "1_7",
+          "id": "13371019",
+          "length": 55.71,
+          "startnode": "1_9",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.323089,
+              47.154885,
+              383.769989
+            ],
+            [
+              15.323084,
+              47.154894,
+              383.769989
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 900.0,
+          "endnode": "1_9",
+          "id": "13371025",
+          "length": 1.0,
+          "startnode": "1_10",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.322821,
+              47.155371,
+              383.799988
+            ],
+            [
+              15.322503,
+              47.155965,
+              384.23999
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 900.0,
+          "endnode": "13371117",
+          "id": "13371088",
+          "length": 70.34,
+          "startnode": "1_6",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.322826,
+              47.155363,
+              383.799988
+            ],
+            [
+              15.322821,
+              47.155371,
+              383.799988
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 900.0,
+          "endnode": "1_6",
+          "id": "13371094",
+          "length": 1.0,
+          "startnode": "1_7",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.32251,
+              47.155967,
+              385.549988
+            ],
+            [
+              15.322503,
+              47.155965,
+              384.23999
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 100.0,
+          "endnode": "13371117",
+          "id": "13371203",
+          "length": 0.6,
+          "startnode": "6585162",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.324619,
+              47.155605,
+              383.5
+            ],
+            [
+              15.32386,
+              47.153243,
+              382.890015
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 99,
+          "endnode": "1_15",
+          "id": "2",
+          "length": -1,
+          "startnode": "6585135",
+          "status": "CLOSED",
+          "type": "PRV"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.322199,
+              47.15704,
+              384.279999
+            ],
+            [
+              15.322503,
+              47.155965,
+              384.23999
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 900.0,
+          "endnode": "13371117",
+          "id": "23992243",
+          "length": 121.64,
+          "startnode": "1_5",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.32121,
+              47.16197,
+              386.299988
+            ],
+            [
+              15.321154,
+              47.16202,
+              386.660004
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 700.0,
+          "endnode": "3_1",
+          "id": "58426400",
+          "length": 7.0,
+          "startnode": "1_1",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.321154,
+              47.16202,
+              386.660004
+            ],
+            [
+              15.321157,
+              47.162033,
+              386.660004
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 300.0,
+          "endnode": "3_2",
+          "id": "58426406",
+          "length": 2.0,
+          "startnode": "3_1",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.32251,
+              47.155967,
+              385.549988
+            ],
+            [
+              15.322927,
+              47.156067,
+              386.579987
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 100.0,
+          "endnode": "6585158",
+          "id": "6584866",
+          "length": 33.52,
+          "startnode": "6585162",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.322926,
+              47.156069,
+              386.579987
+            ],
+            [
+              15.322927,
+              47.156067,
+              386.579987
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 80.0,
+          "endnode": "6585158",
+          "id": "6584872",
+          "length": 0.28,
+          "startnode": "6585149",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.322927,
+              47.156067,
+              386.579987
+            ],
+            [
+              15.322932,
+              47.156068,
+              386.559998
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 100.0,
+          "endnode": "6585144",
+          "id": "6584878",
+          "length": 0.37,
+          "startnode": "6585158",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.322925,
+              47.156073,
+              386.589996
+            ],
+            [
+              15.322926,
+              47.156069,
+              386.579987
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 80.0,
+          "endnode": "6585149",
+          "id": "6584884",
+          "length": 0.44,
+          "startnode": "6585154",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.32294,
+              47.156067,
+              383.5
+            ],
+            [
+              15.322939,
+              47.156069,
+              386.549988
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 80.0,
+          "endnode": "6585118",
+          "id": "6584916",
+          "length": 0.28,
+          "startnode": "6585113",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.324619,
+              47.155605,
+              383.5
+            ],
+            [
+              15.32462,
+              47.155602,
+              383.5
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 80.0,
+          "endnode": "6585140",
+          "id": "6584922",
+          "length": 0.4,
+          "startnode": "6585135",
+          "status": "OPEN",
+          "type": "Pipe"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              15.321105,
+              47.162067,
+              0.0
+            ],
+            [
+              15.321157,
+              47.162033,
+              386.660004
+            ]
+          ],
+          "type": "LineString"
+        },
+        "properties": {
+          "diameter": 99,
+          "endnode": "3_2",
+          "id": "HFB5_1",
+          "length": -1,
+          "startnode": "HFB5",
+          "status": "OPEN",
+          "type": "Pump"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.324889,
+            47.15328,
+            380.0
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": -1.0,
+          "id": "1_01",
+          "type": "Tank"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.321487,
+            47.161678,
+            385.540009
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "13364624",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.322503,
+            47.155965,
+            384.23999
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "13371117",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.32121,
+            47.16197,
+            386.299988
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "1_1",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.323089,
+            47.154885,
+            383.769989
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "1_10",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.32386,
+            47.153243,
+            382.890015
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "1_15",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.323866,
+            47.153232,
+            382.890015
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "1_16",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.321657,
+            47.159172,
+            385.130005
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "1_2",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.321659,
+            47.159163,
+            385.130005
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "1_3",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.322196,
+            47.157053,
+            384.279999
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "1_4",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.322199,
+            47.15704,
+            384.279999
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "1_5",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.322821,
+            47.155371,
+            383.799988
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "1_6",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.322826,
+            47.155363,
+            383.799988
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "1_7",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.322942,
+            47.156069,
+            386.549988
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.001055,
+          "id": "1_8",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.323084,
+            47.154894,
+            383.769989
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "1_9",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.321154,
+            47.16202,
+            386.660004
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "3_1",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.321157,
+            47.162033,
+            386.660004
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "3_2",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.32294,
+            47.156067,
+            383.5
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.005672,
+          "id": "6585113",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.322939,
+            47.156069,
+            386.549988
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "6585118",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.324619,
+            47.155605,
+            383.5
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.020972,
+          "id": "6585135",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.32462,
+            47.155602,
+            383.5
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "6585140",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.322932,
+            47.156068,
+            386.559998
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "6585144",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.322926,
+            47.156069,
+            386.579987
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "6585149",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.322925,
+            47.156073,
+            386.589996
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "6585154",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.322927,
+            47.156067,
+            386.579987
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.019784,
+          "id": "6585158",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.32251,
+            47.155967,
+            385.549988
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": 0.0,
+          "id": "6585162",
+          "type": "Junction"
+        },
+        "type": "Feature"
+      },
+      {
+        "geometry": {
+          "coordinates": [
+            15.321105,
+            47.162067,
+            0.0
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "basedemand": -1.0,
+          "id": "HFB5",
+          "type": "Reservoir"
+        },
+        "type": "Feature"
+      }
+    ]
+  },
+  "type": "FeatureCollection"
+}

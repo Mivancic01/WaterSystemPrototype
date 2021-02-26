@@ -11,21 +11,21 @@ public partial class MainSimulationManager
         public static int GetNextFreeID()
         {
             for (int i = 0; true; i++)
-                if (!mainManager.Instance.allIDs.Contains(i))
+                if (!mainManager.Instance.allIDs.Contains(i.ToString()))
                     return i;
         }
 
-        public static void UpdatePropertiesValues(int componentID, List<float> values)
+        public static void UpdatePropertiesValues(string componentID, List<float> values)
         {
             mainManager.Instance.componentsList[mainManager.Instance.componentsIdIndexMap[componentID]].UpdatePropertiesValues(values);
         }
 
-        public static Vector3 GetComponentPosition(int componentID)
+        public static Vector3 GetComponentPosition(string componentID)
         {
             return mainManager.Instance.componentsList[mainManager.Instance.componentsIdIndexMap[componentID]].GetPosition();
         }
 
-        public static (int, int) GetNodeIDsFromLineObject(GameObject line, int typeID)
+        public static (string, string) GetNodeIDsFromLineObject(GameObject line, int typeID)
         {
 
             if (typeID == 1)
@@ -38,7 +38,7 @@ public partial class MainSimulationManager
                 return (line.GetComponent<Valve>().startNodeID, line.GetComponent<Valve>().endNodeID);
 
             Debug.LogError("OBJECT IS NOT A LINE!");
-            return (-1, -1);
+            return ("", "");
         }
 
         public static bool IsSimulationViable()

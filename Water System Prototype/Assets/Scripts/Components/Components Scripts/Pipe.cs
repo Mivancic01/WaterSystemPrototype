@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class Pipe : BaseElement
 {
-    public int startNodeID, endNodeID;
+    public string startNodeID, endNodeID;
     public float length, diameter, flow, flowVelocity;
     public int statusID;
 
-    public Pipe(int id, int typeId, int pStartNodeID, int pEndNodeID, float pLength, float pDiameter, float pFlow, float pFlowVelocity, int pStatusID) : base(id, typeId, false)
+    public Pipe(string id, int typeId, string pStartNodeID, string pEndNodeID, float pLength, float pDiameter, float pFlow, float pFlowVelocity, int pStatusID) : base(id, typeId, false)
     {
         length = pLength;
         diameter = pDiameter;
@@ -19,7 +19,7 @@ public class Pipe : BaseElement
         endNodeID = pEndNodeID;
         statusID = pStatusID;
     }
-    public Pipe(int id, int typeId, int pStartNodeID, int pEndNodeID, int pStatusID) : base(id, typeId, false)
+    public Pipe(string id, int typeId, string pStartNodeID, string pEndNodeID, int pStatusID) : base(id, typeId, false)
     {
         length = 0.0f;
         diameter = 0.0f;
@@ -32,6 +32,10 @@ public class Pipe : BaseElement
 
     public void Init(Pipe pipeScript)
     {
+
+        ID = pipeScript.ID;
+        typeID = pipeScript.typeID;
+
         startNodeID = pipeScript.startNodeID;
         endNodeID = pipeScript.endNodeID;
 
@@ -42,29 +46,6 @@ public class Pipe : BaseElement
         statusID = pipeScript.statusID;
 
         isNodeComponent = false;
-    }
-
-    public override void Initialize(int pTypeID = -1, int pID = -1, bool isNode = false)
-    {
-        if (pTypeID != -1)
-            typeID = pTypeID;
-        if (pID != -1)
-            ID = pID;
-
-        isNodeComponent = isNode;
-
-        GameStateManager.Instance.SetInactiveState();
-        GameStateManager.Instance.SetPathCreationState();
-
-        //elemIcon = LineGenerator.Instance.CreateAndReturnLineComponent(ComponentsManager.Instance.GetComponentPosition(startNodeID), ComponentsManager.Instance.GetComponentPosition(endNodeID), 0);
-        gameObject.GetComponent<ComponentObject>().elementID = ID;
-
-        propertiesWindow = ComponentsFactory.Instance.CreatePropertiesWindow(typeID);
-        propertiesWindow.GetComponent<PropertiesWindow>().elementID = ID;
-        ChangeWindowVisibility(false);
-
-        GameStateManager.Instance.SetInactiveState();
-        GameStateManager.Instance.SetDragComponentsState();
     }
 
     public override void UpdatePropertiesValues()
@@ -87,12 +68,12 @@ public class Pipe : BaseElement
         propertiesWindow.GetComponent<PropertiesWindow>().UpdateInputField(3, values[3]);
     }
 
-    public int GetStartNodeID()
+    public string GetStartNodeID()
     {
         return startNodeID;
     }
 
-    public int GetEndNodeID()
+    public string GetEndNodeID()
     {
         return endNodeID;
     }
