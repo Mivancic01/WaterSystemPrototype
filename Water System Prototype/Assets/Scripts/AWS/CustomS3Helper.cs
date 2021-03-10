@@ -56,14 +56,101 @@ namespace UnityMinioExample
 
             _s3Client.GetObjectAsync(getObjectRequest, (responseObj) =>
             {
-                string data = null;
                 var response = responseObj.Response;
 
-                if(response.ResponseStream != null)
+                Debug.Log("Checkpoint download");
+
+                if (responseObj.Exception != null)
+                    Debug.LogError("ResponseObj is wacked: " + responseObj.Exception.ToString());
+
+                Debug.Log(responseObj.state);
+
+                Debug.Log("Checkpoint download 2");
+
+                if (response.ResponseStream != null)
                 {
                     var stream = response.ResponseStream;
-                    stream.CopyToAsync(fileStream);
+
+                    StreamReader reader = new StreamReader(stream);
+                    string text = reader.ReadToEnd();
+
+                    Debug.Log("The stream is: ");
+                    Debug.Log(text);
+                    //stream.CopyToAsync(fileStream);
                 }
+                else
+                    Debug.Log("ResponseStream is null");
+
+                Debug.Log("Checkpoint end download");
+            });
+        }
+
+        public void DownloadJSON(string bucket, string path, System.IO.FileStream fileStream)
+        {
+            var getObjectRequest = new GetObjectRequest()
+            {
+                Key = path,
+                BucketName = bucket,
+            };
+
+            _s3Client.GetObjectAsync(getObjectRequest, (responseObj) =>
+            {
+                var response = responseObj.Response;
+
+                Debug.Log("Checkpoint download");
+
+                if (responseObj.Exception != null)
+                    Debug.LogError("ResponseObj is wacked: " + responseObj.Exception.ToString());
+
+                Debug.Log(responseObj.state);
+
+                Debug.Log("Checkpoint download 2");
+
+                if (response.ResponseStream != null)
+                {
+                    var stream = response.ResponseStream;
+
+                    StreamReader reader = new StreamReader(stream);
+                    string text = reader.ReadToEnd();
+
+                    Debug.Log("The stream is: ");
+                    Debug.Log(text);
+                    LocalJSONReader.Instance.LoadGame(text);
+                }
+                else
+                    Debug.Log("ResponseStream is null");
+
+                Debug.Log("Checkpoint end download");
+            });
+        }
+
+        public void ListObjects(string bucket)
+        {
+            var listObjectRequest = new ListObjectsRequest()
+            {
+                BucketName = bucket,
+            };
+
+            _s3Client.ListObjectsAsync(listObjectRequest, (responseObject) =>
+            {
+                string result_text = "";
+                if (responseObject.Exception == null)
+                {
+                    result_text += "Got Response \nPrinting now \n";
+                    responseObject.Response.S3Objects.ForEach((o) =>
+                    {
+                        result_text += string.Format("{0}\n", o.Key);
+                    });
+
+                    Debug.Log(result_text);
+                }
+                else
+                {
+                    result_text += "Got Exception \n";
+
+                    Debug.LogError(result_text);
+                }
+
             });
         }
 

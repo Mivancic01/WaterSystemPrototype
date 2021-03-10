@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3084702762115940835}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -6.2174864, y: 1.1818019, z: 8.453125}
+  m_LocalPosition: {x: -6.2174864, y: 10, z: 8.453125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3876852089253176338}
@@ -142,8 +142,8 @@ MonoBehaviour:
   useDebug: 0
   isNodeComponent: 0
   isTutorial: 0
-  elementID: 0
   localEventID: -1
+  elementID: 
   maxDeltaTime: 0.3
 --- !u!114 &6716332498164714526
 MonoBehaviour:
@@ -158,9 +158,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeID: 0
-  ID: 0
-  startNodeID: 0
-  endNodeID: 0
+  ID: 
+  startNodeID: 
+  endNodeID: 
   diameter: 0
   flow: 0
   flowVelocity: 0

@@ -80,7 +80,10 @@ public class LineGenerator : MonoBehaviour
         CreateNodeStart(startNode, false);
         CreateNodeEnd(endNode, false);
 
-        GameObject lineCopy = LineGeneratorHelper.UpdateWidth(line, diameter); ;
+        GameObject lineCopy = LineGeneratorHelper.UpdateWidth(line, diameter);
+        var tempPos = lineCopy.transform.position;
+        tempPos.y = 10;
+        lineCopy.transform.position = tempPos;
         Reset();
 
         return lineCopy;
